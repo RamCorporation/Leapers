@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "leapers",
+  "version": "${version}",
+
+  "name": "Light Leapers",
+  "description": "Simple Minecraft mod that changes player transportation forever!",
+  "authors": [
+    "Me!"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "MIT",
+  "icon": "assets/modid/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.ramgaming.leapers.Leapers"
+    ],
+    "client": [
+      "net.ramgaming.leapers.LeapersClient"
+    ]
+  },
+  "mixins": [
+    "leapers.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.6",
+    "fabric": "*",
+    "minecraft": "~1.19",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

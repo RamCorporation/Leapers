@@ -3,6 +3,8 @@
   "values": [
     "leapers:umber_ore",
     "leapers:aeris_ore",
-    "leapers:fervis_ore"
+    "leapers:fervis_ore",
+    "leapers:cache",
+    "leapers:disleaper"
   ]
 }

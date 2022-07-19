@@ -1,0 +1,12 @@
+{
+  "item.leapers.umber_crystal": "Umber Crystal",
+  "item.leapers.aeris_crystal": "Aeris Crystal",
+  "item.leapers.fervis_crystal": "Fervis Crystal",
+  "itemGroup.leapers.leaper_group": "Light Leapers",
+  "item.leapers.enforcer": "Enforcer",
+  "item.leapers.aeris_leaper": "Aeris Leaper",
+
+  "block.leapers.umber_ore": "Umber Ore",
+  "block.leapers.fervis_ore": "Fervis Ore",
+  "block.leapers.aeris_ore": "Aeris Ore"
+}

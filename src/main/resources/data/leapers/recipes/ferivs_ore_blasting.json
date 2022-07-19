@@ -1,0 +1,10 @@
+{
+  "type": "smelting",
+  "cookingtime": 100,
+  "experience": 0.7,
+  "group": "fervis_crystal",
+  "ingredient": {
+    "item": "leapers:fervis_ore"
+  },
+  "result": "leapers:fervis_crystal"
+}

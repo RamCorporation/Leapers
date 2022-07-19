@@ -1,0 +1,7 @@
+{
+  "parent": "leapers:custom/enforcer",
+  "textures": {
+    "mapping": "leapers:item/enforcer",
+    "particle": "leapers:item/enforcer"
+  }
+}

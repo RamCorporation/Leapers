@@ -1,10 +1,10 @@
 package net.ramgaming.leapers.item;
+
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.ramgaming.leapers.Leapers;
-import net.ramgaming.leapers.item.custom.LightLeaperItem;
 
 public class ModItems {
 
@@ -14,7 +14,7 @@ public class ModItems {
 
     public static final Item ENFORCER = registerItem("enforcer", new Item(new FabricItemSettings().group(ModItemGroup.LEAPER_GROUP)));
 
-    public static final Item AERIS_LEAPER = registerItem("aeris_leaper", new LightLeaperItem(new FabricItemSettings().group(ModItemGroup.LEAPER_GROUP).maxCount(1)));
+    public static final Item AERIS_LEAPER = registerItem("aeris_leaper", new Item(new FabricItemSettings().group(ModItemGroup.LEAPER_GROUP).maxCount(1)));
 
 
     private static Item registerItem(String name, Item item) {

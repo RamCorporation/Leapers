@@ -14,5 +14,7 @@ public class Leapers implements ModInitializer {
 	public void onInitialize() {
 		ModItems.registerModItems();
 		ModBlocks.registerBlocks();
+		RegisterEvents.onInitialize();
+		RegisterTags.onInitialize();
 	}
 }

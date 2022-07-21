@@ -2,6 +2,7 @@ package net.ramgaming.leapers;
 
 import net.fabricmc.api.ModInitializer;
 import net.ramgaming.leapers.block.ModBlocks;
+import net.ramgaming.leapers.block.entity.ModBlockEntities;
 import net.ramgaming.leapers.item.ModItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,5 +17,6 @@ public class Leapers implements ModInitializer {
 		ModBlocks.registerBlocks();
 		RegisterEvents.onInitialize();
 		RegisterTags.onInitialize();
+		ModBlockEntities.registerAllBlockEntities();
 	}
 }

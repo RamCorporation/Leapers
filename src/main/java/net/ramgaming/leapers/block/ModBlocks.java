@@ -10,6 +10,8 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.ramgaming.leapers.Leapers;
+import net.ramgaming.leapers.block.custom.SkyGazerBlock;
+import net.ramgaming.leapers.block.custom.TranslucentBlock;
 import net.ramgaming.leapers.item.ModItemGroup;
 
 public class ModBlocks {
@@ -17,8 +19,11 @@ public class ModBlocks {
     public static final Block UMBER_ORE = registerBlock("umber_ore", new Block(FabricBlockSettings.of(Material.STONE).strength(2f).requiresTool()), ModItemGroup.LEAPER_GROUP);
     public static final Block AERIS_ORE = registerBlock("aeris_ore", new Block(FabricBlockSettings.of(Material.STONE).strength(2f).requiresTool()), ModItemGroup.LEAPER_GROUP);
     public static final Block FERVIS_ORE = registerBlock("fervis_ore", new Block(FabricBlockSettings.of(Material.STONE).strength(2f).requiresTool()), ModItemGroup.LEAPER_GROUP);
-    public static final Block DISLEAPER = registerBlock("disleaper", new Block(FabricBlockSettings.of(Material.METAL).strength(2f).requiresTool()), ModItemGroup.LEAPER_GROUP);
-    public static final Block CACHE = registerBlock("cache", new Block(FabricBlockSettings.of(Material.METAL).strength(2f).requiresTool()), ModItemGroup.LEAPER_GROUP);
+    public static final Block DISLEAPER = registerBlock("disleaper", new TranslucentBlock(FabricBlockSettings.of(Material.METAL).strength(2f).requiresTool().luminance(8)), ModItemGroup.LEAPER_GROUP);
+    public static final Block CACHE = registerBlock("cache", new TranslucentBlock(FabricBlockSettings.of(Material.METAL).strength(2f).requiresTool()), ModItemGroup.LEAPER_GROUP);
+
+    public static final Block SKY_GAZER = registerBlock("sky_gazer", new SkyGazerBlock(FabricBlockSettings.of(Material.METAL).strength(2f).requiresTool()), ModItemGroup.LEAPER_GROUP);
+
     private static Item registerBlockItem(String name, Block block, ItemGroup tab) {
         return Registry.register(Registry.ITEM, new Identifier(Leapers.MOD_ID,name), new BlockItem(block, new FabricItemSettings().group(tab)));
     }

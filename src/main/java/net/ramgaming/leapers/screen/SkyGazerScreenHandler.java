@@ -7,6 +7,9 @@ import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
+import net.ramgaming.leapers.screen.slot.ModCrystalSlot;
+import net.ramgaming.leapers.screen.slot.ModHandleSlot;
+import net.ramgaming.leapers.screen.slot.ModOutputSlot;
 
 public class SkyGazerScreenHandler extends ScreenHandler {
 
@@ -22,7 +25,9 @@ public class SkyGazerScreenHandler extends ScreenHandler {
         inventory.onOpen(playerInventory.player);
 
         //SLOTS
-        this.addSlot(new Slot(inventory,0,18,50));
+        this.addSlot(new ModHandleSlot(inventory,0,26,37));
+        this.addSlot(new ModCrystalSlot(inventory,1,62,37));
+        this.addSlot(new ModOutputSlot(inventory,2,134,37));
 
 
         addPlayerInventory(playerInventory);

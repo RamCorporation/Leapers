@@ -1,9 +1,6 @@
 package net.ramgaming.leapers.block.custom;
 
-import net.minecraft.block.BlockEntityProvider;
-import net.minecraft.block.BlockRenderType;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
@@ -20,6 +17,14 @@ import net.ramgaming.leapers.block.entity.SkyGazerBlockEntity;
 import org.jetbrains.annotations.Nullable;
 
 public class SkyGazerBlock extends BlockWithEntity implements BlockEntityProvider {
+
+
+
+
+
+
+
+
     public SkyGazerBlock(Settings settings) {
         super(settings);
     }

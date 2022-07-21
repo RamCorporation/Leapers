@@ -16,6 +16,8 @@ public class ModItems {
 
     public static final Item AERIS_LEAPER = registerItem("aeris_leaper", new Item(new FabricItemSettings().group(ModItemGroup.LEAPER_GROUP).maxCount(1)));
 
+    public static final Item STONE_ROD = registerItem("stone_rod", new Item(new FabricItemSettings().group(ModItemGroup.LEAPER_GROUP)));
+    public static final Item COPPER_ROD = registerItem("copper_rod", new Item(new FabricItemSettings().group(ModItemGroup.LEAPER_GROUP)));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registry.ITEM, new Identifier(Leapers.MOD_ID,name),item);

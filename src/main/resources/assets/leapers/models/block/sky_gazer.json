@@ -1,6 +1,6 @@
 {
   "parent": "leapers:custom/sky_gazer",
   "textures": {
-    "#mapping": "leapers:block/sky_gazer"
+    "mapping": "leapers:block/sky_gazer"
   }
 }

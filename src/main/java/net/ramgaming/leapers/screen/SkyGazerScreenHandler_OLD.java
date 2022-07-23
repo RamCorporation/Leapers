@@ -11,15 +11,15 @@ import net.ramgaming.leapers.screen.slot.ModCrystalSlot;
 import net.ramgaming.leapers.screen.slot.ModHandleSlot;
 import net.ramgaming.leapers.screen.slot.ModOutputSlot;
 
-public class SkyGazerScreenHandler extends ScreenHandler {
+public class SkyGazerScreenHandler_OLD extends ScreenHandler {
 
     public final Inventory inventory;
 
-    public SkyGazerScreenHandler(int syncId, PlayerInventory playerInventory) {
+    public SkyGazerScreenHandler_OLD(int syncId, PlayerInventory playerInventory) {
         this(syncId,playerInventory, new SimpleInventory(4));
     }
-    public SkyGazerScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory) {
-        super(ModScreenHandlers.STAR_GAZER_SCREEN_HANDLER, syncId);
+    public SkyGazerScreenHandler_OLD(int syncId, PlayerInventory playerInventory, Inventory inventory) {
+        super(ModScreenHandlers.CRYSTAL_CUTTER_SCREEN_HANDLER, syncId);
         checkSize(inventory,4);
         this.inventory = inventory;
         inventory.onOpen(playerInventory.player);

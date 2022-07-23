@@ -17,12 +17,12 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.ramgaming.leapers.block.entity.ModBlockEntities;
-import net.ramgaming.leapers.block.entity.SkyGazerBlockEntity;
+import net.ramgaming.leapers.block.entity.CrystalCutterBlockEntity;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.stream.Stream;
 
-public class SkyGazerBlock extends BlockWithEntity implements BlockEntityProvider {
+public class CrystalCutterBlock extends BlockWithEntity implements BlockEntityProvider {
 
     private static final VoxelShape SHAPE = Stream.of(
             Block.createCuboidShape(13, 2, 13, 16, 3, 16),
@@ -52,7 +52,7 @@ public class SkyGazerBlock extends BlockWithEntity implements BlockEntityProvide
 
 
 
-    public SkyGazerBlock(Settings settings) {
+    public CrystalCutterBlock(Settings settings) {
         super(settings);
     }
 
@@ -65,15 +65,15 @@ public class SkyGazerBlock extends BlockWithEntity implements BlockEntityProvide
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new SkyGazerBlockEntity(pos,state);
+        return new CrystalCutterBlockEntity(pos,state);
     }
 
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof SkyGazerBlockEntity) {
-                ItemScatterer.spawn(world, pos, (SkyGazerBlockEntity)blockEntity);
+            if (blockEntity instanceof CrystalCutterBlockEntity) {
+                ItemScatterer.spawn(world, pos, (CrystalCutterBlockEntity)blockEntity);
                 world.updateComparators(pos,this);
             }
             super.onStateReplaced(state, world, pos, newState, moved);
@@ -97,6 +97,7 @@ public class SkyGazerBlock extends BlockWithEntity implements BlockEntityProvide
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntities.SKY_GAZER,SkyGazerBlockEntity::tick);
+        return checkType(type, ModBlockEntities.SKY_GAZER, CrystalCutterBlockEntity::tick);
+
     }
 }

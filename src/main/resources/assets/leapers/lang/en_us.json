@@ -2,6 +2,11 @@
   "item.leapers.umber_crystal": "Umber Crystal",
   "item.leapers.aeris_crystal": "Aeris Crystal",
   "item.leapers.fervis_crystal": "Fervis Crystal",
+
+  "item.leapers.uncut_aeris_crystal": "Uncut Aeris Crystal",
+  "item.leapers.uncut_fervis_crystal": "Uncut Fervis Crystal",
+  "item.leapers.uncut_umber_crystal": "Uncut Umber Crystal",
+
   "itemGroup.leapers.leaper_group": "Light Leapers",
   "item.leapers.enforcer": "Enforcer",
   "item.leapers.copper_rod": "Copper Rod",
@@ -14,5 +19,6 @@
   "block.leapers.aeris_ore": "Aeris Ore",
   "block.leapers.disleaper": "Disleaper",
   "block.leapers.cache": "Cache",
-  "block.leapers.sky_gazer": "Sky Gazer"
+
+  "block.leapers.crystal_cutter": "Crystal Cutter"
 }

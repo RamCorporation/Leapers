@@ -14,15 +14,15 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.ramgaming.leapers.item.inventory.ImplementedInventory;
-import net.ramgaming.leapers.screen.SkyGazerScreenHandler;
+import net.ramgaming.leapers.screen.CrystalCutterScreenHandler;
 import org.jetbrains.annotations.Nullable;
 
-public class SkyGazerBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
+public class CrystalCutterBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
 
     private final DefaultedList<ItemStack> inventory =
             DefaultedList.ofSize(4,ItemStack.EMPTY);
 
-    public SkyGazerBlockEntity(BlockPos pos, BlockState state) {
+    public CrystalCutterBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.SKY_GAZER,pos, state);
     }
 
@@ -34,7 +34,7 @@ public class SkyGazerBlockEntity extends BlockEntity implements NamedScreenHandl
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player) {
-        return new SkyGazerScreenHandler(syncId,inv,this);
+        return new CrystalCutterScreenHandler(syncId,inv,this);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class SkyGazerBlockEntity extends BlockEntity implements NamedScreenHandl
         super.readNbt(nbt);
     }
 
-    public static void tick(World world, BlockPos pos, BlockState state, SkyGazerBlockEntity entity) {
+    public static void tick(World world, BlockPos pos, BlockState state, CrystalCutterBlockEntity entity) {
 
     }
 }

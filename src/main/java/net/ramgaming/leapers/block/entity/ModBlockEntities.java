@@ -8,12 +8,12 @@ import net.ramgaming.leapers.Leapers;
 import net.ramgaming.leapers.block.ModBlocks;
 
 public class ModBlockEntities {
-    public static BlockEntityType<SkyGazerBlockEntity> SKY_GAZER;
+    public static BlockEntityType<CrystalCutterBlockEntity> SKY_GAZER;
 
     public static void registerAllBlockEntities() {
         SKY_GAZER = Registry.register(Registry.BLOCK_ENTITY_TYPE,
                 new Identifier(Leapers.MOD_ID, "sky_gazer"),
-                FabricBlockEntityTypeBuilder.create(SkyGazerBlockEntity::new, ModBlocks.SKY_GAZER).build(null));
+                FabricBlockEntityTypeBuilder.create(CrystalCutterBlockEntity::new, ModBlocks.CRYSTAL_CUTTER).build(null));
 
     }
 }

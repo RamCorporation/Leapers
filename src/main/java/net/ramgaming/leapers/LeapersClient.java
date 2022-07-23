@@ -6,8 +6,8 @@ import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.RenderLayer;
 import net.ramgaming.leapers.block.ModBlocks;
+import net.ramgaming.leapers.screen.CrystalCutterScreen;
 import net.ramgaming.leapers.screen.ModScreenHandlers;
-import net.ramgaming.leapers.screen.SkyGazerScreen;
 
 public class LeapersClient implements ClientModInitializer {
 
@@ -21,7 +21,9 @@ public class LeapersClient implements ClientModInitializer {
     public void onInitializeClient() {
         setTranslucent(ModBlocks.CACHE);
         setTranslucent(ModBlocks.DISLEAPER);
-        setTranslucent(ModBlocks.SKY_GAZER);
-        ScreenRegistry.register(ModScreenHandlers.STAR_GAZER_SCREEN_HANDLER, SkyGazerScreen::new);
+        setTranslucent(ModBlocks.CRYSTAL_CUTTER);
+        ScreenRegistry.register(ModScreenHandlers.CRYSTAL_CUTTER_SCREEN_HANDLER, CrystalCutterScreen::new);
     }
+
+
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "leapers:custom/crystal_cutter",
+  "textures": {
+    "particles": "minecraft:block/polished_deepslate",
+    "mapping": "leapers:block/crystal_cutter"
+  }
+}

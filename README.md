@@ -22,9 +22,9 @@ Head over to the issues tab and create an issue report. I will get on top of it 
 
 Maybe, but you don't have to wait! The first official release will have data pack compatibility, allow players to add their own leapers via data packs.
 
-### Could you add BLANK  to the mod?
+### Could you add BLANK to the mod?
 
-Maybe! Create a pull request or msg me on discord (Ramix#0467) with your idea
+Maybe! Create a pull request or msg me on discord (Ramix#0467) with your idea!
 
 ## Setup
 
@@ -32,7 +32,7 @@ As of the current commit, there is no official build for the mod. However, you c
 
 ### How to build the project
 
-1. Download the .zip of the lastest commit
+1. Download the .zip of the lastest commit (make sure the commit is valid and can be built)
 2. Unzip the file
 3. Click on folder address bar and type cmd
 4. Once the command prompt appears, type gradlew build (NOTE: you may need to update your java or other applications before it will let you build)

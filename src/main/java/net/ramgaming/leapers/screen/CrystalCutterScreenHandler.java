@@ -35,7 +35,6 @@ public class CrystalCutterScreenHandler extends ScreenHandler {
 
 
     }
-
     public void METHODOFDOOOM() {
 
     }
@@ -73,6 +72,7 @@ public class CrystalCutterScreenHandler extends ScreenHandler {
         for (int i = 0; i < 3; ++i) {
             for (int l = 0; l < 9; ++l) {
                 this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 86 + i * 18));
+
             }
         }
     }

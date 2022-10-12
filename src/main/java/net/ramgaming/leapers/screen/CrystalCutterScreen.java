@@ -31,6 +31,11 @@ public class CrystalCutterScreen extends HandledScreen<CrystalCutterScreenHandle
 
     }
 
+
+    @Override
+    public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        return true;
+    }
     @Override
     protected void init() {
         super.init();

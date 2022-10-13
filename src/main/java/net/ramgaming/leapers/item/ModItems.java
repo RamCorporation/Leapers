@@ -17,6 +17,11 @@ public class ModItems {
     public static final Item UMBER_CRYSTAL = registerItem("umber_crystal",new Item(new FabricItemSettings().group(ModItemGroup.LEAPER_GROUP)));
     public static final Item AERIS_CRYSTAL = registerItem("aeris_crystal",new Item(new FabricItemSettings().group(ModItemGroup.LEAPER_GROUP)));
     public static final Item FERVIS_CRYSTAL = registerItem("fervis_crystal",new Item(new FabricItemSettings().group(ModItemGroup.LEAPER_GROUP)));
+    public static final Item ALLURE_CRYSTAL = registerItem("allure_crystal",new Item(new FabricItemSettings().group(ModItemGroup.LEAPER_GROUP)));
+    public static final Item GALVA_CRYSTAL = registerItem("galva_crystal",new Item(new FabricItemSettings().group(ModItemGroup.LEAPER_GROUP)));
+    public static final Item HORA_CRYSTAL = registerItem("hora_crystal",new Item(new FabricItemSettings().group(ModItemGroup.LEAPER_GROUP)));
+    public static final Item MEMORIA_CRYSTAL = registerItem("memoria_crystal",new Item(new FabricItemSettings().group(ModItemGroup.LEAPER_GROUP)));
+    public static final Item SPECTRAL_CRYSTAL = registerItem("spectral_crystal",new Item(new FabricItemSettings().group(ModItemGroup.LEAPER_GROUP)));
 
     public static final Item ENFORCER = registerItem("enforcer", new Item(new FabricItemSettings().group(ModItemGroup.LEAPER_GROUP)));
 

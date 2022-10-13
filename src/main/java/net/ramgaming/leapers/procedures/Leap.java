@@ -82,4 +82,33 @@ public class Leap {
         }
         return true;
     }
+    private static int averageLightLevel(World world) {
+        int time = (int) world.getTime();
+        if(between(time,12501,23499)) {
+            return 0;
+        }
+        int quant = 0;
+        if(between(time,23500,23999) || time == 0) {
+            quant = 500;
+        } else {
+            if(time > 7000) {
+                quant =  15 - (-6500+time)/433;
+            } else {
+                quant =(500+time)/433;
+            }
+
+        }
+        return quant;
+    }
+    private static boolean between(int amount, int min, int max) {
+        return between(amount,min,max,true,true);
+    }
+    private static boolean between(int amount, int min, int max,boolean equalto1,boolean equalto2) {
+        if(equalto1) {min -=1;}
+        if(equalto2) {max +=1;}
+        if(amount < max && amount > min) {
+            return true;
+        }
+        return false;
+    }
 }

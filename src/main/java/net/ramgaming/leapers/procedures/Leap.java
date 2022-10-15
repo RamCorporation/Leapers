@@ -1,11 +1,13 @@
 package net.ramgaming.leapers.procedures;
 
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
@@ -17,13 +19,10 @@ import static net.ramgaming.leapers.RegisterTags.LEAPER_TAG;
 public class Leap {
     public static TypedActionResult<ItemStack> Start(PlayerEntity player, World world, Hand hand) {
         if (!world.isClient() && hand == Hand.MAIN_HAND) {
-            player.sendMessage(Text.literal("CLICKED"));
             ItemStack MH_STACK = player.getStackInHand(Hand.MAIN_HAND);
             Item MH_ITEM = MH_STACK.getItem();
             if (MH_STACK.isIn(LEAPER_TAG)) {
-                player.sendMessage(Text.literal("CLICKED LEAPER"));
                 if(MH_STACK.isIn(AERIS_TYPE)) {
-                    player.sendMessage(Text.literal("AERIS LEAPER"));
                     AerisType(player, world, hand);
                 }
             }
@@ -33,42 +32,34 @@ public class Leap {
     private static void AerisType(PlayerEntity player, World world, Hand hand){
         player.getItemCooldownManager().set(player.getMainHandStack().getItem(), 100);
         if(canSeeSky(player,world)) {
-            player.sendMessage(Text.literal("Can see sky"));
             NbtCompound NBT = player.getMainHandStack().getNbt();
             if(NBT == null) {
-                player.sendMessage(Text.literal("NBT is null"), false);
+                return;
             }else {
                 if(NBT.getIntArray("leapingPos") != null) {
-                    player.sendMessage(Text.literal("found leapingPos"), false);
-                    int[] posers = NBT.getIntArray("leapingPos");
-                    int yer = world.getTopY();
-                    while(world.getBlockState(new BlockPos(posers[0],yer,posers[1])).isAir()) {
-                        yer -= 1;
-                        player.sendMessage(Text.literal("yer is "+ yer));
-                        if(yer < world.getBottomY()) {
-                            player.sendMessage(Text.literal("WHILE loop fail"));
+                    int[] posers = new int[]{NBT.getIntArray("leapingPos")[0],world.getTopY(),NBT.getIntArray("leapingPos")[1]};
+                    while(world.getBlockState(new BlockPos(posers[0],posers[1],posers[2])).isAir()) {
+                        posers[1] -= 1;
+                        if(posers[1] < world.getBottomY()) {
+                            player.sendMessage(Text.literal("failed to complete leaping process").formatted(Formatting.RED));
                             break;
                         }
                     }
-                    yer += 1;
-                    player.sendMessage(Text.literal(String.format("moving player to: (%s,%s,%s)",player.getX(),player.getY(),player.getZ())), false);
+                    posers[1] += 1;
 
-                    if (player.hasVehicle()) {
-                        ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)player;
-                        serverPlayerEntity.requestTeleportAndDismount((double) posers[0]+0.5, yer, (double) posers[1]+0.5);
-                    } else {
-                        player.requestTeleport((double) posers[0]+0.5, yer, (double) posers[1]+0.5);
-                    }
-                    player.sendMessage(Text.literal(String.format("moving player to: (%s,%s,%s)",player.getX(),player.getY(),player.getZ())), false);
+                    movePlayerTo(player,posers);
+                    player.damage(DamageSource.GENERIC,calcLightLevelPenalty(world,new BlockPos(player.getX(),player.getY(),player.getZ()),new BlockPos(posers[0],posers[1],posers[2])));
                 }
                 else {
-                    player.sendMessage(Text.literal("No Leaping Cords Set"), false);
+                    player.sendMessage(Text.literal("No Leaping Cords Set").formatted(Formatting.RED), true);
+                    return;
                 }
             }
 
 
         } else {
-            player.sendMessage(Text.literal("Can't Leap Underground"), false);
+            player.sendMessage(Text.literal("Can't Leap Underground").formatted(Formatting.RED), false);
+            return;
         }
     }
     private static boolean canSeeSky(PlayerEntity player,World world) {
@@ -82,23 +73,36 @@ public class Leap {
         }
         return true;
     }
-    private static int averageLightLevel(World world) {
+    private static int calcLightLevelPenalty(World world,BlockPos start,BlockPos dest) {
         int time = (int) world.getTime();
-        if(between(time,12501,23499)) {
-            return 0;
-        }
         int quant = 0;
         if(between(time,23500,23999) || time == 0) {
-            quant = 500;
+            quant = 23500/433;
         } else {
-            if(time > 7000) {
-                quant =  15 - (-6500+time)/433;
-            } else {
-                quant =(500+time)/433;
+            if(time <= 12500) {
+                if (time > 7000) {
+                    quant = 15 - (-6500 + time) / 433;
+                } else {
+                    quant = (500 + time) / 433;
+                }
             }
 
         }
-        return quant;
+        if(quant < 12 ) {
+            quant = 15-quant;
+        } else {
+            quant = 0;
+        }
+        int avgposlight = (world.getLightLevel(start)+world.getLightLevel(dest))/2;
+        if(avgposlight < 12) {
+            avgposlight = 15-avgposlight;
+        } else {
+            avgposlight = 0;
+        }
+        if (15-quant-avgposlight < 0) {
+            return 0;
+        }
+        return 15-quant-avgposlight;
     }
     private static boolean between(int amount, int min, int max) {
         return between(amount,min,max,true,true);
@@ -106,9 +110,14 @@ public class Leap {
     private static boolean between(int amount, int min, int max,boolean equalto1,boolean equalto2) {
         if(equalto1) {min -=1;}
         if(equalto2) {max +=1;}
-        if(amount < max && amount > min) {
-            return true;
+        return amount < max && amount > min;
+    }
+    private static void movePlayerTo(PlayerEntity player, int[] posers) {
+        if (player.hasVehicle()) {
+            ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)player;
+            serverPlayerEntity.requestTeleportAndDismount((double) posers[0]+0.5, posers[1], (double) posers[2]+0.5);
+        } else {
+            player.requestTeleport((double) posers[0]+0.5, posers[1], (double) posers[2]+0.5);
         }
-        return false;
     }
 }

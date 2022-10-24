@@ -2,7 +2,7 @@
 
 ## Description
 
-A transportation mod, by RamGaming, that allows the player to harness the power of light to travel across the world. This mod is based off of the pathfinder concept from the book series "Keeper of the Lost Cities"
+A transportation mod by RamGaming and SandSyR that allows the player to harness the power of light to travel across the world. This mod is inspired by the pathfinder concept from the book series "Keeper of the Lost Cities".
 
 ## Questions you may have
 
@@ -18,17 +18,17 @@ Most likely not. I may or may not create a FABRIC version for 1.18.x or 1.17 aft
 
 Head over to the issues tab and create an issue report. I will get on top of it as soon as I can!
 
-### Could you add BLANK leaper to the mod?
+### Could you add ______ leaper to the mod?
 
 Maybe, but you don't have to wait! The first official release will have data pack compatibility, allow players to add their own leapers via data packs.
 
-### Could you add BLANK to the mod?
+### Could you add ______ to the mod?
 
 Maybe! Create a pull request or msg me on discord (Ramix#0467) with your idea!
 
 ## Setup
 
-As of the current commit, there is no official build for the mod. However, you can build the mod by following the steps below
+As of the current commit, there is no official build for the mod. However, you can build the mod by following the steps below!
 
 ### How to build the project
 

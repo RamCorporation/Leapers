@@ -1,0 +1,45 @@
+{
+  "variants": {
+    "facing=north,pointing=standing": {
+      "model": "leapers:block/mirror"
+    },
+    "facing=east,pointing=standing": {
+      "model": "leapers:block/mirror",
+      "y": 90
+    },
+    "facing=south,pointing=standing": {"model": "leapers:block/mirror",
+      "y": 180
+    },
+    "facing=west,pointing=standing": {"model": "leapers:block/mirror",
+      "y": 270
+    },
+    "facing=north,pointing=up": {
+      "model": "leapers:block/mirror_up"
+    },
+    "facing=east,pointing=up": {
+      "model": "leapers:block/mirror_up",
+      "y": 90
+    },
+    "facing=south,pointing=up": {
+      "model": "leapers:block/mirror_up",
+      "y": 180
+    },
+    "facing=west,pointing=up": {
+      "model": "leapers:block/mirror_up",
+      "y": 270
+    },
+    "facing=north,pointing=down": {
+      "model": "leapers:block/mirror_down"
+    },
+    "facing=east,pointing=down": {
+      "model": "leapers:block/mirror_down",
+      "y": 90
+    },
+    "facing=south,pointing=down": {"model": "leapers:block/mirror_down",
+      "y": 180
+    },
+    "facing=west,pointing=down": {"model": "leapers:block/mirror_down",
+      "y": 270
+    }
+  }
+}

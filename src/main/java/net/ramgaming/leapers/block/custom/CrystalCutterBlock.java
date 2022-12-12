@@ -6,10 +6,12 @@ import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.ItemScatterer;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.Properties;
+import net.minecraft.util.*;
 import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -23,6 +25,7 @@ import net.ramgaming.leapers.block.entity.ModBlockEntities;
 import org.jetbrains.annotations.Nullable;
 
 public class CrystalCutterBlock extends BlockWithEntity implements BlockEntityProvider {
+    public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 
     private static final VoxelShape SHAPE = VoxelShapes.combineAndSimplify(Block.createCuboidShape(2, 4, 2, 14, 5, 14), Block.createCuboidShape(0, 0, 0, 16, 4, 16), BooleanBiFunction.OR);
 
@@ -31,6 +34,26 @@ public class CrystalCutterBlock extends BlockWithEntity implements BlockEntityPr
         return SHAPE;
     }
 
+    @Nullable
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        return this.getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite());
+    }
+
+    @Override
+    public BlockState rotate(BlockState state, BlockRotation rotation) {
+        return state.with(FACING, rotation.rotate(state.get(FACING)));
+    }
+
+    @Override
+    public BlockState mirror(BlockState state, BlockMirror mirror) {
+        return state.rotate(mirror.getRotation(state.get(FACING)));
+    }
+
+    @Override
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(FACING);
+    }
 
 
 
@@ -65,16 +88,32 @@ public class CrystalCutterBlock extends BlockWithEntity implements BlockEntityPr
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos,
                               PlayerEntity player, Hand hand, BlockHitResult hit) {
-        Inventory blockEntity = (Inventory) world.getBlockEntity(pos);
-        if(blockEntity.getStack(0) == ItemStack.EMPTY && player.getStackInHand(hand).isIn(RegisterTags.UNCUT_CRYSTALS)) {
-            player.getStackInHand(hand).setCount(player.getStackInHand(hand).getCount()-1);
-            blockEntity.setStack(0,new ItemStack(player.getStackInHand(hand).getItem()).copy());
+        Inventory inventory = (Inventory) world.getBlockEntity(pos);
+        CrystalCutterBlockEntity blockEntity = (CrystalCutterBlockEntity) world.getBlockEntity(pos);
+        if (!world.isClient()) {
+            if (inventory.getStack(0) == ItemStack.EMPTY && player.getStackInHand(hand).isIn(RegisterTags.UNCUT_CRYSTALS)) {
+                //world.getBlockEntity(pos).setStackNbt(new ItemStack(player.getStackInHand(hand).getItem()).copy());
+            //blockEntity.setStack(0, new ItemStack(player.getStackInHand(hand).getItem()).copy());
+                blockEntity.setStack(0,new ItemStack(player.getStackInHand(hand).getItem()).copy());
+            if (player.getStackInHand(hand).getCount() > 1) {
+                player.getStackInHand(hand).setCount(player.getStackInHand(hand).getCount() - 1);
+            } else {
+                player.setStackInHand(hand, ItemStack.EMPTY);
+            }
+
+        } else {
+            if (inventory.getStack(0) != ItemStack.EMPTY && player.getStackInHand(hand) == ItemStack.EMPTY) {
+                //world.getBlockEntity(pos).setStackNbt(ItemStack.EMPTY);
+                player.setStackInHand(hand, inventory.getStack(0).copy());
+                //blockEntity.setStack(0, ItemStack.EMPTY);
+                blockEntity.setStack(0,ItemStack.EMPTY);
+            }
         }
-        if(blockEntity.getStack(0) != ItemStack.EMPTY && player.getStackInHand(hand) == ItemStack.EMPTY) {
-            player.setStackInHand(hand,blockEntity.getStack(0).copy());
-            blockEntity.setStack(0,ItemStack.EMPTY);
-        }
-        blockEntity.markDirty();
+            inventory.markDirty();
+            blockEntity.markDirty();
+            world.setBlockState(pos,blockEntity.getCachedState());
+            System.out.println(((Inventory) world.getBlockEntity(pos)).getStack(0));
+    }
         return ActionResult.SUCCESS;
     }
 

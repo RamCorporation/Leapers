@@ -1,0 +1,7 @@
+{
+  "parent": "leapers:custom/mirror_up",
+  "textures": {
+    "particles": "minecraft:block/dark_oak_wood",
+    "mapping": "leapers:block/mirror_up"
+  }
+}

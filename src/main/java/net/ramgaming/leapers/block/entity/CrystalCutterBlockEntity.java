@@ -1,26 +1,28 @@
 package net.ramgaming.leapers.block.entity;
 
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.PropertyDelegate;
-import net.minecraft.screen.ScreenHandler;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
-import net.minecraft.util.Hand;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.ramgaming.leapers.RegisterTags;
+import net.ramgaming.leapers.Leapers;
 import net.ramgaming.leapers.item.ModItems;
-import org.jetbrains.annotations.Nullable;
+import net.ramgaming.leapers.networking.ModMessages;
 
-public class CrystalCutterBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
+public class CrystalCutterBlockEntity extends BlockEntity implements ImplementedInventory {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(1,ItemStack.EMPTY);
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
@@ -53,10 +55,6 @@ public class CrystalCutterBlockEntity extends BlockEntity implements NamedScreen
         };
     }
 
-    @Override
-    public Text getDisplayName() {
-        return Text.literal("Crystal Cutter");
-    }
 
 
 
@@ -65,25 +63,6 @@ public class CrystalCutterBlockEntity extends BlockEntity implements NamedScreen
         return this.inventory;
     }
 
-
-
-    @Nullable
-    @Override
-    public ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player) {
-        player.sendMessage(Text.literal("CLICKED!"));
-        if(inventory.get(0) == ItemStack.EMPTY && player.getMainHandStack().isIn(RegisterTags.UNCUT_CRYSTALS)) {
-            ItemStack stack = new ItemStack(player.getMainHandStack().getItem());
-            stack.setCount(player.getMainHandStack().getCount()-1);
-            player.setStackInHand(Hand.MAIN_HAND, stack);
-            setStack(0,new ItemStack(player.getMainHandStack().getItem()));
-        }
-        if(inventory.get(0) != ItemStack.EMPTY && player.getStackInHand(Hand.MAIN_HAND) == ItemStack.EMPTY) {
-            player.setStackInHand(Hand.MAIN_HAND,inventory.get(0));
-            setStack(0, ItemStack.EMPTY);
-        }
-        markDirty();
-        return null;
-    }
 
     public static boolean hasRecipeItem(CrystalCutterBlockEntity entity) {
         SimpleInventory inventory = new SimpleInventory(entity.size());
@@ -127,7 +106,10 @@ public class CrystalCutterBlockEntity extends BlockEntity implements NamedScreen
             item.setNbt(nbt);
             nbt.putIntArray("leapingPos",new int[]{entity.getPos().getX(),entity.getPos().getZ()});
             entity.setStack(0,item);
+            entity.markDirty();
         }
+        Leapers.LOGGER.info(entity.getItems().toString());
+
     }
 
     @Override
@@ -143,5 +125,36 @@ public class CrystalCutterBlockEntity extends BlockEntity implements NamedScreen
         super.readNbt(nbt);
         progress = nbt.getInt("crystal_cutter.progress");
     }
+    public void setProgress(int value) {
+        this.progress = value;
+    }
 
+    public ItemStack getRenderStack(World world) {
+        Inventory inventory = (Inventory) world.getBlockEntity(this.getPos());
+
+
+        assert inventory != null;
+        Leapers.LOGGER.info(String.valueOf(inventory.getStack(0)));
+        return inventory.getStack(0);
+    }
+
+    public void setInventory(ItemStack stack) {
+        this.inventory.set(0,stack);
+    }
+
+    @Override
+    public void markDirty() {
+        if(!world.isClient()) {
+            PacketByteBuf data = PacketByteBufs.create();
+            data.writeInt(inventory.size());
+            for(int i = 0; i < inventory.size();i++) {
+                data.writeItemStack(inventory.get(i));
+            }
+            data.writeBlockPos(getPos());
+            for(ServerPlayerEntity player: PlayerLookup.tracking((ServerWorld) world, getPos())) {player.sendMessage(Text.literal("ITEM SYNC"));
+                ServerPlayNetworking.send(player, ModMessages.ITEM_SYNC,data);
+            }
+        }
+        super.markDirty();
+    }
 }

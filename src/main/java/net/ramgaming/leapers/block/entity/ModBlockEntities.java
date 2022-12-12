@@ -9,11 +9,15 @@ import net.ramgaming.leapers.block.ModBlocks;
 
 public class ModBlockEntities {
     public static BlockEntityType<CrystalCutterBlockEntity> CRYSTAL_CUTTER;
+    public static BlockEntityType<RedstoneRayBlockEntity> REDSTONE_RAY;
 
     public static void registerAllBlockEntities() {
         CRYSTAL_CUTTER = Registry.register(Registry.BLOCK_ENTITY_TYPE,
                 new Identifier(Leapers.MOD_ID, "crystal_cutter"),
                 FabricBlockEntityTypeBuilder.create(CrystalCutterBlockEntity::new,ModBlocks.CRYSTAL_CUTTER).build(null));
+        REDSTONE_RAY = Registry.register(Registry.BLOCK_ENTITY_TYPE,
+                new Identifier(Leapers.MOD_ID, "redstone_ray"),
+                FabricBlockEntityTypeBuilder.create(RedstoneRayBlockEntity::new,ModBlocks.REDSTONE_RAY).build(null));
 
     }
 }

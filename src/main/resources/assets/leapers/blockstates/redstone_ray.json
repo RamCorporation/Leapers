@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=north,powered=false": {
+      "model": "leapers:block/redstone_ray"
+    },
+    "facing=east,powered=false": {
+      "model": "leapers:block/redstone_ray",
+      "y": 90
+    },
+    "facing=south,powered=false": {"model": "leapers:block/redstone_ray",
+      "y": 180
+    },
+    "facing=west,powered=false": {"model": "leapers:block/redstone_ray",
+      "y": 270
+    },
+    "facing=north,powered=true": {
+      "model": "leapers:block/redstone_ray_on"
+    },
+    "facing=east,powered=true": {
+      "model": "leapers:block/redstone_ray_on",
+      "y": 90
+    },
+    "facing=south,powered=true": {"model": "leapers:block/redstone_ray_on",
+      "y": 180
+    },
+    "facing=west,powered=true": {"model": "leapers:block/redstone_ray_on",
+      "y": 270
+    }
+  }
+}

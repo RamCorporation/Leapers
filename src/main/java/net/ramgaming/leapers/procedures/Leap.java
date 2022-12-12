@@ -6,6 +6,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
@@ -48,6 +50,8 @@ public class Leap {
                     posers[1] += 1;
 
                     movePlayerTo(player,posers);
+                    player.fallDistance = 0;
+                    world.playSound(null,new BlockPos(posers[0],posers[1],posers[2]), SoundEvents.ENTITY_ENDER_EYE_DEATH, SoundCategory.PLAYERS,1f,1f);
                     player.damage(DamageSource.GENERIC,calcLightLevelPenalty(world,new BlockPos(player.getX(),player.getY(),player.getZ()),new BlockPos(posers[0],posers[1],posers[2])));
                 }
                 else {

@@ -1,0 +1,7 @@
+{
+  "parent": "leapers:custom/redstone_ray",
+  "textures": {
+    "particles": "minecraft:block/oxidized_cut_copper",
+    "mapping": "leapers:block/redstone_ray"
+  }
+}

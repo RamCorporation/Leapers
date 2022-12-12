@@ -1,19 +1,19 @@
 package net.ramgaming.leapers.networking;
 
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.util.Identifier;
 import net.ramgaming.leapers.Leapers;
-import net.ramgaming.leapers.networking.packet.ExampleC2SPacket;
+import net.ramgaming.leapers.networking.packet.ItemStackSyncS2CPacket;
 
 public class ModMessages {
-    public static final Identifier EXAMPLE_ID = new Identifier(Leapers.MOD_ID,"example");
+    public static final Identifier ITEM_SYNC = new Identifier(Leapers.MOD_ID,"item_sync");
 
     public static void registerC2SPackets() {
-        ServerPlayNetworking.registerGlobalReceiver(EXAMPLE_ID, ExampleC2SPacket::receive);
+
     }
 
     public static void registerS2CPackets() {
-
+        ClientPlayNetworking.registerGlobalReceiver(ITEM_SYNC, ItemStackSyncS2CPacket::receive);
     }
 
 }

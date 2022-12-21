@@ -12,14 +12,13 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class LeaperItem extends Item {
-    public LeaperItem(Settings settings) {
+public class AerisLeaperItem extends Item {
+    public AerisLeaperItem(Settings settings) {
         super(settings);
     }
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-
         if(Screen.hasShiftDown()){
             NbtCompound nbt = stack.getNbt();
             if(nbt == null || nbt.getIntArray("leapingPos") == null) {

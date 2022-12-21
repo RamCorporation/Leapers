@@ -10,6 +10,7 @@ import net.ramgaming.leapers.block.ModBlocks;
 public class ModBlockEntities {
     public static BlockEntityType<CrystalCutterBlockEntity> CRYSTAL_CUTTER;
     public static BlockEntityType<RedstoneRayBlockEntity> REDSTONE_RAY;
+    public static BlockEntityType<LeapPadBlockEntity> LEAP_PAD;
 
     public static void registerAllBlockEntities() {
         CRYSTAL_CUTTER = Registry.register(Registry.BLOCK_ENTITY_TYPE,
@@ -18,6 +19,9 @@ public class ModBlockEntities {
         REDSTONE_RAY = Registry.register(Registry.BLOCK_ENTITY_TYPE,
                 new Identifier(Leapers.MOD_ID, "redstone_ray"),
                 FabricBlockEntityTypeBuilder.create(RedstoneRayBlockEntity::new,ModBlocks.REDSTONE_RAY).build(null));
+        LEAP_PAD = Registry.register(Registry.BLOCK_ENTITY_TYPE,
+                new Identifier(Leapers.MOD_ID, "leap_pad"),
+                FabricBlockEntityTypeBuilder.create(LeapPadBlockEntity::new,ModBlocks.LEAP_PAD).build(null));
 
     }
 }

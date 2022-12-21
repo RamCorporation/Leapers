@@ -1,8 +1,7 @@
-package net.ramgaming.leapers.procedures;
+package net.ramgaming.leapers.events;
 
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -18,11 +17,10 @@ import net.minecraft.world.World;
 import static net.ramgaming.leapers.RegisterTags.AERIS_TYPE;
 import static net.ramgaming.leapers.RegisterTags.LEAPER_TAG;
 
-public class Leap {
-    public static TypedActionResult<ItemStack> Start(PlayerEntity player, World world, Hand hand) {
+public class LeapEvent{
+    public static TypedActionResult<ItemStack> start(PlayerEntity player, World world, Hand hand) {
         if (!world.isClient() && hand == Hand.MAIN_HAND) {
             ItemStack MH_STACK = player.getStackInHand(Hand.MAIN_HAND);
-            Item MH_ITEM = MH_STACK.getItem();
             if (MH_STACK.isIn(LEAPER_TAG)) {
                 if(MH_STACK.isIn(AERIS_TYPE)) {
                     AerisType(player, world, hand);
@@ -33,38 +31,31 @@ public class Leap {
     }
     private static void AerisType(PlayerEntity player, World world, Hand hand){
         player.getItemCooldownManager().set(player.getMainHandStack().getItem(), 100);
-        if(canSeeSky(player,world)) {
-            NbtCompound NBT = player.getMainHandStack().getNbt();
-            if(NBT == null) {
-                return;
-            }else {
-                if(NBT.getIntArray("leapingPos") != null) {
-                    int[] posers = new int[]{NBT.getIntArray("leapingPos")[0],world.getTopY(),NBT.getIntArray("leapingPos")[1]};
-                    while(world.getBlockState(new BlockPos(posers[0],posers[1],posers[2])).isAir()) {
-                        posers[1] -= 1;
-                        if(posers[1] < world.getBottomY()) {
-                            player.sendMessage(Text.literal("failed to complete leaping process").formatted(Formatting.RED));
-                            break;
-                        }
-                    }
-                    posers[1] += 1;
-
-                    movePlayerTo(player,posers);
-                    player.fallDistance = 0;
-                    world.playSound(null,new BlockPos(posers[0],posers[1],posers[2]), SoundEvents.ENTITY_ENDER_EYE_DEATH, SoundCategory.PLAYERS,1f,1f);
-                    player.damage(DamageSource.GENERIC,calcLightLevelPenalty(world,new BlockPos(player.getX(),player.getY(),player.getZ()),new BlockPos(posers[0],posers[1],posers[2])));
-                }
-                else {
-                    player.sendMessage(Text.literal("No Leaping Cords Set").formatted(Formatting.RED), true);
-                    return;
-                }
-            }
-
-
-        } else {
+        if(!canSeeSky(player,world)) {
             player.sendMessage(Text.literal("Can't Leap Underground").formatted(Formatting.RED), false);
             return;
         }
+        NbtCompound NBT = player.getMainHandStack().getNbt();
+        if(NBT == null) {
+            return;
+        }
+        if(NBT.getIntArray("leapingPos") == null) {
+            player.sendMessage(Text.literal("No Leaping Cords Set").formatted(Formatting.RED), true);
+            return;
+        }
+            int[] posers = new int[]{NBT.getIntArray("leapingPos")[0],world.getTopY(),NBT.getIntArray("leapingPos")[1]};
+            while(world.getBlockState(new BlockPos(posers[0],posers[1],posers[2])).isAir()) {
+                posers[1] -= 1;
+                if(posers[1] < world.getBottomY()) {
+                    player.sendMessage(Text.literal("failed to complete leaping process").formatted(Formatting.RED));
+                    break;
+                }
+            }
+            posers[1] += 1;
+            movePlayerTo(player,posers);
+            player.fallDistance = 0;
+            world.playSound(null,new BlockPos(posers[0],posers[1],posers[2]), SoundEvents.ENTITY_ENDER_EYE_DEATH, SoundCategory.PLAYERS,1f,1f);
+            player.damage(DamageSource.GENERIC,calcLightLevelPenalty(world,new BlockPos(player.getX(),player.getY(),player.getZ()),new BlockPos(posers[0],posers[1],posers[2])));
     }
     private static boolean canSeeSky(PlayerEntity player,World world) {
         int[] poser = new int[]{(int) player.getX(),(int) player.getY(), (int) player.getZ()};

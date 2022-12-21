@@ -3,6 +3,7 @@ package net.ramgaming.leapers;
 import net.fabricmc.api.ModInitializer;
 import net.ramgaming.leapers.block.ModBlocks;
 import net.ramgaming.leapers.block.entity.ModBlockEntities;
+import net.ramgaming.leapers.events.RegisterEvents;
 import net.ramgaming.leapers.item.ModItems;
 import net.ramgaming.leapers.networking.ModMessages;
 import org.slf4j.Logger;

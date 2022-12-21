@@ -1,0 +1,7 @@
+{
+  "parent": "leapers:custom/redstone_ray_preview",
+  "textures": {
+    "particles": "minecraft:block/dark_oak_log",
+    "mapping": "leapers:block/redstone_ray_off"
+  }
+}

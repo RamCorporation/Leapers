@@ -18,12 +18,20 @@
   "item.leapers.stone_rod": "Stone Rod",
 
   "item.leapers.aeris_leaper": "Aeris Leaper",
+  "item.leapers.memoria_leaper": "Memoria Leaper",
 
   "block.leapers.umber_ore": "Umber Ore",
   "block.leapers.fervis_ore": "Fervis Ore",
   "block.leapers.aeris_ore": "Aeris Ore",
+  "block.leapers.hora_ore": "Hora Ore",
+  "block.leapers.galva_ore": "Galva Ore",
+  "block.leapers.memoria_ore": "Memoria Ore",
+
   "block.leapers.disleaper": "Disleaper",
   "block.leapers.cache": "Cache",
 
-  "block.leapers.crystal_cutter": "Crystal Cutter"
+  "block.leapers.crystal_cutter": "Crystal Cutter",
+  "block.leapers.mirror": "Mirror",
+  "block.leapers.redstone_ray": "Redstone Ray",
+  "block.leapers.leap_pad": "Leap Pad"
 }

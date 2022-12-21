@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "memoria=false": {"model": "leapers:block/leap_pad"},
+    "memoria=true": {"model": "leapers:block/leap_pad_standby"}
+  }
+}

@@ -12,7 +12,6 @@ public class ItemStackSyncS2CPacket {
 
         BlockPos position = buf.readBlockPos();
         if(minecraftClient.world.getBlockEntity(position) instanceof CrystalCutterBlockEntity blockEntity) {
-
             blockEntity.setInventory(buf.readItemStack());
             blockEntity.markDirty();
         }

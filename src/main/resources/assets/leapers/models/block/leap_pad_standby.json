@@ -1,0 +1,7 @@
+{
+  "parent": "leapers:custom/leap_pad",
+  "textures": {
+    "particles": "minecraft:block/blast_furnace_top",
+    "mapping": "leapers:block/leap_pad_standby"
+  }
+}

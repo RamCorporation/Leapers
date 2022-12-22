@@ -8,10 +8,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
-public class LeaperVariables {
-    public static List<BlockPos> KnownLeapPads = new ArrayList<>();
-    public static HashMap<BlockPos, UUID> UuidLeapPads = new HashMap<>();
-    public static BlockPos getLeapPad(World world, UUID uuid) {
+public interface LeaperVariables {
+    List<BlockPos> KnownLeapPads = new ArrayList<>();
+    HashMap<BlockPos, UUID> UuidLeapPads = new HashMap<>();
+    static BlockPos getLeapPad(World world, UUID uuid) {
         if(world.isClient()) {
             for (BlockPos knownLeapPad : KnownLeapPads) {
                 if(UuidLeapPads.get(knownLeapPad).toString().equals(uuid.toString())) {

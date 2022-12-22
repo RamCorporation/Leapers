@@ -21,12 +21,14 @@ public class PlaceRedstoneRayEvent {
             return ActionResult.FAIL;
         }
         if(player.getStackInHand(hand).getItem() == ModBlocks.REDSTONE_RAY.asItem() && world.getBlockState(hitResult.getBlockPos()).getBlock() == Blocks.REPEATER) {
-            if(player.getStackInHand(hand).getCount() == 1) {
-                player.setStackInHand(hand, ItemStack.EMPTY);
-            } else {
-                ItemStack stack = player.getStackInHand(hand);
-                stack.setCount(stack.getCount()-1);
-                player.setStackInHand(hand,stack);
+            if(!player.isCreative()) {
+                if (player.getStackInHand(hand).getCount() == 1) {
+                    player.setStackInHand(hand, ItemStack.EMPTY);
+                } else {
+                    ItemStack stack = player.getStackInHand(hand);
+                    stack.setCount(stack.getCount() - 1);
+                    player.setStackInHand(hand, stack);
+                }
             }
             BlockState state = ModBlocks.REDSTONE_RAY.getDefaultState().with(RedstoneRayBlock.FACING,world.getBlockState(hitResult.getBlockPos()).get(RepeaterBlock.FACING).getOpposite()).with(RedstoneRayBlock.Preview,false).with(RedstoneRayBlock.POWERED,false);
             state.with(RedstoneRayBlock.FACING,world.getBlockState(hitResult.getBlockPos()).get(RepeaterBlock.FACING));

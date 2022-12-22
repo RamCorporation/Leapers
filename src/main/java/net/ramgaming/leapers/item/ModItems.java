@@ -44,6 +44,3 @@ public class ModItems {
         Leapers.LOGGER.debug("Registering items for mod: "+Leapers.MOD_ID);
     }
 }
-// Umber - deep
-// Aeris - normal
-//Fervis -orange

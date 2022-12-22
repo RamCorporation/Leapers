@@ -14,32 +14,32 @@
       "y": 270
     },
     "facing=north,pointing=up": {
-      "model": "leapers:block/mirror_up"
+      "model": "leapers:block/mirror_up",
+      "y": 180
     },
     "facing=east,pointing=up": {
       "model": "leapers:block/mirror_up",
-      "y": 90
+      "y": 270
     },
     "facing=south,pointing=up": {
-      "model": "leapers:block/mirror_up",
-      "y": 180
+      "model": "leapers:block/mirror_up"
     },
     "facing=west,pointing=up": {
       "model": "leapers:block/mirror_up",
-      "y": 270
+      "y": 90
     },
     "facing=north,pointing=down": {
-      "model": "leapers:block/mirror_down"
+      "model": "leapers:block/mirror_down",
+      "y": 180
     },
     "facing=east,pointing=down": {
       "model": "leapers:block/mirror_down",
-      "y": 90
+      "y": 270
     },
-    "facing=south,pointing=down": {"model": "leapers:block/mirror_down",
-      "y": 180
+    "facing=south,pointing=down": {"model": "leapers:block/mirror_down"
     },
     "facing=west,pointing=down": {"model": "leapers:block/mirror_down",
-      "y": 270
+      "y": 90
     }
   }
 }

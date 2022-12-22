@@ -28,23 +28,23 @@ public class MirrorBlock extends Block {
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return switch (state.get(FACING)) {
             case NORTH -> switch(state.get(POINTING)) {
-                case DOWN -> ModShapes.MIRROR_DOWN_SOUTH;
-                case UP -> ModShapes.MIRROR_UP_SOUTH;
+                case DOWN -> ModShapes.MIRROR_DOWN_NORTH;
+                case UP -> ModShapes.MIRROR_UP_NORTH;
                 case STANDING -> ModShapes.MIRROR_NORTH;
             };
             case SOUTH -> switch(state.get(POINTING)) {
-                case DOWN -> ModShapes.MIRROR_DOWN_NORTH;
-                case UP -> ModShapes.MIRROR_UP_NORTH;
+                case DOWN -> ModShapes.MIRROR_DOWN_SOUTH;
+                case UP -> ModShapes.MIRROR_UP_SOUTH;
                 case STANDING -> ModShapes.MIRROR_SOUTH;
             };
             case EAST -> switch(state.get(POINTING)) {
-                case DOWN -> ModShapes.MIRROR_DOWN_WEST;
-                case UP -> ModShapes.MIRROR_UP_WEST;
+                case DOWN -> ModShapes.MIRROR_DOWN_EAST;
+                case UP -> ModShapes.MIRROR_UP_EAST;
                 case STANDING -> ModShapes.MIRROR_EAST;
             };
             case WEST -> switch(state.get(POINTING)) {
-                case DOWN -> ModShapes.MIRROR_DOWN_EAST;
-                case UP -> ModShapes.MIRROR_UP_EAST;
+                case DOWN -> ModShapes.MIRROR_DOWN_WEST;
+                case UP -> ModShapes.MIRROR_UP_WEST;
                 case STANDING -> ModShapes.MIRROR_WEST;
             };
             default -> VoxelShapes.fullCube();
@@ -55,7 +55,7 @@ public class MirrorBlock extends Block {
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         BlockState state = this.getDefaultState();
-        state = state.with(FACING, ctx.getPlayerFacing());
+        state = state.with(FACING, ctx.getPlayerFacing().getOpposite());
         if(Objects.requireNonNull(ctx.getPlayer()).isSneaking()) {
             if(ctx.getPlayer().getPitch() >=0) {
                 state = state.with(POINTING,MirrorDirections.UP);

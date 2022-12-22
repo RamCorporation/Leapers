@@ -4,7 +4,15 @@
     "leapers:umber_ore",
     "leapers:aeris_ore",
     "leapers:fervis_ore",
+    "leapers:memoria_ore",
+    "leapers:hora_ore",
+    "leapers:galva_ore",
+    "leapers:allure_ore",
     "leapers:cache",
-    "leapers:disleaper"
+    "leapers:disleaper",
+    "leapers:crystal_cutter",
+    "leapers:mirror",
+    "leapers:redstone_ray",
+    "leapers:leap_pad"
   ]
 }

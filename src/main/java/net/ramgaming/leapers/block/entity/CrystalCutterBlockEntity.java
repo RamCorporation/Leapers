@@ -65,17 +65,12 @@ public class CrystalCutterBlockEntity extends BlockEntity implements Implemented
 
 
     public static boolean hasRecipeItem(CrystalCutterBlockEntity entity) {
-        SimpleInventory inventory = new SimpleInventory(entity.size());
-        for(int i = 0;i < entity.size();i++) {
-            inventory.setStack(i,entity.getStack(i));
-        }
-        boolean hasCrystal = entity.getStack(0).getItem() == ModItems.UNCUT_AERIS_CRYSTAL;
-        return hasCrystal;
+        return entity.getStack(0).getItem() == ModItems.UNCUT_AERIS_CRYSTAL;
     }
     public static void tick(World world, BlockPos blockPos, BlockState state, CrystalCutterBlockEntity entity) {
         if(world.isClient()) {return;}
         if(hasRecipeItem(entity)) {
-            entity.progress ++;
+            entity.progress++;
             markDirty(world,blockPos,state);
             if(entity.progress >= entity.maxProgress) {
                 craftItem(entity);

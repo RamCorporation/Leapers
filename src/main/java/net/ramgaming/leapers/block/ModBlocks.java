@@ -29,9 +29,9 @@ public class ModBlocks {
 
     public static final Block CRYSTAL_CUTTER = registerBlock("crystal_cutter", new CrystalCutterBlock(FabricBlockSettings.of(Material.METAL).strength(2f).requiresTool().nonOpaque()), ModItemGroups.LEAPER_GROUP);
 
-    public static final Block LEAP_PAD = registerBlock("leap_pad", new LeapPadBlock(FabricBlockSettings.of(Material.STONE).requiresTool().nonOpaque()), ModItemGroups.LEAPER_GROUP);
+    public static final Block LEAP_PAD = registerBlock("leap_pad", new LeapPadBlock(FabricBlockSettings.of(Material.STONE).requiresTool().strength(2f).nonOpaque()), ModItemGroups.LEAPER_GROUP);
 
-    public static final Block REDSTONE_RAY = registerBlock("redstone_ray",new RedstoneRayBlock(FabricBlockSettings.of(Material.METAL).strength(2f).requiresTool().nonOpaque()), ModItemGroups.LEAPER_GROUP);
+    public static final Block REDSTONE_RAY = registerBlock("redstone_ray",new RedstoneRayBlock(FabricBlockSettings.of(Material.METAL).nonOpaque()), ModItemGroups.LEAPER_GROUP);
     public static final Block MIRROR = registerBlock("mirror",new MirrorBlock(FabricBlockSettings.of(Material.GLASS).strength(2f).requiresTool().nonOpaque()), ModItemGroups.LEAPER_GROUP);
 
     private static Item registerBlockItem(String name, Block block, ItemGroup tab) {

@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "id": "leapers",
-  "version": "${version}",
+  "version": "1.0.2",
 
   "name": "Light Leapers",
-  "description": "Simple Minecraft mod that changes player transportation forever!",
+  "description": "A simple Minecraft mod that changes player transportation forever!",
   "authors": [
-    "Me!"
+    "RamGaming"
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",

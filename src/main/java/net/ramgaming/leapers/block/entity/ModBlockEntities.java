@@ -2,8 +2,9 @@ package net.ramgaming.leapers.block.entity;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import net.ramgaming.leapers.Leapers;
 import net.ramgaming.leapers.block.ModBlocks;
 
@@ -13,13 +14,13 @@ public class ModBlockEntities {
     public static BlockEntityType<LeapPadBlockEntity> LEAP_PAD;
 
     public static void registerAllBlockEntities() {
-        CRYSTAL_CUTTER = Registry.register(Registry.BLOCK_ENTITY_TYPE,
+        CRYSTAL_CUTTER = Registry.register(Registries.BLOCK_ENTITY_TYPE,
                 new Identifier(Leapers.MOD_ID, "crystal_cutter"),
                 FabricBlockEntityTypeBuilder.create(CrystalCutterBlockEntity::new,ModBlocks.CRYSTAL_CUTTER).build(null));
-        REDSTONE_RAY = Registry.register(Registry.BLOCK_ENTITY_TYPE,
+        REDSTONE_RAY = Registry.register(Registries.BLOCK_ENTITY_TYPE,
                 new Identifier(Leapers.MOD_ID, "redstone_ray"),
                 FabricBlockEntityTypeBuilder.create(RedstoneRayBlockEntity::new,ModBlocks.REDSTONE_RAY).build(null));
-        LEAP_PAD = Registry.register(Registry.BLOCK_ENTITY_TYPE,
+        LEAP_PAD = Registry.register(Registries.BLOCK_ENTITY_TYPE,
                 new Identifier(Leapers.MOD_ID, "leap_pad"),
                 FabricBlockEntityTypeBuilder.create(LeapPadBlockEntity::new,ModBlocks.LEAP_PAD).build(null));
 

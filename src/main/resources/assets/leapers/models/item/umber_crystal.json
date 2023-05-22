@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "leapers:item/umber_crystal"
+    "layer0": "leapers:item/crystals/umber_crystal"
   }
 }

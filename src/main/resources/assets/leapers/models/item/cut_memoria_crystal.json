@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "leapers:item/crystals/cut_memoria_crystal"
+  }
+}

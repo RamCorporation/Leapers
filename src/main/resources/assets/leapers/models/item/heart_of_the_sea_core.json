@@ -1,0 +1,6 @@
+{
+  "parent": "leapers:custom/leaping_core",
+  "textures": {
+    "plating": "leapers:item/cores/heart_of_the_sea_ring"
+  }
+}

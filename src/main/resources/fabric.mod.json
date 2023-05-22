@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "leapers",
-  "version": "1.0.2",
+  "version": "1.0.3",
 
   "name": "Light Leapers",
   "description": "A simple Minecraft mod that changes player transportation forever!",
@@ -10,7 +10,7 @@
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "sources": "https://github.com/RamGemes/Light-Leapers"
   },
 
   "license": "MIT",
@@ -30,7 +30,7 @@
   ],
 
   "depends": {
-    "fabricloader": ">=0.14.6",
+    "fabricloader": ">=0.14.19",
     "fabric": "*",
     "minecraft": "~1.19",
     "java": ">=17"

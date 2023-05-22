@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "leapers:item/memoria_crystal"
+    "layer0": "leapers:item/crystals/memoria_crystal"
   }
 }

@@ -1,6 +1,5 @@
 package net.ramgaming.leapers.events;
 
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -14,22 +13,16 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import static net.ramgaming.leapers.RegisterTags.AERIS_TYPE;
-import static net.ramgaming.leapers.RegisterTags.LEAPER_TAG;
-
 public class LeapEvent{
     public static TypedActionResult<ItemStack> start(PlayerEntity player, World world, Hand hand) {
         if (!world.isClient() && hand == Hand.MAIN_HAND) {
             ItemStack MH_STACK = player.getStackInHand(Hand.MAIN_HAND);
-            if (MH_STACK.isIn(LEAPER_TAG)) {
-                if(MH_STACK.isIn(AERIS_TYPE)) {
-                    AerisType(player, world, hand);
-                }
-            }
+            player.sendMessage(Text.of("redo leaper procedure"));
         }
         return TypedActionResult.pass(ItemStack.EMPTY);
     }
     private static void AerisType(PlayerEntity player, World world, Hand hand){
+        if(player.getItemCooldownManager().isCoolingDown(player.getMainHandStack().getItem())) return;
         player.getItemCooldownManager().set(player.getMainHandStack().getItem(), 100);
         if(!canSeeSky(player,world)) {
             player.sendMessage(Text.literal("Can't Leap Underground").formatted(Formatting.RED), false);
@@ -37,26 +30,28 @@ public class LeapEvent{
         }
         NbtCompound NBT = player.getMainHandStack().getNbt();
         if(NBT == null) {
-            return;
-        }
-        if(NBT.getIntArray("leapingPos") == null) {
+            player.getItemCooldownManager().set(player.getMainHandStack().getItem(), 10);
             player.sendMessage(Text.literal("No Leaping Cords Set").formatted(Formatting.RED), true);
             return;
         }
-            int[] posers = new int[]{NBT.getIntArray("leapingPos")[0],world.getTopY(),NBT.getIntArray("leapingPos")[1]};
-            while(world.getBlockState(new BlockPos(posers[0],posers[1],posers[2])).isAir()) {
-                posers[1] -= 1;
-                if(posers[1] < world.getBottomY()) {
-                    player.sendMessage(Text.literal("failed to complete leaping process").formatted(Formatting.RED));
-                    break;
-                }
+        if(NBT.getIntArray("leapingPos").length == 0) {
+            player.getItemCooldownManager().set(player.getMainHandStack().getItem(), 10);
+            player.sendMessage(Text.literal("No Leaping Cords Set").formatted(Formatting.RED), true);
+            return;
+        }
+        int[] posers = new int[]{NBT.getIntArray("leapingPos")[0],world.getTopY(),NBT.getIntArray("leapingPos")[1]};
+        while(world.getBlockState(new BlockPos(posers[0],posers[1],posers[2])).isAir()) {
+            posers[1] -= 1;
+            if(posers[1] < world.getBottomY()) {
+                player.sendMessage(Text.literal("failed to complete leaping process").formatted(Formatting.RED));
+                break;
             }
-            posers[1] += 1;
-            movePlayerTo(player,posers);
-            player.fallDistance = 0;
-            world.playSound(null,new BlockPos(posers[0],posers[1],posers[2]), SoundEvents.ENTITY_ENDER_EYE_DEATH, SoundCategory.PLAYERS,1f,1f);
-            player.damage(DamageSource.GENERIC,calcLightLevelPenalty(world,new BlockPos(player.getX(),player.getY(),player.getZ()),new BlockPos(posers[0],posers[1],posers[2])));
-    }
+        }
+        posers[1] += 1;
+        movePlayerTo(player,posers);
+        player.fallDistance = 0;
+        world.playSound(null,new BlockPos(posers[0],posers[1],posers[2]), SoundEvents.ENTITY_ENDER_EYE_DEATH, SoundCategory.PLAYERS,1f,1f);
+        }
     private static boolean canSeeSky(PlayerEntity player,World world) {
         int[] poser = new int[]{(int) player.getX(),(int) player.getY(), (int) player.getZ()};
         while(poser[1] <= world.getTopY()) {
@@ -64,7 +59,6 @@ public class LeapEvent{
                 return false;
             }
             poser[1] += 1;
-            player.sendMessage(Text.literal(String.valueOf(poser[1])), false);
         }
         return true;
     }

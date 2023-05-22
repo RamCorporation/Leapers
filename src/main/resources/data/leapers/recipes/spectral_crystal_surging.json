@@ -1,0 +1,39 @@
+{
+  "type": "leapers:surging",
+  "ingredients": [
+    {
+      "item": "leapers:aeris_crystal",
+      "count": 1
+    },
+    {
+      "item": "leapers:umber_crystal",
+      "count": 1
+    },
+    {
+      "item": "leapers:fervis_crystal",
+      "count": 1
+    },
+    {
+      "item": "leapers:hora_crystal",
+      "count": 1
+    },
+    {
+      "item": "leapers:galva_crystal",
+      "count": 1
+    },
+    {
+      "item": "leapers:memoria_crystal",
+      "count": 1
+    },
+    {
+      "item": "leapers:allure_crystal",
+      "count": 1
+    },
+    {
+      "item": "minecraft:amethyst_shard",
+      "count": 1
+    }
+  ],
+  "result": "leapers:spectral_crystal",
+  "count": 1
+}

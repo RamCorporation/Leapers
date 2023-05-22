@@ -8,14 +8,17 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.ramgaming.leapers.Leapers;
-import net.ramgaming.leapers.item.custom.AerisLeaperItem;
-import net.ramgaming.leapers.item.custom.MemoriaLeaperItem;
+import net.ramgaming.leapers.item.custom.LeaperItem;
+import org.jetbrains.annotations.Nullable;
 
 public class ModItems {
 
-    public static final Item UNCUT_AERIS_CRYSTAL = registerItem("uncut_aeris_crystal", new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
-    public static final Item UNCUT_FERVIS_CRYSTAL = registerItem("uncut_fervis_crystal", new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
-    public static final Item UNCUT_UMBER_CRYSTAL = registerItem("uncut_umber_crystal", new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
+    public static final Item AMETHYST_CORE = registerItem("amethyst_core", new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
+    public static final Item DIAMOND_CORE = registerItem("diamond_core", new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
+    public static final Item NETHERITE_CORE = registerItem("netherite_core", new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
+    public static final Item HEART_OF_THE_SEA_CORE = registerItem("heart_of_the_sea_core", new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
+    public static final Item STAR_CORE = registerItem("star_core", new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
+
 
     public static final Item UMBER_CRYSTAL = registerItem("umber_crystal",new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
     public static final Item AERIS_CRYSTAL = registerItem("aeris_crystal",new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
@@ -26,18 +29,23 @@ public class ModItems {
     public static final Item MEMORIA_CRYSTAL = registerItem("memoria_crystal",new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
     public static final Item SPECTRAL_CRYSTAL = registerItem("spectral_crystal",new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
 
-    public static final Item ENFORCER = registerItem("enforcer", new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
+    public static final Item CUT_UMBER_CRYSTAL = registerItem("cut_umber_crystal",new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
+    public static final Item CUT_AERIS_CRYSTAL = registerItem("cut_aeris_crystal",new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
+    public static final Item CUT_FERVIS_CRYSTAL = registerItem("cut_fervis_crystal",new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
+    public static final Item CUT_ALLURE_CRYSTAL = registerItem("cut_allure_crystal",new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
+    public static final Item CUT_GALVA_CRYSTAL = registerItem("cut_galva_crystal",new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
+    public static final Item CUT_HORA_CRYSTAL = registerItem("cut_hora_crystal",new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
+    public static final Item CUT_MEMORIA_CRYSTAL = registerItem("cut_memoria_crystal",new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
+    public static final Item CUT_SPECTRAL_CRYSTAL = registerItem("cut_spectral_crystal",new Item(new FabricItemSettings()),null);
 
-    public static final Item AERIS_LEAPER = registerItem("aeris_leaper", new AerisLeaperItem(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE)),ModItemGroups.LEAPER_GROUP);
-    public static final Item MEMORIA_LEAPER = registerItem("memoria_leaper", new MemoriaLeaperItem(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE)),ModItemGroups.LEAPER_GROUP);
+    public static final Item ENFORCER = registerItem("enforcer", new Item(new FabricItemSettings()),null);
 
-    public static final Item STONE_ROD = registerItem("stone_rod", new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
-    public static final Item COPPER_ROD = registerItem("copper_rod", new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
+    public static final Item LEAPER = registerItem("leaper", new LeaperItem(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE)),null);
 
-    private static Item registerItem(String name, Item item, ItemGroup tab) {
+    private static Item registerItem(String name, Item item, @Nullable ItemGroup tab) {
         Item itemz = Registry.register(Registries.ITEM, new Identifier(Leapers.MOD_ID,name),item);
-        ModItemGroups.appendToTab(itemz,tab);
-        return itemz;
+        if(tab != null) ModItemGroups.appendToTab(itemz,tab);
+        return item;
     }
 
     public static void registerModItems() {

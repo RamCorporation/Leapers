@@ -1,0 +1,6 @@
+{
+  "parent": "leapers:custom/leaping_core",
+  "textures": {
+    "plating": "leapers:item/cores/netherite_ring"
+  }
+}

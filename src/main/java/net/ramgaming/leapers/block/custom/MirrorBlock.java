@@ -55,7 +55,7 @@ public class MirrorBlock extends Block {
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         BlockState state = this.getDefaultState();
-        state = state.with(FACING, ctx.getPlayerFacing().getOpposite());
+        state = state.with(FACING, ctx.getPlayerLookDirection().getOpposite());
         if(Objects.requireNonNull(ctx.getPlayer()).isSneaking()) {
             if(ctx.getPlayer().getPitch() >=0) {
                 state = state.with(POINTING,MirrorDirections.UP);
@@ -64,7 +64,7 @@ public class MirrorBlock extends Block {
             }
 
         } else {
-            state = state.with(FACING, ctx.getPlayerFacing().getOpposite());
+            state = state.with(FACING, ctx.getPlayerLookDirection().getOpposite());
             state = state.with(POINTING,MirrorDirections.STANDING);
         }
         return state;

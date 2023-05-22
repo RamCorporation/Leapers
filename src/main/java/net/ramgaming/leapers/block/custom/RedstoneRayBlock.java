@@ -29,11 +29,6 @@ public class RedstoneRayBlock extends AbstractRedstoneGateBlock implements Block
     public static final BooleanProperty Preview = BooleanProperty.of("preview");
 
     @Override
-    public boolean isTranslucent(BlockState state, BlockView world, BlockPos pos) {
-        return true;
-    }
-
-    @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return switch (state.get(FACING)) {
             case NORTH -> ModShapes.REDSTONE_RAY_NORTH;
@@ -47,7 +42,7 @@ public class RedstoneRayBlock extends AbstractRedstoneGateBlock implements Block
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite()).with(Preview,false);
+        return this.getDefaultState().with(FACING, ctx.getPlayerLookDirection().getOpposite()).with(Preview,false);
     }
 
     @Override

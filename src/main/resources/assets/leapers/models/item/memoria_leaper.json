@@ -1,7 +1,0 @@
-{
-  "parent": "leapers:custom/light_leaper",
-  "textures": {
-    "crystal": "leapers:item/memoria_leaper",
-    "handle": "leapers:item/leaper_handle"
-  }
-}

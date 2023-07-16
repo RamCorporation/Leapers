@@ -22,27 +22,27 @@ public class MirrorBlock extends Block {
         super(settings);
     }
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
-    public static final EnumProperty<MirrorDirections> POINTING = EnumProperty.of("pointing",MirrorDirections.class);
+    public static final EnumProperty<MirrorDirections> STANCE = EnumProperty.of("stance",MirrorDirections.class);
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return switch (state.get(FACING)) {
-            case NORTH -> switch(state.get(POINTING)) {
+            case NORTH -> switch(state.get(STANCE)) {
                 case DOWN -> ModShapes.MIRROR_DOWN_NORTH;
                 case UP -> ModShapes.MIRROR_UP_NORTH;
                 case STANDING -> ModShapes.MIRROR_NORTH;
             };
-            case SOUTH -> switch(state.get(POINTING)) {
+            case SOUTH -> switch(state.get(STANCE)) {
                 case DOWN -> ModShapes.MIRROR_DOWN_SOUTH;
                 case UP -> ModShapes.MIRROR_UP_SOUTH;
                 case STANDING -> ModShapes.MIRROR_SOUTH;
             };
-            case EAST -> switch(state.get(POINTING)) {
+            case EAST -> switch(state.get(STANCE)) {
                 case DOWN -> ModShapes.MIRROR_DOWN_EAST;
                 case UP -> ModShapes.MIRROR_UP_EAST;
                 case STANDING -> ModShapes.MIRROR_EAST;
             };
-            case WEST -> switch(state.get(POINTING)) {
+            case WEST -> switch(state.get(STANCE)) {
                 case DOWN -> ModShapes.MIRROR_DOWN_WEST;
                 case UP -> ModShapes.MIRROR_UP_WEST;
                 case STANDING -> ModShapes.MIRROR_WEST;
@@ -55,24 +55,24 @@ public class MirrorBlock extends Block {
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         BlockState state = this.getDefaultState();
-        state = state.with(FACING, ctx.getPlayerLookDirection().getOpposite());
+        state = state.with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
         if(Objects.requireNonNull(ctx.getPlayer()).isSneaking()) {
             if(ctx.getPlayer().getPitch() >=0) {
-                state = state.with(POINTING,MirrorDirections.UP);
+                state = state.with(STANCE,MirrorDirections.UP);
             } else {
-                state = state.with(POINTING,MirrorDirections.DOWN);
+                state = state.with(STANCE,MirrorDirections.DOWN);
             }
 
         } else {
             state = state.with(FACING, ctx.getPlayerLookDirection().getOpposite());
-            state = state.with(POINTING,MirrorDirections.STANDING);
+            state = state.with(STANCE,MirrorDirections.STANDING);
         }
         return state;
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(POINTING,FACING);
+        builder.add(STANCE,FACING);
     }
 
 

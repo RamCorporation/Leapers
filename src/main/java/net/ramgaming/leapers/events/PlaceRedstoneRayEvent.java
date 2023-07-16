@@ -30,7 +30,7 @@ public class PlaceRedstoneRayEvent {
                     player.setStackInHand(hand, stack);
                 }
             }
-            BlockState state = ModBlocks.REDSTONE_RAY.getDefaultState().with(RedstoneRayBlock.FACING,world.getBlockState(hitResult.getBlockPos()).get(RepeaterBlock.FACING).getOpposite()).with(RedstoneRayBlock.Preview,false).with(RedstoneRayBlock.POWERED,false);
+            BlockState state = ModBlocks.REDSTONE_RAY.getDefaultState().with(RedstoneRayBlock.FACING,world.getBlockState(hitResult.getBlockPos()).get(RepeaterBlock.FACING).getOpposite()).with(RedstoneRayBlock.PREVIEW,false).with(RedstoneRayBlock.POWERED,false);
             state.with(RedstoneRayBlock.FACING,world.getBlockState(hitResult.getBlockPos()).get(RepeaterBlock.FACING));
             world.removeBlock(hitResult.getBlockPos(),false);
             world.setBlockState(hitResult.getBlockPos(),state);

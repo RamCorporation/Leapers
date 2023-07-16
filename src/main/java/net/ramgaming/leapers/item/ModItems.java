@@ -1,6 +1,8 @@
 package net.ramgaming.leapers.item;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.registry.Registries;
@@ -8,6 +10,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.ramgaming.leapers.Leapers;
+import net.ramgaming.leapers.item.armor.SpectralGogglesMaterial;
 import net.ramgaming.leapers.item.custom.LeaperItem;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,9 +41,21 @@ public class ModItems {
     public static final Item CUT_MEMORIA_CRYSTAL = registerItem("cut_memoria_crystal",new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
     public static final Item CUT_SPECTRAL_CRYSTAL = registerItem("cut_spectral_crystal",new Item(new FabricItemSettings()),null);
 
+
+    public static final Item GLASS_FIXTURE = registerItem("glass_fixture",new Item(new FabricItemSettings()), ModItemGroups.LEAPER_GROUP);
+    public static final Item GOLD_FIXTURE = registerItem("gold_fixture",new Item(new FabricItemSettings()), ModItemGroups.LEAPER_GROUP);
+    public static final Item MEMORIA_FIXTURE = registerItem("memoria_fixture",new Item(new FabricItemSettings()), ModItemGroups.LEAPER_GROUP);
+    public static final Item QUARTZ_FIXTURE = registerItem("quartz_fixture",new Item(new FabricItemSettings()), ModItemGroups.LEAPER_GROUP);
+
+
+
     public static final Item ENFORCER = registerItem("enforcer", new Item(new FabricItemSettings()),null);
 
     public static final Item LEAPER = registerItem("leaper", new LeaperItem(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE)),null);
+
+
+    public static final ArmorMaterial SPECTRAL_GOGGLES_MATERIAL = new SpectralGogglesMaterial();
+    public static final Item SPECTRAL_GOGGLES = registerItem("spectral_goggles",new ArmorItem(SPECTRAL_GOGGLES_MATERIAL, ArmorItem.Type.HELMET, new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
 
     private static Item registerItem(String name, Item item, @Nullable ItemGroup tab) {
         Item itemz = Registry.register(Registries.ITEM, new Identifier(Leapers.MOD_ID,name),item);

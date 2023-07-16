@@ -22,11 +22,11 @@ import org.jetbrains.annotations.Nullable;
 public class RedstoneRayBlock extends AbstractRedstoneGateBlock implements BlockEntityProvider {
     public RedstoneRayBlock(Settings settings) {
         super(settings);
-        setDefaultState(this.getStateManager().getDefaultState().with(POWERED,false).with(Preview,true));
+        setDefaultState(this.getStateManager().getDefaultState().with(POWERED,false).with(PREVIEW,true));
     }
     public static final DirectionProperty FACING = DirectionProperty.of("facing", Direction.Type.HORIZONTAL);
     public static final IntProperty POWER = Properties.POWER;
-    public static final BooleanProperty Preview = BooleanProperty.of("preview");
+    public static final BooleanProperty PREVIEW = BooleanProperty.of("preview");
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -42,7 +42,8 @@ public class RedstoneRayBlock extends AbstractRedstoneGateBlock implements Block
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState().with(FACING, ctx.getPlayerLookDirection().getOpposite()).with(Preview,false);
+
+        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing()).with(PREVIEW,false);
     }
 
     @Override
@@ -52,7 +53,7 @@ public class RedstoneRayBlock extends AbstractRedstoneGateBlock implements Block
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(FACING, POWERED,Preview);
+        builder.add(FACING, POWERED, PREVIEW);
     }
 
     protected int getOutputLevel(BlockView world, BlockPos pos, BlockState state) {

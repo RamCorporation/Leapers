@@ -108,7 +108,7 @@ public abstract class AbstractBeam {
             outOfBounds(world,state);
             return;
         }
-        if(nextState.getBlock() != ModBlocks.MIRROR && !nextState.isAir() && !nextState.getBlock().canMobSpawnInside()) {
+        if(nextState.getBlock() != ModBlocks.MIRROR && !nextState.isAir() && !nextState.getBlock().canMobSpawnInside(nextState)) {
             this.stillMoving = false;
             onStop(world,state,nextState);
             return;
@@ -130,6 +130,6 @@ public abstract class AbstractBeam {
         if(state.getBlock() == ModBlocks.MIRROR) {
 
         }
-        return state.getBlock() != ModBlocks.MIRROR && !state.isAir() && !state.getBlock().canMobSpawnInside();
+        return state.getBlock() != ModBlocks.MIRROR && !state.isAir() && !state.getBlock().canMobSpawnInside(state);
     }
 }

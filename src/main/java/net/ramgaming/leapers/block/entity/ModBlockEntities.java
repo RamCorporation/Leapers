@@ -16,13 +16,13 @@ public class ModBlockEntities {
     public static void onInitialize() {
         CRYSTAL_CUTTER = Registry.register(Registries.BLOCK_ENTITY_TYPE,
                 new Identifier(Leapers.MOD_ID, "crystal_cutter"),
-                FabricBlockEntityTypeBuilder.create(CrystalCutterBlockEntity::new,ModBlocks.CRYSTAL_CUTTER).build(null));
+                FabricBlockEntityTypeBuilder.create(CrystalCutterBlockEntity::new,ModBlocks.CRYSTAL_CUTTER).build());
         REDSTONE_RAY = Registry.register(Registries.BLOCK_ENTITY_TYPE,
                 new Identifier(Leapers.MOD_ID, "redstone_ray"),
-                FabricBlockEntityTypeBuilder.create(RedstoneRayBlockEntity::new,ModBlocks.REDSTONE_RAY).build(null));
+                FabricBlockEntityTypeBuilder.create(RedstoneRayBlockEntity::new,ModBlocks.REDSTONE_RAY).build());
         LEAP_PAD = Registry.register(Registries.BLOCK_ENTITY_TYPE,
                 new Identifier(Leapers.MOD_ID, "leap_pad"),
-                FabricBlockEntityTypeBuilder.create(LeapPadBlockEntity::new,ModBlocks.LEAP_PAD).build(null));
+                FabricBlockEntityTypeBuilder.create(LeapPadBlockEntity::new,ModBlocks.LEAP_PAD).build());
 
     }
 }

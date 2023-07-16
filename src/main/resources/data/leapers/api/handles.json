@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Wooden",
+    "item": "minecraft:stick",
+    "texture": "leapers:item/cores/diamond_leaper",
+    "chargeTime": 300,
+    "dischargeTime": 10,
+    "charges": 3
+  },
+]

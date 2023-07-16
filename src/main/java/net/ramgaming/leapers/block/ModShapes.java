@@ -7,11 +7,11 @@ import net.minecraft.util.shape.VoxelShapes;
 
 import java.util.stream.Stream;
 
-public class ModShapes {
+public interface ModShapes {
 
     /** REDSTONE RAY **/
 
-    public static final VoxelShape REDSTONE_RAY_NORTH = Stream.of(
+    VoxelShape REDSTONE_RAY_NORTH = Stream.of(
             Block.createCuboidShape(0, 0, 0, 16, 2, 16),
             Block.createCuboidShape(5, 4, 0, 11, 10, 4),
             Block.createCuboidShape(4, 3, 2, 12, 11, 4),
@@ -26,7 +26,7 @@ public class ModShapes {
             Block.createCuboidShape(12, 8, 6, 14, 10, 12)
     ).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
 
-    public static final VoxelShape REDSTONE_RAY_EAST = Stream.of(
+    VoxelShape REDSTONE_RAY_EAST = Stream.of(
             Block.createCuboidShape(4, 8, 12, 10, 10, 14),
             Block.createCuboidShape(8, 2, 7, 10, 8, 9),
             Block.createCuboidShape(12, 4, 5, 16, 10, 11),
@@ -41,7 +41,7 @@ public class ModShapes {
             Block.createCuboidShape(4, 8, 2, 10, 10, 4)
     ).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
 
-    public static final VoxelShape REDSTONE_RAY_SOUTH = Stream.of(
+    VoxelShape REDSTONE_RAY_SOUTH = Stream.of(
             Block.createCuboidShape(2, 8, 4, 4, 10, 10),
             Block.createCuboidShape(5, 4, 12, 11, 10, 16),
             Block.createCuboidShape(4, 3, 12, 12, 11, 14),
@@ -55,7 +55,7 @@ public class ModShapes {
             Block.createCuboidShape(12, 8, 4, 14, 10, 10)
     ).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
 
-    public static final VoxelShape REDSTONE_RAY_WEST = Stream.of(
+    VoxelShape REDSTONE_RAY_WEST = Stream.of(
             Block.createCuboidShape(6, 8, 2, 12, 10, 4),
             Block.createCuboidShape(0, 0, 0, 16, 2, 16),
             Block.createCuboidShape(0, 4, 5, 4, 10, 11),
@@ -72,7 +72,7 @@ public class ModShapes {
 
     /** MIRROR STANDING **/
 
-    public static final VoxelShape MIRROR_NORTH = Stream.of(
+    VoxelShape MIRROR_NORTH = Stream.of(
             Block.createCuboidShape(4, 12, 12, 12, 14, 14),
             Block.createCuboidShape(12, 0, 12, 14, 14, 14),
             Block.createCuboidShape(12, 12, 4, 14, 14, 12),
@@ -92,7 +92,7 @@ public class ModShapes {
             Block.createCuboidShape(4, 0, 12, 12, 2, 14)
     ).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
 
-    public static final VoxelShape MIRROR_EAST = Stream.of(
+    VoxelShape MIRROR_EAST = Stream.of(
             Block.createCuboidShape(2, 12, 4, 4, 14, 12),
             Block.createCuboidShape(2, 0, 12, 4, 14, 14),
             Block.createCuboidShape(4, 12, 12, 12, 14, 14),
@@ -112,7 +112,7 @@ public class ModShapes {
             Block.createCuboidShape(2, 0, 4, 4, 2, 12)
     ).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
 
-    public static final VoxelShape MIRROR_SOUTH = Stream.of(
+    VoxelShape MIRROR_SOUTH = Stream.of(
             Block.createCuboidShape(4, 12, 2, 12, 14, 4),
             Block.createCuboidShape(2, 0, 2, 4, 14, 4),
             Block.createCuboidShape(2, 12, 4, 4, 14, 12),
@@ -132,7 +132,7 @@ public class ModShapes {
             Block.createCuboidShape(4, 0, 2, 12, 2, 4)
     ).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
 
-    public static final VoxelShape MIRROR_WEST = Stream.of(
+    VoxelShape MIRROR_WEST = Stream.of(
             Block.createCuboidShape(12, 12, 4, 14, 14, 12),
             Block.createCuboidShape(12, 0, 2, 14, 14, 4),
             Block.createCuboidShape(4, 12, 2, 12, 14, 4),
@@ -154,7 +154,7 @@ public class ModShapes {
 
     /** MIRROR UP **/
 
-    public static final VoxelShape MIRROR_UP_NORTH = Stream.of(
+    VoxelShape MIRROR_UP_NORTH = Stream.of(
             Block.createCuboidShape(2, 0, 12, 14, 2, 14),
             Block.createCuboidShape(2, 2, 12, 4, 11.25, 14),
             Block.createCuboidShape(12, 2, 12, 14, 11.25, 14),
@@ -171,7 +171,7 @@ public class ModShapes {
             Block.createCuboidShape(0, 0, 2, 16, 2, 4)
     ).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
 
-    public static final VoxelShape MIRROR_UP_EAST = Stream.of(
+    VoxelShape MIRROR_UP_EAST = Stream.of(
             Block.createCuboidShape(2, 0, 2, 4, 2, 14),
             Block.createCuboidShape(2, 2, 2, 4, 11.25, 4),
             Block.createCuboidShape(2, 2, 12, 4, 11.25, 14),
@@ -188,7 +188,7 @@ public class ModShapes {
             Block.createCuboidShape(12, 0, 0, 14, 2, 16)
     ).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
 
-    public static final VoxelShape MIRROR_UP_SOUTH = Stream.of(
+    VoxelShape MIRROR_UP_SOUTH = Stream.of(
             Block.createCuboidShape(2, 0, 2, 14, 2, 4),
             Block.createCuboidShape(2, 2, 2, 4, 11.25, 4),
             Block.createCuboidShape(12, 2, 2, 14, 11.25, 4),
@@ -205,7 +205,7 @@ public class ModShapes {
             Block.createCuboidShape(0, 6, 6, 16, 8, 8)
     ).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
 
-    public static final VoxelShape MIRROR_UP_WEST = Stream.of(
+    VoxelShape MIRROR_UP_WEST = Stream.of(
             Block.createCuboidShape(12, 0, 2, 14, 2, 14),
             Block.createCuboidShape(12, 2, 12, 14, 11.25, 14),
             Block.createCuboidShape(12, 2, 2, 14, 11.25, 4),
@@ -224,7 +224,7 @@ public class ModShapes {
 
     /** MIRROR DOWN **/
 
-    public static final VoxelShape MIRROR_DOWN_NORTH = Stream.of(
+    VoxelShape MIRROR_DOWN_NORTH = Stream.of(
             Block.createCuboidShape(2, 10, 14, 14, 12, 16),
             Block.createCuboidShape(12, 0, 14, 14, 10, 16),
             Block.createCuboidShape(2, 0, 14, 4, 10, 16),
@@ -246,7 +246,7 @@ public class ModShapes {
             Block.createCuboidShape(0, 10, 2, 16, 12, 4)
     ).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
 
-    public static final VoxelShape MIRROR_DOWN_WEST = Stream.of(
+    VoxelShape MIRROR_DOWN_WEST = Stream.of(
             Block.createCuboidShape(14, 10, 2, 16, 12, 14),
             Block.createCuboidShape(14, 0, 2, 16, 10, 4),
             Block.createCuboidShape(14, 0, 12, 16, 10, 14),
@@ -268,7 +268,7 @@ public class ModShapes {
             Block.createCuboidShape(2, 10, 0, 4, 12, 16)
     ).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
 
-    public static final VoxelShape MIRROR_DOWN_SOUTH = Stream.of(
+    VoxelShape MIRROR_DOWN_SOUTH = Stream.of(
             Block.createCuboidShape(2, 10, 0, 14, 12, 2),
             Block.createCuboidShape(2, 0, 0, 4, 10, 2),
             Block.createCuboidShape(12, 0, 0, 14, 10, 2),
@@ -289,7 +289,7 @@ public class ModShapes {
             Block.createCuboidShape(0, 0, 2, 16, 2, 4)
     ).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
 
-    public static final VoxelShape MIRROR_DOWN_EAST = Stream.of(
+    VoxelShape MIRROR_DOWN_EAST = Stream.of(
             Block.createCuboidShape(0, 10, 2, 2, 12, 14),
             Block.createCuboidShape(0, 0, 12, 2, 10, 14),
             Block.createCuboidShape(0, 0, 2, 2, 10, 4),

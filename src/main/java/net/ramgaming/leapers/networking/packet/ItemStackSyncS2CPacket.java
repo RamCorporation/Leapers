@@ -11,6 +11,7 @@ public class ItemStackSyncS2CPacket {
     public static void receive(net.minecraft.client.MinecraftClient minecraftClient, ClientPlayNetworkHandler clientPlayNetworkHandler, PacketByteBuf buf, PacketSender packetSender) {
 
         BlockPos position = buf.readBlockPos();
+        if(minecraftClient.world == null) return;
         if(minecraftClient.world.getBlockEntity(position) instanceof CrystalCutterBlockEntity blockEntity) {
             blockEntity.setInventory(buf.readItemStack());
             blockEntity.markDirty();

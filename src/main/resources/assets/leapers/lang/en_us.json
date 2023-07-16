@@ -8,17 +8,31 @@
   "item.leapers.memoria_crystal": "Memoria Crystal",
   "item.leapers.spectral_crystal": "Spectral Crystal",
 
-  "item.leapers.uncut_aeris_crystal": "Uncut Aeris Crystal",
-  "item.leapers.uncut_fervis_crystal": "Uncut Fervis Crystal",
-  "item.leapers.uncut_umber_crystal": "Uncut Umber Crystal",
+  "item.leapers.cut_aeris_crystal": "Cut Aeris Crystal",
+  "item.leapers.cut_fervis_crystal": "Cut Fervis Crystal",
+  "item.leapers.cut_umber_crystal": "Cut Umber Crystal",
+  "item.leapers.cut_allure_crystal": "Cut Allure Crystal",
+  "item.leapers.cut_galva_crystal": "Cut Galva Crystal",
+  "item.leapers.cut_hora_crystal": "Cut Hora Crystal",
+  "item.leapers.cut_memoria_crystal": "Cut Memoria Crystal",
+
+  "item.leapers.amethyst_core": "Amethyst Core",
+  "item.leapers.diamond_core": "Diamond Core",
+  "item.leapers.netherite_core": "Netherite Core",
+  "item.leapers.heart_of_the_sea_core": "Netherite Core",
+  "item.leapers.star_core": "Star Core",
+
+  "item.leapers.glass_fixture": "Glass Fixture",
+  "item.leapers.gold_fixture": "Gold Fixture",
+  "item.leapers.memoria_fixture": "Memoria Fixture",
+  "item.leapers.quartz_fixture": "Quartz Fixture",
+
+  "item.leapers.spectral_goggles": "Spectral Goggles",
 
   "itemGroup.leapers.leaper_group": "Light Leapers",
   "item.leapers.enforcer": "Enforcer",
-  "item.leapers.copper_rod": "Copper Rod",
-  "item.leapers.stone_rod": "Stone Rod",
 
   "item.leapers.aeris_leaper": "Aeris Leaper",
-  "item.leapers.memoria_leaper": "Memoria Leaper",
 
   "block.leapers.umber_ore": "Umber Ore",
   "block.leapers.fervis_ore": "Fervis Ore",
@@ -26,6 +40,7 @@
   "block.leapers.hora_ore": "Hora Ore",
   "block.leapers.galva_ore": "Galva Ore",
   "block.leapers.memoria_ore": "Memoria Ore",
+  "block.leapers.allure_ore": "Allure Ore",
 
   "block.leapers.disleaper": "Disleaper",
   "block.leapers.cache": "Cache",

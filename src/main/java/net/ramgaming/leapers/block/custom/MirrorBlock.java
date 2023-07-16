@@ -64,7 +64,7 @@ public class MirrorBlock extends Block {
             }
 
         } else {
-            state = state.with(FACING, ctx.getPlayerLookDirection().getOpposite());
+            state = state.with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
             state = state.with(STANCE,MirrorDirections.STANDING);
         }
         return state;

@@ -51,6 +51,8 @@ public class RedstoneRayBlock extends AbstractRedstoneGateBlock implements Block
         return 2;
     }
 
+
+
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(FACING, POWERED, PREVIEW);
@@ -72,6 +74,8 @@ public class RedstoneRayBlock extends AbstractRedstoneGateBlock implements Block
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new RedstoneRayBlockEntity(pos,state);
     }
+
+
 
     @Nullable
     @Override

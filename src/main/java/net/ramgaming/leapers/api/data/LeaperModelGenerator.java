@@ -20,7 +20,10 @@ public class LeaperModelGenerator extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-
+        /*itemModelGenerator.writer.accept(new Identifier(Leapers.MOD_ID, "leaper"), () -> {
+            JsonObject object = new JsonObject();
+            return object;
+        });*/
     }
 
     public static float genId(String string) {

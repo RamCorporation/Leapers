@@ -91,7 +91,7 @@ public class CrystalCutterBlock extends BlockWithEntity implements BlockEntityPr
         Inventory inventory = (Inventory) world.getBlockEntity(pos);
         CrystalCutterBlockEntity blockEntity = (CrystalCutterBlockEntity) world.getBlockEntity(pos);
         if (!world.isClient()) {
-            if (inventory.getStack(0) == ItemStack.EMPTY && player.getStackInHand(hand).isIn(RegisterTags.UNCUT_CRYSTALS)) {
+            if (inventory.getStack(0) == ItemStack.EMPTY && player.getStackInHand(hand).isIn(RegisterTags.CRYSTALS)) {
                 //world.getBlockEntity(pos).setStackNbt(new ItemStack(player.getStackInHand(hand).getItem()).copy());
             //blockEntity.setStack(0, new ItemStack(player.getStackInHand(hand).getItem()).copy());
                 blockEntity.setStack(0,new ItemStack(player.getStackInHand(hand).getItem()).copy());

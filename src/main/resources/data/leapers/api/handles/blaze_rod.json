@@ -1,0 +1,9 @@
+{
+  "override": false,
+  "properties": {
+    "item": "minecraft:blaze_rod",
+    "texture": "leapers:item/handles/blaze_rod_leaper",
+    "maxRange": 128,
+    "durability": 16
+  }
+}

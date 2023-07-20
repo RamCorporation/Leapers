@@ -1,10 +1,11 @@
-package net.ramgaming.leapers.api.registries;
+package net.ramgaming.leapers.api.data;
 
 import net.minecraft.item.Item;
 
 import java.util.HashMap;
+import java.util.Set;
 
-public class LeaperRegistry<T>{
+class LeaperRegistry<T>{
 
     private final HashMap<Item, T> values = new HashMap<>();
 
@@ -13,12 +14,21 @@ public class LeaperRegistry<T>{
     }
 
     protected void register(Item item, T value) {
-        values.put(item, value);
+        if (contains(item)) LeaperResourceManager.LOGGER.error("duplicate registry attempt for item '"+item+"'"); else values.put(item, value);
     }
 
     public boolean contains(Item item) {
         return values.containsKey(item);
     }
+
+    public Set<T> valueSet() {
+        return (Set<T>) values.values();
+    }
+
+    public Set<Item> keySet() {
+        return values.keySet();
+    }
+
 
     public T query(Item item) {
         return values.get(item);

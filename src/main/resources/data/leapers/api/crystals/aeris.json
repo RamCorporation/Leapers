@@ -1,0 +1,9 @@
+{
+  "override": false,
+  "properties": {
+    "item": "leapers:cut_aeris_crystal",
+    "texture": "leapers:item/aeris_leaper",
+    "type": "day",
+    "durability": 32
+  }
+}

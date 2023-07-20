@@ -1,0 +1,10 @@
+{
+  "override": false,
+  "properties": {
+    "item": "leapers:amethyst_core",
+    "texture": "leapers:item/cores/amethyst_leaper",
+    "chargeTime": 1200,
+    "dischargeTime": 20,
+    "charges": 6
+  }
+}

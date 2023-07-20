@@ -13,9 +13,7 @@ public interface ItemRegistryInterpreter {
         return Registries.ITEM.getKeys();
     }
     static Item itemFromString(String name) {
-        if(itemFromStringCACHE.containsKey(name)) {
-            return itemFromStringCACHE.get(name);
-        }
+        if(itemFromStringCACHE.containsKey(name)) return itemFromStringCACHE.get(name);
         for(RegistryKey<Item> key: itemSet()) {
             if (key.getValue().toString().equals(name)) {
                 itemFromStringCACHE.put(name,Registries.ITEM.get(key.getValue()));

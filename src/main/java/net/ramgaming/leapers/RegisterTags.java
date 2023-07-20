@@ -10,7 +10,7 @@ public interface RegisterTags {
     TagKey<Item> LEAPER_CORES = of("leapers:leaper_cores");
     TagKey<Item> LEAPER_FIXTURES = of("leapers:leaper_fixtures");
     TagKey<Item> LEAPER_CRYSTALS = of("leapers:leaper_crystals");
-    TagKey<Item> UNCUT_CRYSTALS = of("leapers:uncut_crystals");
+    TagKey<Item> CUT_CRYSTALS = of("leapers:cut_crystals");
     TagKey<Item> CRYSTALS = of("leapers:leaper_crystals");
     private static TagKey<Item> of(String id) {
         return TagKey.of(Registries.ITEM.getKey(),new Identifier(id));

@@ -1,0 +1,9 @@
+{
+  "override": false,
+  "properties": {
+    "item": "leapers:quartz_fixture",
+    "texture": "leapers:item/fixtures/quartz_leaper",
+    "type": "fixed",
+    "durability": 10
+  }
+}

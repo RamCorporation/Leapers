@@ -1,0 +1,9 @@
+{
+  "override": false,
+  "properties": {
+    "item": "leapers:memoria_fixture",
+    "texture": "leapers:item/fixtures/memoria_leaper",
+    "type": "dynamic",
+    "durability": 8
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "override": false,
+  "properties": {
+    "item": "leapers:glass_fixture",
+    "texture": "leapers:item/fixtures/glass_leaper",
+    "type": "fixed",
+    "durability": 1
+  }
+}

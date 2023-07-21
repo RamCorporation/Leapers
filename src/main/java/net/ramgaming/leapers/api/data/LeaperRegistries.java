@@ -1,16 +1,16 @@
 package net.ramgaming.leapers.api.data;
 
-import net.ramgaming.leapers.api.modules.CoreModule;
-import net.ramgaming.leapers.api.modules.CrystalModule;
-import net.ramgaming.leapers.api.modules.FixtureModule;
-import net.ramgaming.leapers.api.modules.HandleModule;
+import net.ramgaming.leapers.api.modules.CoreEntry;
+import net.ramgaming.leapers.api.modules.CrystalEntry;
+import net.ramgaming.leapers.api.modules.FixtureEntry;
+import net.ramgaming.leapers.api.modules.HandleEntry;
 
 public interface LeaperRegistries {
 
-    LeaperRegistry<CoreModule> CORES = new LeaperRegistry<>();
-    LeaperRegistry<HandleModule> HANDLES = new LeaperRegistry<>();
-    LeaperRegistry<FixtureModule> FIXTURES = new LeaperRegistry<>();
-    LeaperRegistry<CrystalModule> CRYSTALS = new LeaperRegistry<>();
+    LeaperRegistry<CoreEntry> CORES = new LeaperRegistry<>();
+    LeaperRegistry<HandleEntry> HANDLES = new LeaperRegistry<>();
+    LeaperRegistry<FixtureEntry> FIXTURES = new LeaperRegistry<>();
+    LeaperRegistry<CrystalEntry> CRYSTALS = new LeaperRegistry<>();
 
 }
 

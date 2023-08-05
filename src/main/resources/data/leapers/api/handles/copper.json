@@ -1,9 +1,0 @@
-{
-  "override": false,
-  "properties": {
-    "item": "minecraft:copper_ingot",
-    "texture": "leapers:item/handles/copper_leaper",
-    "maxRange": 128,
-    "durability": 16
-  }
-}

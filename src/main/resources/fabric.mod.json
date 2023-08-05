@@ -6,7 +6,7 @@
   "name": "Light Leapers",
   "description": "A simple Minecraft mod that changes player transportation forever!",
   "authors": [
-    "RamGaming"
+    "RamGames"
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",
@@ -14,15 +14,17 @@
   },
 
   "license": "MIT",
-  "icon": "assets/modid/icon.png",
-
+  "icon": "assets/leapers/icon.png",
+  "mixins": [
+    "leapers.mixins.json"
+  ],
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.ramgaming.leapers.Leapers"
+      "net.ramgames.leapers.Leapers"
     ],
     "client": [
-      "net.ramgaming.leapers.LeapersClient"
+      "net.ramgames.leapers.LeapersClient"
     ]
   },
   "depends": {

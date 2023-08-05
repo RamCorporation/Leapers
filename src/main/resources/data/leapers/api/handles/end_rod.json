@@ -1,9 +1,0 @@
-{
-  "override": false,
-  "properties": {
-    "item": "minecraft:end_rod",
-    "texture": "leapers:item/handles/end_rod_leaper",
-    "maxRange": 208,
-    "durability": 32
-  }
-}

@@ -1,9 +1,0 @@
-{
-  "override": false,
-  "properties": {
-    "item": "leapers:cut_fervis_crystal",
-    "texture": "leapers:item/fervis_leaper",
-    "type": "night",
-    "durability": 16
-  }
-}

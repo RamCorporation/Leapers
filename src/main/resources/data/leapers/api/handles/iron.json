@@ -1,9 +1,0 @@
-{
-  "override": false,
-  "properties": {
-    "item": "minecraft:iron_ingot",
-    "texture": "leapers:item/handles/iron_leaper",
-    "maxRange": 96,
-    "durability": 8
-  }
-}

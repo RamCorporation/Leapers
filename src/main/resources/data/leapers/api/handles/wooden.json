@@ -1,9 +1,0 @@
-{
-  "override": false,
-  "properties": {
-    "item": "minecraft:stick",
-    "texture": "leapers:item/handles/wooden_leaper",
-    "maxRange": 64,
-    "durability": 4
-  }
-}

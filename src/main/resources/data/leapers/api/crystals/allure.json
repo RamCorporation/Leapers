@@ -1,9 +1,0 @@
-{
-  "override": false,
-  "properties": {
-    "item": "leapers:cut_allure_crystal",
-    "texture": "leapers:item/allure_leaper",
-    "type": "redstone",
-    "durability": 8
-  }
-}

@@ -19,9 +19,9 @@ public class Leapers implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		RegisterRecipeTypes.onInitialize();
+		ModBlocks.registerBlocks();
 		ModItems.registerModItems();
 		ModLeaperComponents.register();
-		ModBlocks.registerBlocks();
 		ModItemGroups.onInitialize();
 		RegisterEvents.onInitialize();
 		RegisterTags.onInitialize();

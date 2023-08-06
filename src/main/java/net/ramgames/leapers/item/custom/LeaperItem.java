@@ -9,11 +9,14 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.ramgames.leapers.Leapers;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class LeaperItem extends Item {
+
+    public static final int ITEM_BAR_COLOR = MathHelper.packRgb(0.93333f, 0.93333f, 0.93333f);
     public LeaperItem(Settings settings) {
         super(settings);
     }
@@ -48,14 +51,30 @@ public class LeaperItem extends Item {
 
     @Override
     public int getItemBarColor(ItemStack stack) {
-        System.out.println("running");
+        return ITEM_BAR_COLOR;
+    }
+
+    @Override
+    public boolean isItemBarVisible(ItemStack stack) {
+        NbtCompound nbt = stack.getNbt();
+        if(nbt == null) return false;
+        if(!nbt.contains("Damage")) return false;
+        return nbt.getInt("Damage") != 0;
+    }
+
+    @Override
+    public int getItemBarStep(ItemStack stack) {
         NbtCompound nbt = stack.getNbt();
         if(nbt == null) {
-            System.out.println("null");
+            Leapers.LOGGER.info("null :skull:");
             return 0;
         }
-        float f = Math.max(0.0F, ((float)nbt.getInt("MaxDamage") - (float)nbt.getInt("MaxDamage")) / (float)nbt.getInt("MaxDamage"));
-        System.out.println(f);
-        return MathHelper.hsvToRgb(f / 3.0F, 1.0F, 1.0F);
+        if(!nbt.contains("MaxDamage") || !nbt.contains("Damage")) {
+            Leapers.LOGGER.info("improper tags :skull: :skull:");
+            return 0;
+        }
+        float f = Math.max(0.0F, ((float)nbt.getInt("MaxDamage") - (float)nbt.getInt("Damage")) / (float)nbt.getInt("MaxDamage"));
+
+        return (int) Math.floor((double) Item.ITEM_BAR_STEPS * f);
     }
 }

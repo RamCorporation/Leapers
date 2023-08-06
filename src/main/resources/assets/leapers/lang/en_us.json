@@ -32,15 +32,39 @@
   "itemGroup.leapers.leaper_group": "Light Leapers",
   "item.leapers.enforcer": "Enforcer",
 
-  "item.leapers.aeris_leaper": "Aeris Leaper",
+  "item.leapers.leaper": "Leaper",
 
-  "block.leapers.umber_ore": "Umber Ore",
-  "block.leapers.fervis_ore": "Fervis Ore",
-  "block.leapers.aeris_ore": "Aeris Ore",
-  "block.leapers.hora_ore": "Hora Ore",
-  "block.leapers.galva_ore": "Galva Ore",
-  "block.leapers.memoria_ore": "Memoria Ore",
-  "block.leapers.allure_ore": "Allure Ore",
+  "block.leapers.aeris_cluster": "Aeris Cluster",
+  "block.leapers.fervis_cluster": "Fervis Cluster",
+  "block.leapers.galva_cluster": "Galva Cluster",
+  "block.leapers.allure_cluster": "Allure Cluster",
+  "block.leapers.memoria_cluster": "Memoria Cluster",
+  "block.leapers.umber_cluster": "Umber Cluster",
+  "block.leapers.hora_cluster": "Hora Cluster",
+
+  "block.leapers.small_aeris_bud": "Small Aeris Bud",
+  "block.leapers.small_fervis_bud": "Small Fervis Bud",
+  "block.leapers.small_galva_bud": "Small Galva Bud",
+  "block.leapers.small_allure_bud": "Small Allure Bud",
+  "block.leapers.small_memoria_bud": "Small Memoria Bud",
+  "block.leapers.small_umber_bud": "Small Umber Bud",
+  "block.leapers.small_hora_bud": "Small Hora Bud",
+
+  "block.leapers.medium_aeris_bud": "Medium Aeris Bud",
+  "block.leapers.medium_fervis_bud": "Medium Fervis Bud",
+  "block.leapers.medium_galva_bud": "Medium Galva Bud",
+  "block.leapers.medium_allure_bud": "Medium Allure Bud",
+  "block.leapers.medium_memoria_bud": "Medium Memoria Bud",
+  "block.leapers.medium_umber_bud": "Medium Umber Bud",
+  "block.leapers.medium_hora_bud": "Medium Hora Bud",
+
+  "block.leapers.large_aeris_bud": "Large Aeris Bud",
+  "block.leapers.large_fervis_bud": "Large Fervis Bud",
+  "block.leapers.large_galva_bud": "Large Galva Bud",
+  "block.leapers.large_allure_bud": "Large Allure Bud",
+  "block.leapers.large_memoria_bud": "Large Memoria Bud",
+  "block.leapers.large_umber_bud": "Large Umber Bud",
+  "block.leapers.large_hora_bud": "Large Hora Bud",
 
   "block.leapers.disleaper": "Disleaper",
   "block.leapers.cache": "Cache",
@@ -48,5 +72,6 @@
   "block.leapers.crystal_cutter": "Crystal Cutter",
   "block.leapers.mirror": "Mirror",
   "block.leapers.redstone_ray": "Redstone Ray",
-  "block.leapers.leap_pad": "Leap Pad"
+  "block.leapers.leap_pad": "Leap Pad",
+  "block.leapers.budding_endstone": "Budding Endstone"
 }

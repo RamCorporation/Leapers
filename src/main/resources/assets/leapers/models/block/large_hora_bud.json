@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "leapers:block/large_buds/large_hora_bud"
+  }
+}

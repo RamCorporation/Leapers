@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "leapers:block/clusters/galva_cluster"
+  }
+}

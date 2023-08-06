@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "leapers:block/small_buds/small_memoria_bud"
+  }
+}

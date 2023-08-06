@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "leapers:block/allure_cluster",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "leapers:block/allure_cluster",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "leapers:block/allure_cluster",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "leapers:block/allure_cluster",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "leapers:block/allure_cluster"
+    },
+    "facing=west": {
+      "model": "leapers:block/allure_cluster",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

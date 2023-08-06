@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "leapers:block/aeris_cluster"
+    "cross": "leapers:block/clusters/aeris_cluster"
   }
 }

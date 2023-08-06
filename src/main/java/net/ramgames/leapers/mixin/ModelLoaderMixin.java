@@ -12,6 +12,7 @@ import net.minecraft.util.Identifier;
 import net.ramgames.leapers.Leapers;
 import net.ramgames.leapers.ModPredicates;
 import net.ramgames.leapers.api.data.LeaperRegistries;
+import net.ramgames.leapers.api.data.LeaperRegistry;
 import net.ramgames.leapers.api.modules.Core;
 import net.ramgames.leapers.api.modules.Crystal;
 import net.ramgames.leapers.api.modules.Fixture;
@@ -53,18 +54,13 @@ public abstract class ModelLoaderMixin {
         if(leaperVarients.containsKey(id.getPath())) cir.setReturnValue(leaperVarients.get(id.getPath()));
     }
 
-    @Inject(method = "addModel", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "addModel", at = @At("HEAD"))
     private void registerModels(ModelIdentifier modelId, CallbackInfo info) {
         if (!modelId.getNamespace().equals(Leapers.MOD_ID)) return;
         if (!modelId.getVariant().equals("inventory")) return;
-        LOGGER.info(modelId.toString());
-        if(modelId.getPath().contains("leaper_mg_")) {
-            info.cancel();
-            return;
-        }
         if (!modelId.getPath().equals("leaper")) return;
         LeaperRegistries.CORES.keySet().forEach(coreItem -> LeaperRegistries.HANDLES.keySet().forEach(handleItem -> LeaperRegistries.FIXTURES.keySet().forEach(fixtureItem -> LeaperRegistries.CRYSTALS.keySet().forEach(crystalItem -> {
-           Core core = LeaperRegistries.CORES.query(coreItem);
+            Core core = LeaperRegistries.CORES.query(coreItem);
             Handle handle = LeaperRegistries.HANDLES.query(handleItem);
             Fixture fixture = LeaperRegistries.FIXTURES.query(fixtureItem);
             Crystal crystal = LeaperRegistries.CRYSTALS.query(crystalItem);
@@ -81,9 +77,6 @@ public abstract class ModelLoaderMixin {
                 textures.addProperty("crystal", crystal.getTexturePath());
                 object.add("textures", textures);
 
-                LOGGER.info("SAVING: "+ identifier);
-                LOGGER.info(object.toString());
-
                 return object;
             }));
 
@@ -93,6 +86,7 @@ public abstract class ModelLoaderMixin {
             this.leaperVarients.put(path, jsonUnbakedModel);
         }
         ))));
+        LeaperRegistry.LOGGER.info("Registered {} unique leaper variants!", leaperVarients.size());
     }
 
     @Unique

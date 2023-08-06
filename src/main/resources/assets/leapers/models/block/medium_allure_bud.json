@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "leapers:block/medium_buds/medium_allure_bud"
+  }
+}

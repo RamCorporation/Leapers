@@ -37,8 +37,8 @@ public class ModLeaperComponents {
         LeaperRegistry.register(LeaperRegistries.CORES, Registries.ITEM.getId(ModItems.STAR_CORE), STAR_CORE);
 
         LeaperRegistry.register(LeaperRegistries.HANDLES, Registries.ITEM.getId(Items.STICK), WOODEN_HANDLE);
-        LeaperRegistry.register(LeaperRegistries.HANDLES, Registries.ITEM.getId(Items.IRON_INGOT), IRON_HANDLE);
-        LeaperRegistry.register(LeaperRegistries.HANDLES, Registries.ITEM.getId(Items.COPPER_INGOT), COPPER_HANDLE);
+        LeaperRegistry.register(LeaperRegistries.HANDLES, Registries.ITEM.getId(Items.CHAIN), IRON_HANDLE);
+        LeaperRegistry.register(LeaperRegistries.HANDLES, Registries.ITEM.getId(Items.LIGHTNING_ROD), COPPER_HANDLE);
         LeaperRegistry.register(LeaperRegistries.HANDLES, Registries.ITEM.getId(Items.BLAZE_ROD), BLAZE_ROD_HANDLE);
         LeaperRegistry.register(LeaperRegistries.HANDLES, Registries.ITEM.getId(Items.END_ROD), END_ROD_HANDLE);
 

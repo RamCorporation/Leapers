@@ -1,6 +1,6 @@
 {
-  "parent": "leapers:custom/leaping_core",
+  "parent": "item/generated",
   "textures": {
-    "plating": "leapers:item/cores/diamond_ring"
+    "layer0": "leapers:item/cores/diamond_core"
   }
 }

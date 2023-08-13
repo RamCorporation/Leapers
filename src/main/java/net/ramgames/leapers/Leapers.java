@@ -24,7 +24,7 @@ public class Leapers implements ModInitializer {
 		ModLeaperComponents.register();
 		ModItemGroups.onInitialize();
 		RegisterEvents.onInitialize();
-		RegisterTags.onInitialize();
+		ModTags.onInitialize();
 		ModBlockEntities.onInitialize();
 		ModMessages.registerC2SPackets();
 	}

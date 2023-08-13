@@ -11,7 +11,7 @@ public interface ModShapes {
 
     /** REDSTONE RAY **/
 
-    VoxelShape REDSTONE_RAY_NORTH = Stream.of(
+    VoxelShape REDSTONE_RAY_SOUTH = Stream.of(
             Block.createCuboidShape(0, 0, 0, 16, 2, 16),
             Block.createCuboidShape(5, 4, 0, 11, 10, 4),
             Block.createCuboidShape(4, 3, 2, 12, 11, 4),
@@ -26,36 +26,35 @@ public interface ModShapes {
             Block.createCuboidShape(12, 8, 6, 14, 10, 12)
     ).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
 
-    VoxelShape REDSTONE_RAY_EAST = Stream.of(
-            Block.createCuboidShape(4, 8, 12, 10, 10, 14),
-            Block.createCuboidShape(8, 2, 7, 10, 8, 9),
+    VoxelShape REDSTONE_RAY_WEST = Stream.of(
             Block.createCuboidShape(12, 4, 5, 16, 10, 11),
+            Block.createCuboidShape(0, 0, 0, 16, 2, 16),
             Block.createCuboidShape(12, 3, 4, 14, 11, 12),
             Block.createCuboidShape(10, 2, 2, 12, 11, 4),
-            Block.createCuboidShape(10, 2, 12, 12, 11, 14),
             Block.createCuboidShape(10, 2, 12, 12, 11, 14),
             Block.createCuboidShape(2, 2, 2, 4, 11, 4),
             Block.createCuboidShape(2, 2, 12, 4, 11, 14),
             Block.createCuboidShape(2, 8, 4, 4, 10, 12),
             Block.createCuboidShape(10, 8, 4, 12, 10, 12),
-            Block.createCuboidShape(4, 8, 2, 10, 10, 4)
+            Block.createCuboidShape(4, 8, 2, 10, 10, 4),
+            Block.createCuboidShape(4, 8, 12, 10, 10, 14)
     ).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
 
-    VoxelShape REDSTONE_RAY_SOUTH = Stream.of(
-            Block.createCuboidShape(2, 8, 4, 4, 10, 10),
+    VoxelShape REDSTONE_RAY_NORTH = Stream.of(
             Block.createCuboidShape(5, 4, 12, 11, 10, 16),
+            Block.createCuboidShape(0, 0, 0, 16, 2, 16),
             Block.createCuboidShape(4, 3, 12, 12, 11, 14),
             Block.createCuboidShape(12, 2, 10, 14, 11, 12),
-            Block.createCuboidShape(2, 2, 10, 4, 11, 12),
             Block.createCuboidShape(2, 2, 10, 4, 11, 12),
             Block.createCuboidShape(12, 2, 2, 14, 11, 4),
             Block.createCuboidShape(2, 2, 2, 4, 11, 4),
             Block.createCuboidShape(4, 8, 2, 12, 10, 4),
             Block.createCuboidShape(4, 8, 10, 12, 10, 12),
-            Block.createCuboidShape(12, 8, 4, 14, 10, 10)
+            Block.createCuboidShape(12, 8, 4, 14, 10, 10),
+            Block.createCuboidShape(2, 8, 4, 4, 10, 10)
     ).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
 
-    VoxelShape REDSTONE_RAY_WEST = Stream.of(
+    VoxelShape REDSTONE_RAY_EAST = Stream.of(
             Block.createCuboidShape(6, 8, 2, 12, 10, 4),
             Block.createCuboidShape(0, 0, 0, 16, 2, 16),
             Block.createCuboidShape(0, 4, 5, 4, 10, 11),

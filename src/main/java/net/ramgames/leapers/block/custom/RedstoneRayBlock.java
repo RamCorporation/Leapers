@@ -6,9 +6,11 @@ import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.ComparatorBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
-import net.minecraft.state.property.*;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.IntProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
@@ -38,12 +40,6 @@ public class RedstoneRayBlock extends AbstractRedstoneGateBlock implements Block
             default -> VoxelShapes.fullCube();
         };
 
-    }
-    @Nullable
-    @Override
-    public BlockState getPlacementState(ItemPlacementContext ctx) {
-
-        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing()).with(PREVIEW,false);
     }
 
     @Override

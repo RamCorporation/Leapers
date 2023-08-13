@@ -3,33 +3,33 @@
     "preview=true": {
       "model": "leapers:block/redstone_ray_preview"
     },
-    "facing=north,powered=false,preview=false": {
-      "model": "leapers:block/redstone_ray"
-    },
-    "facing=east,powered=false,preview=false": {
-      "model": "leapers:block/redstone_ray",
-      "y": 90
-    },
     "facing=south,powered=false,preview=false": {
-      "model": "leapers:block/redstone_ray",
-      "y": 180
+      "model": "leapers:block/redstone_ray"
     },
     "facing=west,powered=false,preview=false": {
       "model": "leapers:block/redstone_ray",
+      "y": 90
+    },
+    "facing=north,powered=false,preview=false": {
+      "model": "leapers:block/redstone_ray",
+      "y": 180
+    },
+    "facing=east,powered=false,preview=false": {
+      "model": "leapers:block/redstone_ray",
       "y": 270
     },
-    "facing=north,powered=true,preview=false": {
+    "facing=south,powered=true,preview=false": {
       "model": "leapers:block/redstone_ray_on"
     },
-    "facing=east,powered=true,preview=false": {
+    "facing=west,powered=true,preview=false": {
       "model": "leapers:block/redstone_ray_on",
       "y": 90
     },
-    "facing=south,powered=true,preview=false": {
+    "facing=north,powered=true,preview=false": {
       "model": "leapers:block/redstone_ray_on",
       "y": 180
     },
-    "facing=west,powered=true,preview=false": {
+    "facing=east,powered=true,preview=false": {
       "model": "leapers:block/redstone_ray_on",
       "y": 270
     }

@@ -3,8 +3,8 @@ package net.ramgames.leapers.api.modules;
 public class Handle extends LeaperEntry {
     private final int maxRange;
     private final int maxDurability;
-    public Handle(String texturePath, int maxRange, int maxDurability) {
-        super(texturePath);
+    public Handle(String leaperTexture, String tooltipTexture, int maxRange, int maxDurability) {
+        super(leaperTexture, tooltipTexture);
         this.maxRange = maxRange;
         this.maxDurability = maxDurability;
     }

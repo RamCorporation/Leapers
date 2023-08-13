@@ -10,14 +10,13 @@ import net.minecraft.client.render.model.json.JsonUnbakedModel;
 import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.util.Identifier;
 import net.ramgames.leapers.Leapers;
-import net.ramgames.leapers.ModPredicates;
+import net.ramgames.leapers.item.ModelSeeds;
 import net.ramgames.leapers.api.data.LeaperRegistries;
 import net.ramgames.leapers.api.data.LeaperRegistry;
 import net.ramgames.leapers.api.modules.Core;
 import net.ramgames.leapers.api.modules.Crystal;
 import net.ramgames.leapers.api.modules.Fixture;
 import net.ramgames.leapers.api.modules.Handle;
-import org.slf4j.Logger;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -43,8 +42,6 @@ public abstract class ModelLoaderMixin {
     @Shadow
     private Map<Identifier, UnbakedModel> modelsToBake;
 
-    @Shadow @Final private static Logger LOGGER;
-
     @Unique
     private final HashMap<String, JsonUnbakedModel> leaperVarients = new HashMap<>();
 
@@ -64,17 +61,17 @@ public abstract class ModelLoaderMixin {
             Handle handle = LeaperRegistries.HANDLES.query(handleItem);
             Fixture fixture = LeaperRegistries.FIXTURES.query(fixtureItem);
             Crystal crystal = LeaperRegistries.CRYSTALS.query(crystalItem);
-            float seed = ModPredicates.getOrGenSeed(coreItem.toString(), handleItem.toString(), fixtureItem.toString(), crystalItem.toString());
+            float seed = ModelSeeds.getOrGenSeed(coreItem.toString(), handleItem.toString(), fixtureItem.toString(), crystalItem.toString());
             String path = "leaper_mg_" + seed;
             ModelIdentifier identifier = new ModelIdentifier(new Identifier(Leapers.MOD_ID,path),"inventory");
             JsonUnbakedModel jsonUnbakedModel = JsonUnbakedModel.deserialize(transformJson(() -> {
                 JsonObject object = new JsonObject();
                 object.addProperty("parent", "leapers:custom/light_leaper");
                 JsonObject textures = new JsonObject();
-                textures.addProperty("core", core.getTexturePath());
-                textures.addProperty("handle", handle.getTexturePath());
-                textures.addProperty("fixture", fixture.getTexturePath());
-                textures.addProperty("crystal", crystal.getTexturePath());
+                textures.addProperty("core", core.getLeaperTexture());
+                textures.addProperty("handle", handle.getLeaperTexture());
+                textures.addProperty("fixture", fixture.getLeaperTexture());
+                textures.addProperty("crystal", crystal.getLeaperTexture());
                 object.add("textures", textures);
 
                 return object;

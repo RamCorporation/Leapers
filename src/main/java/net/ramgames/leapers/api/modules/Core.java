@@ -4,8 +4,8 @@ public class Core extends LeaperEntry {
     private final int maxCharges;
     private final int chargeTime;
     private final int dischargeTime;
-    public Core(String texturePath, int maxCharges, int chargeTime, int dischargeTime) {
-        super(texturePath);
+    public Core(String leaperTexture, String tooltipTexture, int maxCharges, int chargeTime, int dischargeTime) {
+        super(leaperTexture, tooltipTexture);
         this.maxCharges = maxCharges;
         this.chargeTime = chargeTime;
         this.dischargeTime = dischargeTime;

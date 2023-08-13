@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "#plating",
-    "layer1": "leapers:item/cores/galva_core"
-  }
-}

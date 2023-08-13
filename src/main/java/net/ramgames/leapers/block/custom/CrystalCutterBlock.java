@@ -19,7 +19,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.ramgames.leapers.RegisterTags;
+import net.ramgames.leapers.ModTags;
 import net.ramgames.leapers.block.entity.CrystalCutterBlockEntity;
 import net.ramgames.leapers.block.entity.ModBlockEntities;
 import org.jetbrains.annotations.Nullable;
@@ -91,7 +91,7 @@ public class CrystalCutterBlock extends BlockWithEntity implements BlockEntityPr
         Inventory inventory = (Inventory) world.getBlockEntity(pos);
         CrystalCutterBlockEntity blockEntity = (CrystalCutterBlockEntity) world.getBlockEntity(pos);
         if (!world.isClient()) {
-            if (inventory.getStack(0) == ItemStack.EMPTY && player.getStackInHand(hand).isIn(RegisterTags.CRYSTALS)) {
+            if (inventory.getStack(0) == ItemStack.EMPTY && player.getStackInHand(hand).isIn(ModTags.CRYSTALS)) {
                 //world.getBlockEntity(pos).setStackNbt(new ItemStack(player.getStackInHand(hand).getItem()).copy());
             //blockEntity.setStack(0, new ItemStack(player.getStackInHand(hand).getItem()).copy());
                 blockEntity.setStack(0,new ItemStack(player.getStackInHand(hand).getItem()).copy());

@@ -1,6 +1,8 @@
 package net.ramgames.leapers.api.modules;
 
-public class Crystal extends LeaperEntry {
+import net.ramgames.leapers.api.data.Entries;
+
+public class Crystal extends Entries.LeaperEntry {
     private final CrystalType type;
     private final int maxStability;
     public Crystal(String leaperTexture, String tooltipTexture, CrystalType type, int maxStability) {

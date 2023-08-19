@@ -4,6 +4,7 @@ import net.fabricmc.api.ModInitializer;
 import net.ramgames.leapers.block.ModBlocks;
 import net.ramgames.leapers.block.entity.ModBlockEntities;
 import net.ramgames.leapers.events.RegisterEvents;
+import net.ramgames.leapers.item.ModCrystalInspectorTooltips;
 import net.ramgames.leapers.item.ModItemGroups;
 import net.ramgames.leapers.item.ModItems;
 import net.ramgames.leapers.item.ModLeaperComponents;
@@ -22,6 +23,7 @@ public class Leapers implements ModInitializer {
 		ModBlocks.registerBlocks();
 		ModItems.registerModItems();
 		ModLeaperComponents.register();
+		ModCrystalInspectorTooltips.onInitialize();
 		ModItemGroups.onInitialize();
 		RegisterEvents.onInitialize();
 		ModTags.onInitialize();

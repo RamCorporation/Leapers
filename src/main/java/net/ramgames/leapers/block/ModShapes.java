@@ -309,4 +309,26 @@ public interface ModShapes {
             Block.createCuboidShape(13, 11, 0, 14.5, 12.5, 16),
             Block.createCuboidShape(12, 10, 0, 14, 12, 16)
     ).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
+
+    /** CRYSTAL INSPECTOR **/
+
+    VoxelShape CRYSTAL_INSPECTOR = Stream.of(
+            Block.createCuboidShape(2, 12, 3, 3, 13, 13),
+            Block.createCuboidShape(13, 12, 3, 14, 13, 13),
+            Block.createCuboidShape(3, 12, 2, 13, 13, 3),
+            Block.createCuboidShape(3, 12, 13, 13, 13, 14),
+            Block.createCuboidShape(0, 0, 13, 16, 2, 16),
+            Block.createCuboidShape(0, 0, 0, 16, 2, 3),
+            Block.createCuboidShape(0, 0, 3, 3, 2, 13),
+            Block.createCuboidShape(13, 0, 3, 16, 2, 13),
+            Block.createCuboidShape(3, 0, 3, 13, 1, 13),
+            Block.createCuboidShape(13, 3, 1, 15, 14, 3),
+            Block.createCuboidShape(13, 3, 13, 15, 14, 15),
+            Block.createCuboidShape(1, 3, 13, 3, 14, 15),
+            Block.createCuboidShape(1, 3, 1, 3, 14, 3),
+            Block.createCuboidShape(0, 2, 13, 3, 3, 16),
+            Block.createCuboidShape(0, 2, 0, 3, 3, 3),
+            Block.createCuboidShape(13, 2, 0, 16, 3, 3),
+            Block.createCuboidShape(13, 2, 13, 16, 3, 16)
+    ).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
 }

@@ -27,8 +27,6 @@
   "item.leapers.memoria_fixture": "Memoria Fixture",
   "item.leapers.quartz_fixture": "Quartz Fixture",
 
-  "item.leapers.spectral_goggles": "Spectral Goggles",
-
   "itemGroup.leapers.leaper_group": "Light Leapers",
   "item.leapers.enforcer": "Enforcer",
 
@@ -69,7 +67,7 @@
   "block.leapers.disleaper": "Disleaper",
   "block.leapers.cache": "Cache",
 
-  "block.leapers.crystal_cutter": "Crystal Cutter",
+  "block.leapers.crystal_inspector": "Crystal Inspector",
   "block.leapers.mirror": "Mirror",
   "block.leapers.redstone_ray": "Redstone Ray",
   "block.leapers.leap_pad": "Leap Pad",

@@ -29,13 +29,13 @@ public class ModItems {
     public static final Item MEMORIA_CRYSTAL = registerItem("memoria_crystal",new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
     public static final Item SPECTRAL_CRYSTAL = registerItem("spectral_crystal",new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
 
-    public static final Item CUT_UMBER_CRYSTAL = registerItem("cut_umber_crystal",new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
-    public static final Item CUT_AERIS_CRYSTAL = registerItem("cut_aeris_crystal",new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
-    public static final Item CUT_FERVIS_CRYSTAL = registerItem("cut_fervis_crystal",new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
-    public static final Item CUT_ALLURE_CRYSTAL = registerItem("cut_allure_crystal",new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
-    public static final Item CUT_GALVA_CRYSTAL = registerItem("cut_galva_crystal",new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
-    public static final Item CUT_HORA_CRYSTAL = registerItem("cut_hora_crystal",new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
-    public static final Item CUT_MEMORIA_CRYSTAL = registerItem("cut_memoria_crystal",new Item(new FabricItemSettings()),ModItemGroups.LEAPER_GROUP);
+    public static final Item CUT_UMBER_CRYSTAL = registerItem("cut_umber_crystal",new Item(new FabricItemSettings()),null);
+    public static final Item CUT_AERIS_CRYSTAL = registerItem("cut_aeris_crystal",new Item(new FabricItemSettings()),null);
+    public static final Item CUT_FERVIS_CRYSTAL = registerItem("cut_fervis_crystal",new Item(new FabricItemSettings()),null);
+    public static final Item CUT_ALLURE_CRYSTAL = registerItem("cut_allure_crystal",new Item(new FabricItemSettings()),null);
+    public static final Item CUT_GALVA_CRYSTAL = registerItem("cut_galva_crystal",new Item(new FabricItemSettings()),null);
+    public static final Item CUT_HORA_CRYSTAL = registerItem("cut_hora_crystal",new Item(new FabricItemSettings()),null);
+    public static final Item CUT_MEMORIA_CRYSTAL = registerItem("cut_memoria_crystal",new Item(new FabricItemSettings()),null);
     public static final Item CUT_SPECTRAL_CRYSTAL = registerItem("cut_spectral_crystal",new Item(new FabricItemSettings()),null);
 
 

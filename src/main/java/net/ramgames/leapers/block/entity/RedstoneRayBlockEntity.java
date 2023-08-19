@@ -7,7 +7,7 @@ import net.minecraft.util.math.BlockPos;
 
 public class RedstoneRayBlockEntity extends BlockEntity {
     public RedstoneRayBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.CRYSTAL_CUTTER, pos, state);
+        super(ModBlockEntities.REDSTONE_RAY, pos, state);
         this.outputSignal = 0;
     }
     private int outputSignal;

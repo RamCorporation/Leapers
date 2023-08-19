@@ -1,6 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "leapers:item/leaper"
+    "layer0": "leapers:item/leaper",
+    "layer1": "leapers:item/leaper_warning"
   }
 }

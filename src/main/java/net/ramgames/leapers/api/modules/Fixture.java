@@ -1,6 +1,8 @@
 package net.ramgames.leapers.api.modules;
 
-public class Fixture extends LeaperEntry {
+import net.ramgames.leapers.api.data.Entries;
+
+public class Fixture extends Entries.LeaperEntry {
     private final TransportType type;
     private final int maxTransmittance;
     public Fixture(String leaperTexture, String tooltipTexture, TransportType type, int maxTransmittance) {

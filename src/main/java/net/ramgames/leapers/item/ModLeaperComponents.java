@@ -18,7 +18,7 @@ public class ModLeaperComponents {
     public static final Handle IRON_HANDLE = new Handle("leapers:item/handles/iron_handle", "minecraft:textures/block/chain",96, 8);
     public static final Handle COPPER_HANDLE = new Handle("leapers:item/handles/copper_handle", "minecraft:textures/block/lightning_rod",128, 16);
     public static final Handle BLAZE_ROD_HANDLE = new Handle("leapers:item/handles/blaze_rod_handle", "minecraft:textures/item/blaze_rod",160, 24);
-    public static final Handle END_ROD_HANDLE = new Handle("leapers:item/handles/end_rod_handle", "minecraft:textures/item/eye_of_ender",64, 4);
+    public static final Handle END_ROD_HANDLE = new Handle("leapers:item/handles/end_rod_handle", "minecraft:textures/block/end_rod",64, 4);
 
     public static final Fixture GLASS_FIXTURE = new Fixture("leapers:item/fixtures/glass_leaper", "leapers:textures/item/fixtures/glass_fixture", TransportType.FIXED, 1);
     public static final Fixture GOLD_FIXTURE = new Fixture("leapers:item/fixtures/gold_leaper", "leapers:textures/item/fixtures/gold_fixture", TransportType.RELATIVE, 4);
@@ -27,7 +27,7 @@ public class ModLeaperComponents {
 
     public static final Crystal AERIS_CRYSTAL = new Crystal("leapers:item/crystals/aeris_leaper", "leapers:textures/item/crystals/aeris_crystal", CrystalType.DAY, 32);
     public static final Crystal ALLURE_CRYSTAL = new Crystal("leapers:item/crystals/allure_leaper", "leapers:textures/item/crystals/allure_crystal", CrystalType.REDSTONE, 8);
-    public static final Crystal FERVIS_CRYSTAL = new Crystal("leapers:item/crystals/fervis_leaper", "leapers:textures/9item/crystals/fervis_crystal", CrystalType.NIGHT, 16);
+    public static final Crystal FERVIS_CRYSTAL = new Crystal("leapers:item/crystals/fervis_leaper", "leapers:textures/item/crystals/fervis_crystal", CrystalType.NIGHT, 16);
 
     public static void register() {
         LeaperRegistry.register(LeaperRegistries.CORES, Registries.ITEM.getId(ModItems.AMETHYST_CORE), AMETHYST_CORE);

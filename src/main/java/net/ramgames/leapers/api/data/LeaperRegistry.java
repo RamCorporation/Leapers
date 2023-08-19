@@ -1,7 +1,6 @@
 package net.ramgames.leapers.api.data;
 
 import net.minecraft.util.Identifier;
-import net.ramgames.leapers.api.modules.LeaperEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -9,7 +8,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-public class LeaperRegistry<T extends LeaperEntry>{
+public class LeaperRegistry<T extends Entries>{
 
     public static final Logger LOGGER = LoggerFactory.getLogger("Leaption API");
 
@@ -40,7 +39,7 @@ public class LeaperRegistry<T extends LeaperEntry>{
         return values.get(identifier);
     }
 
-    public static <T extends LeaperEntry> void register(LeaperRegistry<T> registry, Identifier identifier, T entry) {
+    public static <T extends Entries> void register(LeaperRegistry<T> registry, Identifier identifier, T entry) {
         registry.register(identifier, entry);
     }
 }

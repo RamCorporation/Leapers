@@ -10,7 +10,7 @@ import net.minecraft.client.render.model.json.JsonUnbakedModel;
 import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.util.Identifier;
 import net.ramgames.leapers.Leapers;
-import net.ramgames.leapers.item.ModelSeeds;
+import net.ramgames.leapers.item.ModSeeds;
 import net.ramgames.leapers.api.data.LeaperRegistries;
 import net.ramgames.leapers.api.data.LeaperRegistry;
 import net.ramgames.leapers.api.modules.Core;
@@ -61,7 +61,7 @@ public abstract class ModelLoaderMixin {
             Handle handle = LeaperRegistries.HANDLES.query(handleItem);
             Fixture fixture = LeaperRegistries.FIXTURES.query(fixtureItem);
             Crystal crystal = LeaperRegistries.CRYSTALS.query(crystalItem);
-            float seed = ModelSeeds.getOrGenSeed(coreItem.toString(), handleItem.toString(), fixtureItem.toString(), crystalItem.toString());
+            float seed = ModSeeds.getOrGenModelSeed(coreItem.toString(), handleItem.toString(), fixtureItem.toString(), crystalItem.toString());
             String path = "leaper_mg_" + seed;
             ModelIdentifier identifier = new ModelIdentifier(new Identifier(Leapers.MOD_ID,path),"inventory");
             JsonUnbakedModel jsonUnbakedModel = JsonUnbakedModel.deserialize(transformJson(() -> {

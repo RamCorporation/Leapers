@@ -1,0 +1,7 @@
+{
+  "parent": "leapers:custom/crystal_inspector",
+  "textures": {
+    "particles": "minecraft:block/blast_furnace_top",
+    "mapping": "leapers:block/crystal_inspector"
+  }
+}

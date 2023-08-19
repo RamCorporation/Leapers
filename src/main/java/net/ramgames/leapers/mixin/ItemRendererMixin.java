@@ -10,7 +10,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import net.ramgames.leapers.Leapers;
-import net.ramgames.leapers.item.ModelSeeds;
+import net.ramgames.leapers.item.ModSeeds;
 import net.ramgames.leapers.item.ModItems;
 import net.ramgames.leapers.item.custom.LeaperItem;
 import org.jetbrains.annotations.Nullable;
@@ -51,11 +51,11 @@ public abstract class ItemRendererMixin {
         if(stack.getNbt() == null) return;
         NbtCompound nbt = stack.getNbt();
         if(!LeaperItem.containsProperNbt(nbt)) return;
-        float modelSeed = ModelSeeds.getOrGenSeed(
-                nbt.getString("core"),
-                nbt.getString("handle"),
-                nbt.getString("fixture"),
-                nbt.getString("crystal"));
+        float modelSeed = ModSeeds.getOrGenModelSeed(
+                nbt.getString("Core"),
+                nbt.getString("Handle"),
+                nbt.getString("Fixture"),
+                nbt.getString("Crystal"));
         BakedModel model = getAndCache(new ModelIdentifier(new Identifier(Leapers.MOD_ID, "leaper_mg_"+ modelSeed),"inventory"));
         if(model == models.getModelManager().getMissingModel()) return;
         cir.setReturnValue(model);

@@ -1,6 +1,8 @@
 package net.ramgames.leapers.api.modules;
 
-public class Core extends LeaperEntry {
+import net.ramgames.leapers.api.data.Entries;
+
+public class Core extends Entries.LeaperEntry {
     private final int maxCharges;
     private final int chargeTime;
     private final int dischargeTime;

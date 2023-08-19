@@ -1,10 +1,16 @@
 package net.ramgames.leapers.item.custom;
 
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.World;
 import net.ramgames.leapers.Leapers;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class LeaperItem extends Item {
 
@@ -43,6 +49,11 @@ public class LeaperItem extends Item {
     }
 
     public static boolean containsProperNbt(NbtCompound nbt) {
-        return nbt.contains("core") && nbt.contains("handle") && nbt.contains("fixture") && nbt.contains("crystal");
+        return nbt.contains("Core") && nbt.contains("Handle") && nbt.contains("Fixture") && nbt.contains("Crystal");
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        super.appendTooltip(stack, world, tooltip, context);
     }
 }

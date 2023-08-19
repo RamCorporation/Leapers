@@ -1,6 +1,8 @@
 package net.ramgames.leapers.api.modules;
 
-public class Handle extends LeaperEntry {
+import net.ramgames.leapers.api.data.Entries;
+
+public class Handle extends Entries.LeaperEntry {
     private final int maxRange;
     private final int maxDurability;
     public Handle(String leaperTexture, String tooltipTexture, int maxRange, int maxDurability) {

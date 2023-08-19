@@ -64,7 +64,7 @@ public class ModBlocks {
     public static final Block DISLEAPER = registerBlock("disleaper", new TranslucentBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)), true, ModItemGroups.LEAPER_GROUP);
     public static final Block CACHE = registerBlock("cache", new TranslucentBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)), true, null);
 
-    public static final Block CRYSTAL_CUTTER = registerBlock("crystal_cutter", new CrystalCutterBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)), true, ModItemGroups.LEAPER_GROUP);
+    public static final Block CRYSTAL_INSPECTOR = registerBlock("crystal_inspector", new CrystalInspectorBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)), true, ModItemGroups.LEAPER_GROUP);
 
     public static final Block LEAP_PAD = registerBlock("leap_pad", new LeapPadBlock(FabricBlockSettings.copyOf(Blocks.STONE).nonOpaque()), true, ModItemGroups.LEAPER_GROUP);
 

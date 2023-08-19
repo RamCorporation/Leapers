@@ -31,23 +31,23 @@ public class BuddingEndstoneBlock extends Block {
             boolean randomCheck = random.nextInt(3) == 0;
             if(blockState.isIn(ModTags.UMBER_BUDS)) {
                 if(direction == Direction.UP) return;
-                changeBud(!umberCheck(world, blockPos) && randomCheck, world, blockState, blockPos, direction, ModBlocks.SMALL_UMBER_BUD, ModBlocks.MEDIUM_UMBER_BUD, ModBlocks.LARGE_UMBER_BUD, ModBlocks.UMBER_CLUSTER);
+                changeBud(!umberCheck(world, blockPos), randomCheck, world, blockState, blockPos, direction, ModBlocks.SMALL_UMBER_BUD, ModBlocks.MEDIUM_UMBER_BUD, ModBlocks.LARGE_UMBER_BUD, ModBlocks.UMBER_CLUSTER);
                 return;
             }
             if(blockState.isIn(ModTags.AERIS_BUDS)) {
-                changeBud(!aerisCheck(blockState) && randomCheck, world, blockState, blockPos, direction, ModBlocks.SMALL_AERIS_BUD, ModBlocks.MEDIUM_AERIS_BUD, ModBlocks.LARGE_AERIS_BUD, ModBlocks.AERIS_CLUSTER);
+                changeBud(!aerisCheck(blockState), randomCheck, world, blockState, blockPos, direction, ModBlocks.SMALL_AERIS_BUD, ModBlocks.MEDIUM_AERIS_BUD, ModBlocks.LARGE_AERIS_BUD, ModBlocks.AERIS_CLUSTER);
                 return;
             }
             if(blockState.isIn(ModTags.FERVIS_BUDS)) {
-                changeBud(!fervisCheck(world) && randomCheck, world, blockState, blockPos, direction, ModBlocks.SMALL_FERVIS_BUD, ModBlocks.MEDIUM_FERVIS_BUD, ModBlocks.LARGE_FERVIS_BUD, ModBlocks.FERVIS_CLUSTER);
+                changeBud(!fervisCheck(world), randomCheck, world, blockState, blockPos, direction, ModBlocks.SMALL_FERVIS_BUD, ModBlocks.MEDIUM_FERVIS_BUD, ModBlocks.LARGE_FERVIS_BUD, ModBlocks.FERVIS_CLUSTER);
                 return;
             }
             if(blockState.isIn(ModTags.ALLURE_BUDS)) {
-                changeBud(!allureCheck(world) && randomCheck, world, blockState, blockPos, direction, ModBlocks.SMALL_ALLURE_BUD, ModBlocks.MEDIUM_ALLURE_BUD, ModBlocks.LARGE_ALLURE_BUD, ModBlocks.ALLURE_CLUSTER);
+                changeBud(!allureCheck(world), randomCheck, world, blockState, blockPos, direction, ModBlocks.SMALL_ALLURE_BUD, ModBlocks.MEDIUM_ALLURE_BUD, ModBlocks.LARGE_ALLURE_BUD, ModBlocks.ALLURE_CLUSTER);
                 return;
             }
             if(blockState.isIn(ModTags.GALVA_BUDS)) {
-                changeBud(!galvaCheck(world) && randomCheck,world, blockState, blockPos, direction, ModBlocks.SMALL_GALVA_BUD, ModBlocks.MEDIUM_GALVA_BUD, ModBlocks.LARGE_GALVA_BUD, ModBlocks.GALVA_CLUSTER);
+                changeBud(!galvaCheck(world), randomCheck,world, blockState, blockPos, direction, ModBlocks.SMALL_GALVA_BUD, ModBlocks.MEDIUM_GALVA_BUD, ModBlocks.LARGE_GALVA_BUD, ModBlocks.GALVA_CLUSTER);
                 return;
             }
             return;
@@ -92,9 +92,9 @@ public class BuddingEndstoneBlock extends Block {
         return checklist;
     }
 
-    void changeBud(boolean recede, ServerWorld world, BlockState blockState, BlockPos blockPos, Direction direction, Block smallBud, Block mediumBud, Block largeBud, Block cluster) {
-        if(recede) recedeWithSet(world, blockState, blockPos, direction, smallBud, mediumBud, largeBud);
-        else growWithSet(world, blockState, blockPos, direction, smallBud, mediumBud, largeBud, cluster);
+    void changeBud(boolean canGrow, boolean recede, ServerWorld world, BlockState blockState, BlockPos blockPos, Direction direction, Block smallBud, Block mediumBud, Block largeBud, Block cluster) {
+        if (canGrow) growWithSet(world, blockState, blockPos, direction, smallBud, mediumBud, largeBud, cluster);
+        else if(recede) recedeWithSet(world, blockState, blockPos, direction, smallBud, mediumBud, largeBud);
     }
 
     void growWithSet(ServerWorld world, BlockState blockState, BlockPos blockPos, Direction direction, Block smallBud, Block mediumBud, Block largeBud, Block cluster) {

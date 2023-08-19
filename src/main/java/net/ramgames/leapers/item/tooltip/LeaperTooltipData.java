@@ -5,16 +5,18 @@ import net.minecraft.util.Identifier;
 
 public class LeaperTooltipData implements TooltipData {
 
-    private final Identifier coreTextureLocation;
-    private final Identifier handleTextureLocation;
-    private final Identifier fixtureTextureLocation;
-    private final Identifier crystalTextureLocation;
-    private final int[] coreCharges;
-    private final int[] handleDurability;
-    private final int[] fixtureTransmittance;
-    private final int[] crystalStability;
+    private Identifier coreTextureLocation;
+    private Identifier handleTextureLocation;
+    private Identifier fixtureTextureLocation;
+    private Identifier crystalTextureLocation;
+    private int[] coreCharges;
+    private int[] handleDurability;
+    private int[] fixtureTransmittance;
+    private int[] crystalStability;
 
+    private final boolean preview;
     public LeaperTooltipData(Identifier coreTextureLocation, Identifier handleTextureLocation, Identifier fixtureTextureLocation, Identifier crystalTextureLocation, int[] coreCharges, int[] handleDurability, int[] fixtureTransmittance, int[] crystalStability) {
+        this.preview = false;
         this.coreTextureLocation = coreTextureLocation;
         this.handleTextureLocation = handleTextureLocation;
         this.fixtureTextureLocation = fixtureTextureLocation;
@@ -24,6 +26,10 @@ public class LeaperTooltipData implements TooltipData {
         this.fixtureTransmittance = fixtureTransmittance;
         this.crystalStability = crystalStability;
     }
+    public LeaperTooltipData() {
+        this.preview = true;
+    }
+
 
     public Identifier getCoreTextureLocation() {
         return coreTextureLocation;
@@ -55,5 +61,9 @@ public class LeaperTooltipData implements TooltipData {
 
     public int[] getCrystalStability() {
         return crystalStability;
+    }
+
+    public boolean isPreview() {
+        return preview;
     }
 }

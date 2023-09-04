@@ -10,9 +10,8 @@ import net.minecraft.client.render.model.json.JsonUnbakedModel;
 import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.util.Identifier;
 import net.ramgames.leapers.Leapers;
-import net.ramgames.leapers.item.ModSeeds;
+import net.ramgames.leapers.items.ModSeeds;
 import net.ramgames.leapers.api.data.LeaperRegistries;
-import net.ramgames.leapers.api.data.LeaperRegistry;
 import net.ramgames.leapers.api.modules.Core;
 import net.ramgames.leapers.api.modules.Crystal;
 import net.ramgames.leapers.api.modules.Fixture;
@@ -43,47 +42,55 @@ public abstract class ModelLoaderMixin {
     private Map<Identifier, UnbakedModel> modelsToBake;
 
     @Unique
-    private final HashMap<String, JsonUnbakedModel> leaperVarients = new HashMap<>();
+    private final HashMap<String, JsonUnbakedModel> leaperVariants = new HashMap<>();
 
 
     @Inject(method = "getOrLoadModel", at = @At("HEAD"), cancellable = true)
     private void getOrLoadModelChecker(Identifier id, CallbackInfoReturnable<UnbakedModel> cir) {
-        if(leaperVarients.containsKey(id.getPath())) cir.setReturnValue(leaperVarients.get(id.getPath()));
+        if(leaperVariants.containsKey(id.getPath())) cir.setReturnValue(leaperVariants.get(id.getPath()));
     }
 
     @Inject(method = "addModel", at = @At("HEAD"))
     private void registerModels(ModelIdentifier modelId, CallbackInfo info) {
         if (!modelId.getNamespace().equals(Leapers.MOD_ID)) return;
         if (!modelId.getVariant().equals("inventory")) return;
-        if (!modelId.getPath().equals("leaper")) return;
-        LeaperRegistries.CORES.keySet().forEach(coreItem -> LeaperRegistries.HANDLES.keySet().forEach(handleItem -> LeaperRegistries.FIXTURES.keySet().forEach(fixtureItem -> LeaperRegistries.CRYSTALS.keySet().forEach(crystalItem -> {
-            Core core = LeaperRegistries.CORES.query(coreItem);
-            Handle handle = LeaperRegistries.HANDLES.query(handleItem);
-            Fixture fixture = LeaperRegistries.FIXTURES.query(fixtureItem);
-            Crystal crystal = LeaperRegistries.CRYSTALS.query(crystalItem);
-            float seed = ModSeeds.getOrGenModelSeed(coreItem.toString(), handleItem.toString(), fixtureItem.toString(), crystalItem.toString());
-            String path = "leaper_mg_" + seed;
-            ModelIdentifier identifier = new ModelIdentifier(new Identifier(Leapers.MOD_ID,path),"inventory");
-            JsonUnbakedModel jsonUnbakedModel = JsonUnbakedModel.deserialize(transformJson(() -> {
-                JsonObject object = new JsonObject();
-                object.addProperty("parent", "leapers:custom/light_leaper");
-                JsonObject textures = new JsonObject();
-                textures.addProperty("core", core.getLeaperTexture());
-                textures.addProperty("handle", handle.getLeaperTexture());
-                textures.addProperty("fixture", fixture.getLeaperTexture());
-                textures.addProperty("crystal", crystal.getLeaperTexture());
-                object.add("textures", textures);
+        if (modelId.getPath().equals("leaper")) registerLeaperModels();
+    }
 
-                return object;
-            }));
+    @Unique
+    private void registerLeaperModels() {
+        LeaperRegistries.CORES.getKeys().forEach(coreItem -> LeaperRegistries.HANDLES.getKeys().forEach(handleItem -> LeaperRegistries.FIXTURES.getKeys().forEach(fixtureItem -> LeaperRegistries.CRYSTALS.getKeys().forEach(crystalItem -> {
+                    Core core = LeaperRegistries.CORES.get(coreItem);
+                    Handle handle = LeaperRegistries.HANDLES.get(handleItem);
+                    Fixture fixture = LeaperRegistries.FIXTURES.get(fixtureItem);
+                    Crystal crystal = LeaperRegistries.CRYSTALS.get(crystalItem);
+                    float seed = ModSeeds.getOrGenModelSeed(
+                            LeaperRegistries.CORES.getId(core).toString(),
+                            LeaperRegistries.HANDLES.getId(handle).toString(),
+                            LeaperRegistries.FIXTURES.getId(fixture).toString(),
+                            LeaperRegistries.CRYSTALS.getId(crystal).toString());
+                    String path = "leaper_mg_" + seed;
+                    ModelIdentifier identifier = new ModelIdentifier(new Identifier(Leapers.MOD_ID,path),"inventory");
+                    JsonUnbakedModel jsonUnbakedModel = JsonUnbakedModel.deserialize(transformJson(() -> {
+                        JsonObject object = new JsonObject();
+                        object.addProperty("parent", "leapers:item/light_leaper");
+                        JsonObject textures = new JsonObject();
+                        textures.addProperty("core", core.getLeaperTexture().toString());
+                        textures.addProperty("handle", handle.getLeaperTexture().toString());
+                        textures.addProperty("fixture", fixture.getLeaperTexture().toString());
+                        textures.addProperty("crystal", crystal.getLeaperTexture().toString());
+                        object.add("textures", textures);
+
+                        return object;
+                    }));
 
 
-            this.unbakedModels.put(identifier, jsonUnbakedModel);
-            this.modelsToBake.put(identifier, jsonUnbakedModel);
-            this.leaperVarients.put(path, jsonUnbakedModel);
-        }
+                    this.unbakedModels.put(identifier, jsonUnbakedModel);
+                    this.modelsToBake.put(identifier, jsonUnbakedModel);
+                    this.leaperVariants.put(path, jsonUnbakedModel);
+                }
         ))));
-        LeaperRegistry.LOGGER.info("Registered {} unique leaper variants!", leaperVarients.size());
+        LeaperRegistries.LOGGER.info("Registered {} unique leaper variants!", leaperVariants.size());
     }
 
     @Unique

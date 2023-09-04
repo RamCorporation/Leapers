@@ -1,3 +1,6 @@
 {
-  "parent": "leapers:block/redstone_ray"
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "leapers:item/redstone_ray_item"
+  }
 }

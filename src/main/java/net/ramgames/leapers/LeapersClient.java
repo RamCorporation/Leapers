@@ -1,21 +1,18 @@
 package net.ramgames.leapers;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
-import net.ramgames.leapers.block.entity.ModBlockEntities;
-import net.ramgames.leapers.block.entity.client.CrystalInspectorBlockEntityRenderer;
+import net.ramgames.leapers.blocks.entity.client.ModBlockEntityRenderers;
 import net.ramgames.leapers.networking.ModMessages;
-import net.ramgames.leapers.screen.ModScreenManager;
+import net.ramgames.leapers.screens.ModScreenManager;
 
 public class LeapersClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
         ModMessages.registerS2CPackets();
-        BlockEntityRendererFactories.register(ModBlockEntities.CRYSTAL_INSPECTOR, CrystalInspectorBlockEntityRenderer::new);
+        ModBlockEntityRenderers.register();
         ModScreenManager.initScreenHandlers();
         ModScreenManager.initScreens();
-
     }
 
 

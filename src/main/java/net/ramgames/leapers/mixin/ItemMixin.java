@@ -11,10 +11,10 @@ import net.ramgames.leapers.api.modules.Core;
 import net.ramgames.leapers.api.modules.Crystal;
 import net.ramgames.leapers.api.modules.Fixture;
 import net.ramgames.leapers.api.modules.Handle;
-import net.ramgames.leapers.item.ModItems;
-import net.ramgames.leapers.item.custom.LeaperItem;
-import net.ramgames.leapers.item.tooltip.LeaperTooltipData;
-import net.ramgames.leapers.item.tooltip.SpyglassTooltipData;
+import net.ramgames.leapers.items.ModItems;
+import net.ramgames.leapers.items.custom.LeaperItem;
+import net.ramgames.leapers.items.tooltip.LeaperTooltipData;
+import net.ramgames.leapers.items.tooltip.SpyglassTooltipData;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -43,10 +43,10 @@ public class ItemMixin {
             cir.setReturnValue(Optional.of(new LeaperTooltipData()));
             return;
         }
-        Core core = LeaperRegistries.CORES.query(new Identifier(nbt.getString("Core")));
-        Handle handle = LeaperRegistries.HANDLES.query(new Identifier(nbt.getString("Handle")));
-        Fixture fixture = LeaperRegistries.FIXTURES.query(new Identifier(nbt.getString("Fixture")));
-        Crystal crystal = LeaperRegistries.CRYSTALS.query(new Identifier(nbt.getString("Crystal")));
+        Core core = LeaperRegistries.CORES.get(new Identifier(nbt.getString("Core")));
+        Handle handle = LeaperRegistries.HANDLES.get(new Identifier(nbt.getString("Handle")));
+        Fixture fixture = LeaperRegistries.FIXTURES.get(new Identifier(nbt.getString("Fixture")));
+        Crystal crystal = LeaperRegistries.CRYSTALS.get(new Identifier(nbt.getString("Crystal")));
         if(core == null || handle == null || fixture == null || crystal == null) {
             cir.setReturnValue(Optional.of(new LeaperTooltipData()));
             return;

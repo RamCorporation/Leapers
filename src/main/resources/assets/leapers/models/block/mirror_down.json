@@ -1,7 +1,0 @@
-{
-  "parent": "leapers:custom/mirror_down",
-  "textures": {
-    "particles": "minecraft:block/dark_oak_log",
-    "mapping": "leapers:block/mirror/mirror_down"
-  }
-}

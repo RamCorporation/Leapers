@@ -10,9 +10,9 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import net.ramgames.leapers.Leapers;
-import net.ramgames.leapers.item.ModSeeds;
-import net.ramgames.leapers.item.ModItems;
-import net.ramgames.leapers.item.custom.LeaperItem;
+import net.ramgames.leapers.items.ModItems;
+import net.ramgames.leapers.items.ModSeeds;
+import net.ramgames.leapers.items.custom.LeaperItem;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -47,7 +47,13 @@ public abstract class ItemRendererMixin {
 
     @Inject(method = "getModel", at=@At("HEAD"), cancellable = true)
     private void getModelOverrides(ItemStack stack, @Nullable World world, @Nullable LivingEntity entity, int seed, CallbackInfoReturnable<BakedModel> cir) {
-        if(stack.getItem() != ModItems.LEAPER) return;
+        if(stack.getItem() == ModItems.LEAPER) leaperOverrides(stack, cir);
+
+    }
+
+
+    @Unique
+    private void leaperOverrides(ItemStack stack, CallbackInfoReturnable<BakedModel> cir) {
         if(stack.getNbt() == null) return;
         NbtCompound nbt = stack.getNbt();
         if(!LeaperItem.containsProperNbt(nbt)) return;

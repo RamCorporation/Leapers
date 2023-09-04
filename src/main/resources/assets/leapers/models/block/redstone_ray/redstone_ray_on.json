@@ -1,0 +1,7 @@
+{
+  "parent": "leapers:block/redstone_ray/redstone_ray",
+  "textures": {
+    "base": "block/repeater_on",
+    "torch": "block/redstone_torch"
+  }
+}

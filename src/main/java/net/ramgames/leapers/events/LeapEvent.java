@@ -13,13 +13,13 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class LeapEvent{
-    public static TypedActionResult<ItemStack> start(PlayerEntity player, World world, Hand hand) {
-        if (!world.isClient() && hand == Hand.MAIN_HAND) {
-            ItemStack MH_STACK = player.getStackInHand(Hand.MAIN_HAND);
+public interface LeapEvent{
+    static TypedActionResult<ItemStack> start(PlayerEntity player, World world, Hand hand) {
+        ItemStack stack = player.getStackInHand(hand);
+        if (!world.isClient()) {
             player.sendMessage(Text.of("redo leaper procedure"));
         }
-        return TypedActionResult.pass(ItemStack.EMPTY);
+        return TypedActionResult.success(stack);
     }
     private static void AerisType(PlayerEntity player, World world, Hand hand){
         if(player.getItemCooldownManager().isCoolingDown(player.getMainHandStack().getItem())) return;

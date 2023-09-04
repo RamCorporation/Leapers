@@ -1,12 +1,10 @@
 {
   "replace": false,
   "values": [
-    "leapers:cache",
-    "leapers:disleaper",
     "leapers:crystal_inspector",
     "leapers:mirror",
     "leapers:redstone_ray",
-    "leapers:leap_pad",
+    "leapers:leap_stone",
     "leapers:budding_endstone",
     "leapers:small_fervis_bud",
     "leapers:small_umber_bud",

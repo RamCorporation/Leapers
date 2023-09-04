@@ -1,6 +1,7 @@
 package net.ramgames.leapers.events;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
 
@@ -11,5 +12,9 @@ public class RegisterEvents {
         UseBlockCallback.EVENT.register(PlaceRedstoneRayEvent::start);
 
         ServerTickEvents.START_WORLD_TICK.register(SpectralCrystalCraftEvent::start);
+
+        PlayerBlockBreakEvents.AFTER.register(BlockBreakEvent::start);
+
     }
+
 }

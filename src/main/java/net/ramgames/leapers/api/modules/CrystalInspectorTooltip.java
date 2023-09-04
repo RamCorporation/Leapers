@@ -7,7 +7,7 @@ import net.ramgames.leapers.api.data.Entries;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CrystalInspectorTooltip extends Entries.CrystalInspectorEntry{
+public class CrystalInspectorTooltip extends Entries.CrystalInspectorEntry {
     private CrystalInspectorTooltip(List<List<Pair<String, Formatting>>> rawTooltip) {
         super(rawTooltip);
     }

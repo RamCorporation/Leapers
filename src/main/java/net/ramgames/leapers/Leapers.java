@@ -1,13 +1,13 @@
 package net.ramgames.leapers;
 
 import net.fabricmc.api.ModInitializer;
-import net.ramgames.leapers.block.ModBlocks;
-import net.ramgames.leapers.block.entity.ModBlockEntities;
+import net.ramgames.leapers.blocks.ModBlocks;
+import net.ramgames.leapers.blocks.entity.ModBlockEntities;
 import net.ramgames.leapers.events.RegisterEvents;
-import net.ramgames.leapers.item.ModCrystalInspectorTooltips;
-import net.ramgames.leapers.item.ModItemGroups;
-import net.ramgames.leapers.item.ModItems;
-import net.ramgames.leapers.item.ModLeaperComponents;
+import net.ramgames.leapers.items.ModCrystalInspectorTooltips;
+import net.ramgames.leapers.items.ModItemGroups;
+import net.ramgames.leapers.items.ModItems;
+import net.ramgames.leapers.items.ModLeaperComponents;
 import net.ramgames.leapers.networking.ModMessages;
 import net.ramgames.leapers.recipes.RegisterRecipeTypes;
 import org.slf4j.Logger;

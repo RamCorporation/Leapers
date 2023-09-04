@@ -5,7 +5,7 @@ import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.math.BlockPos;
-import net.ramgames.leapers.block.entity.CrystalInspectorBlockEntity;
+import net.ramgames.leapers.blocks.entity.CrystalInspectorBlockEntity;
 
 public class ItemStackSyncS2CPacket {
 

@@ -1,6 +1,0 @@
-{
-  "parent": "leapers:custom/leaption_block",
-  "textures": {
-    "mapping": "leapers:block/cache"
-  }
-}

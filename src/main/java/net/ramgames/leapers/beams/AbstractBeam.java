@@ -7,8 +7,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkSectionPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
-import net.ramgames.leapers.block.ModBlocks;
-import net.ramgames.leapers.block.custom.MirrorDirections;
+import net.ramgames.leapers.blocks.ModBlocks;
+import net.ramgames.leapers.blocks.custom.MirrorStances;
 
 public abstract class AbstractBeam {
     private final BlockPos pos;
@@ -57,7 +57,7 @@ public abstract class AbstractBeam {
     }
     private Direction MirrorUpdate(BlockState state, Direction direction) {
         Direction sDirection = state.get(DirectionProperty.of("facing"));
-        switch(state.get(EnumProperty.of("pointing", MirrorDirections.class))) {
+        switch(state.get(EnumProperty.of("pointing", MirrorStances.class))) {
             case UP -> {
                 if(sDirection == direction.getOpposite()) {
                     return Direction.UP;

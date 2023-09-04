@@ -1,28 +1,28 @@
 {
   "variants": {
     "facing=down": {
-      "model": "leapers:block/medium_memoria_bud",
+      "model": "leapers:block/medium_buds/medium_memoria_bud",
       "x": 180
     },
     "facing=east": {
-      "model": "leapers:block/medium_memoria_bud",
+      "model": "leapers:block/medium_buds/medium_memoria_bud",
       "x": 90,
       "y": 90
     },
     "facing=north": {
-      "model": "leapers:block/medium_memoria_bud",
+      "model": "leapers:block/medium_buds/medium_memoria_bud",
       "x": 90
     },
     "facing=south": {
-      "model": "leapers:block/medium_memoria_bud",
+      "model": "leapers:block/medium_buds/medium_memoria_bud",
       "x": 90,
       "y": 180
     },
     "facing=up": {
-      "model": "leapers:block/medium_memoria_bud"
+      "model": "leapers:block/medium_buds/medium_memoria_bud"
     },
     "facing=west": {
-      "model": "leapers:block/medium_memoria_bud",
+      "model": "leapers:block/medium_buds/medium_memoria_bud",
       "x": 90,
       "y": 270
     }

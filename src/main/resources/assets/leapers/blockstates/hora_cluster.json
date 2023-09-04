@@ -1,28 +1,28 @@
 {
   "variants": {
     "facing=down": {
-      "model": "leapers:block/hora_cluster",
+      "model": "leapers:block/clusters/hora_cluster",
       "x": 180
     },
     "facing=east": {
-      "model": "leapers:block/hora_cluster",
+      "model": "leapers:block/clusters/hora_cluster",
       "x": 90,
       "y": 90
     },
     "facing=north": {
-      "model": "leapers:block/hora_cluster",
+      "model": "leapers:block/clusters/hora_cluster",
       "x": 90
     },
     "facing=south": {
-      "model": "leapers:block/hora_cluster",
+      "model": "leapers:block/clusters/hora_cluster",
       "x": 90,
       "y": 180
     },
     "facing=up": {
-      "model": "leapers:block/hora_cluster"
+      "model": "leapers:block/clusters/hora_cluster"
     },
     "facing=west": {
-      "model": "leapers:block/hora_cluster",
+      "model": "leapers:block/clusters/hora_cluster",
       "x": 90,
       "y": 270
     }

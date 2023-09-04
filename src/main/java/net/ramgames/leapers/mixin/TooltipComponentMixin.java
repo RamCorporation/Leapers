@@ -2,10 +2,10 @@ package net.ramgames.leapers.mixin;
 
 import net.minecraft.client.gui.tooltip.TooltipComponent;
 import net.minecraft.client.item.TooltipData;
-import net.ramgames.leapers.item.tooltip.LeaperTooltipComponent;
-import net.ramgames.leapers.item.tooltip.LeaperTooltipData;
-import net.ramgames.leapers.item.tooltip.SpyglassTooltipComponent;
-import net.ramgames.leapers.item.tooltip.SpyglassTooltipData;
+import net.ramgames.leapers.items.tooltip.LeaperTooltipComponent;
+import net.ramgames.leapers.items.tooltip.LeaperTooltipData;
+import net.ramgames.leapers.items.tooltip.SpyglassTooltipComponent;
+import net.ramgames.leapers.items.tooltip.SpyglassTooltipData;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

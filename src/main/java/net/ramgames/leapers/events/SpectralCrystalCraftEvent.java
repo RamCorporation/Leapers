@@ -8,15 +8,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.Vec3d;
-import net.ramgames.leapers.item.ModItems;
+import net.ramgames.leapers.items.ModItems;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-public class SpectralCrystalCraftEvent {
-    protected static void start(ServerWorld world) {
+public interface SpectralCrystalCraftEvent {
+    static void start(ServerWorld world) {
         List<LightningEntity> bolts = new ArrayList<>();
         List<ItemEntity> items = new ArrayList<>();
         for(Entity entity: world.iterateEntities()) {

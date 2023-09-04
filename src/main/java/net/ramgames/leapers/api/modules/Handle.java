@@ -1,12 +1,13 @@
 package net.ramgames.leapers.api.modules;
 
+import net.minecraft.util.Identifier;
 import net.ramgames.leapers.api.data.Entries;
 
 public class Handle extends Entries.LeaperEntry {
     private final int maxRange;
     private final int maxDurability;
-    public Handle(String leaperTexture, String tooltipTexture, int maxRange, int maxDurability) {
-        super(leaperTexture, tooltipTexture);
+    public Handle(Identifier leaperTexture, Identifier tooltipTexture, int maxRange, int maxDurability) {
+        super(leaperTexture, tooltipTexture, null);
         this.maxRange = maxRange;
         this.maxDurability = maxDurability;
     }

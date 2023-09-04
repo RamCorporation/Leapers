@@ -28,7 +28,6 @@
   "item.leapers.quartz_fixture": "Quartz Fixture",
 
   "itemGroup.leapers.leaper_group": "Light Leapers",
-  "item.leapers.enforcer": "Enforcer",
 
   "item.leapers.leaper": "Leaper",
 
@@ -65,11 +64,14 @@
   "block.leapers.large_hora_bud": "Large Hora Bud",
 
   "block.leapers.disleaper": "Disleaper",
-  "block.leapers.cache": "Cache",
 
   "block.leapers.crystal_inspector": "Crystal Inspector",
   "block.leapers.mirror": "Mirror",
   "block.leapers.redstone_ray": "Redstone Ray",
-  "block.leapers.leap_pad": "Leap Pad",
-  "block.leapers.budding_endstone": "Budding Endstone"
+  "block.leapers.leap_stone": "Leap Stone",
+  "block.leapers.budding_endstone": "Budding Endstone",
+
+  "block.leapers.crystallized_sculk": "Crystallized Sculk",
+  "block.leapers.sandy_cluster": "Sandy Cluster"
+
 }

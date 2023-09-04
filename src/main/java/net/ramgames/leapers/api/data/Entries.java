@@ -5,6 +5,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
 
 import java.util.ArrayList;
@@ -13,25 +14,31 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class Entries {
-    static public abstract class LeaperEntry extends Entries {
-        private final String leaperTexture;
-        private final String tooltipTexture;
+    static public abstract class LeaperEntry {
+        private final Identifier leaperTexture;
+        private final Identifier tooltipTexture;
 
-        public LeaperEntry(String leaperTexture, String tooltipTexture) {
+        private final Identifier leapStoneTexture;
+
+        public LeaperEntry(Identifier leaperTexture, Identifier tooltipTexture, Identifier leapStoneTexture) {
             this.leaperTexture = leaperTexture;
             this.tooltipTexture = tooltipTexture;
+            this.leapStoneTexture = leapStoneTexture;
         }
 
-        public String getLeaperTexture() {
+        public Identifier getLeaperTexture() {
             return leaperTexture;
         }
 
-        public String getTooltipTexture() {
+        public Identifier getTooltipTexture() {
             return tooltipTexture;
         }
 
+        public Identifier getLeapStoneTexture() {
+            return leapStoneTexture;
+        }
     }
-    static public abstract class CrystalInspectorEntry extends Entries {
+    static public abstract class CrystalInspectorEntry {
         private final List<List<Pair<String, Formatting>>> rawTooltip;
         public CrystalInspectorEntry(List<List<Pair<String, Formatting>>> rawTooltip) {
             this.rawTooltip = rawTooltip;

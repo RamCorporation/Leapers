@@ -1,40 +1,54 @@
-# Light Leapers Mod
+<div style="text-align: center;">
+<img src="logo.png"  alt="Munchables Logo">
+<br>
+<img src="RamCorpProductLogo.png"  alt="RamCorp Logo" height="50">
+<h2>
+<b>A simple transportation mod designed let the player travel via light </b>
+</h2>
+<br>
+<a href="">
+<img alt="modrinth" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg">
+</a>
+<a href="">
+<img alt="discord-singular" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy-minimal/social/discord-singular_vector.svg">
+</a>
+<a href="https://github.com/ramGemes/Munchables">
+<img alt="github" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/github_vector.svg">
+</a>
 
-## Description
+<br>
+<img alt="fabric" height="40" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/supported/fabric_vector.svg">
+<img alt="forge" height="40" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/unsupported/forge_vector.svg">
+</div>
 
-A transportation mod by RamGaming and SandSyR that allows the player to harness the power of light to travel across the world. This mod's original inspiration came from the pathfinder concept from the book series "Keeper of the Lost Cities".
+## Inspiration
 
-## Questions you may have
+---
+This mod was originally inspired by the pathfinder concept as seen in the book series "keeper of the Lost Cities". From there, it has been adapted to be more balanced for Minecraft gameplay.
+
+
+## Goal
+
+---
+The goal of Leapers is to provide a more balanced transportation mod alternative to the way-stone mods.
+
+## FAQ
+
+---
+### How do I download the mod?
+
+- To download an official release of the mod, please head over to the Modrinth page link ~~here~~. *(no official releases are available)*
+- To download a commit build, or pre-release, go to the repository packages.
 
 ### Will this mod be available for forge?
 
-This is still up for debate with the team. Further information will be announced shortly after the initial release.
+No. As shown in the tags above, this mod will never be official supported for forge.
 
-### Will this mod be available for Minecraft 1.19 and before?
+### Will this mod be back-ported to previous version?
 
-Most likely not. Further information on back-porting will be announced shortly after the initial release.
-
-### I found a bug! What do I do?
-
-Head over to the issues tab and create an issue report. I will get on top of it as soon as I can!
-
-### Could you add ______ to the mod?
-
-Maybe! Create a pull request or msg me on discord (@Ramixin) with your idea!
-
-## Setup
-
-As of the current commit, the first pre-alpha release has been put out. However, it is always suggested to build the mod yourself for the newest features
-
-### How to build the project
-Note: these instructions are for Windows. For Mac or Linux, you will have to search elsewhere 
-
-1. Download the .zip of the latest commit (make sure the commit is valid and can be built. There will be an X next to the name of the commit if otherwise)
-2. Unzip the file
-3. Click on folder address bar and type cmd
-4. Once the command prompt appears, type `gradlew build` (NOTE: you may need to update your java or other applications before it will let you build)
-5. Wait for the build to finish. When done, the mod can be found in FOLDER/libs/build. The mod is the .jar with the shortest name.
+No. This mod will only support the newest version of Minecraft. However, old stable versions of the mod will be archived that do support older version of Minecraft.
 
 ## License 
 
+---
 This project is under the MIT license

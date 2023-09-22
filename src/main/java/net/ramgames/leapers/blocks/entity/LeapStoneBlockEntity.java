@@ -12,8 +12,8 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
-import net.ramgames.leapers.screens.ImplementedInventory;
-import net.ramgames.leapers.screens.leapStone.LeapStoneScreenHandler;
+import net.ramgames.leapers.blocks.ImplementedInventory;
+import net.ramgames.leapers.screenhandlers.LeapStoneScreenHandler;
 import org.jetbrains.annotations.Nullable;
 
 public class LeapStoneBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {

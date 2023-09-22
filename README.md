@@ -1,4 +1,4 @@
-<div style="text-align: center;">
+<div> <center>
 <img src="logo.png"  alt="Munchables Logo">
 <br>
 <img src="RamCorpProductLogo.png"  alt="RamCorp Logo" height="50">
@@ -19,7 +19,7 @@
 <br>
 <img alt="fabric" height="40" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/supported/fabric_vector.svg">
 <img alt="forge" height="40" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/unsupported/forge_vector.svg">
-</div>
+</center></div>
 
 ## Inspiration
 

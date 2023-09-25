@@ -1,16 +1,21 @@
 package net.ramgames.leapers.items.custom;
 
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Vanishable;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.Text;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.ramgames.leapers.Leapers;
+import net.ramgames.leapers.leaption.LeaptionManager;
 import net.ramgames.leapers.leaption.api.data.LeaperRegistries;
 import net.ramgames.leapers.leaption.api.modules.Core;
 import net.ramgames.leapers.leaption.api.modules.Crystal;
@@ -58,10 +63,10 @@ public class LeaperItem extends Item implements Vanishable {
     }
 
     public static boolean containsImproperNbt(NbtCompound nbt) {
-        return nbt == null || !nbt.contains("Core") || !nbt.contains("Handle") || !nbt.contains("Fixture") || !nbt.contains("Crystal");
+        return nbt == null || !nbt.contains("Core") || !nbt.contains("Handle") || !nbt.contains("Fixture") || !nbt.contains("Crystal") || !nbt.contains("Specifications");
     }
-    public static Optional<int[]> getCrystalDeltas(NbtCompound nbt) {
-        return Optional.ofNullable(nbt.getIntArray("CrystalDeltas"));
+    public static Optional<int[]> getCrystalSpecifications(NbtCompound nbt) {
+        return Optional.ofNullable(nbt.getIntArray("Specifications"));
     }
 
     public static Optional<Core> getCoreEntry(NbtCompound nbt) {
@@ -81,18 +86,5 @@ public class LeaperItem extends Item implements Vanishable {
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         super.appendTooltip(stack, world, tooltip, context);
     }
-
-    @Override
-    public int getMaxUseTime(ItemStack stack) {
-        if(containsImproperNbt(stack.getNbt())) return 0;
-        Leapers.LOGGER.info(String.valueOf(getCoreEntry(stack.getNbt()).get().getDischargeTime()));
-        return getCoreEntry(stack.getNbt()).get().getDischargeTime();
-    }
-
-    @Override
-    public UseAction getUseAction(ItemStack stack) {
-        return UseAction.SPEAR;
-    }
-
 
 }

@@ -1,10 +1,15 @@
 package net.ramgames.leapers.leaption;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.PlayerManager;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 import net.ramgames.leapers.Leapers;
@@ -19,77 +24,42 @@ import net.ramgames.leapers.leaption.api.modules.Handle;
 import java.util.HashMap;
 import java.util.UUID;
 
+
 public class LeaptionManager {
 
     public static final LeaptionManager INSTANCE = new LeaptionManager();
 
-    private final HashMap<UUID, Integer> leapGhostEntries = new HashMap<>();
+    private LeaptionManager() {}
 
     private final HashMap<UUID, Leaption> leaptionEntries = new HashMap<>();
 
 
+    public void tick(MinecraftServer server) {
+        PlayerManager playerManager = server.getPlayerManager();
+        leaptionEntries.forEach((uuid, leaption) -> {
 
-    public void tickOrCreate(World world, PlayerEntity player) {
-        UUID playerUUID = player.getUuid();
-        if(leaptionEntries.containsKey(playerUUID)) {
-            leaptionEntries.get(playerUUID).tick(player.getBlockPos());
-            if(world.getEntityById(leapGhostEntries.get(playerUUID)) instanceof LeapGhostEntity leapGhostEntity) {
-                updateLeapGhostEntity(leapGhostEntity, player);
-            }
-            return;
-        }
-        LeapGhostEntity leapGhostEntity = new LeapGhostEntity(world, player);
-        leapGhostEntries.put(playerUUID, leapGhostEntity.getId());
-        ItemStack leaperStack = player.getMainHandStack();
-        if(leaperStack.getItem() != ModItems.LEAPER) throw new IllegalStateException("Item used was not a leaper!");
-        if(LeaperItem.containsImproperNbt(leaperStack.getNbt())) throw new IllegalStateException("Improper NBT found");
-        NbtCompound nbt = leaperStack.getNbt();
-        Core core = LeaperItem.getCoreEntry(nbt).orElseThrow();
-        Handle handle = LeaperItem.getHandleEntry(nbt).orElseThrow();
-        Fixture fixture = LeaperItem.getFixtureEntry(nbt).orElseThrow();
-        Crystal crystal = LeaperItem.getCrystalEntry(nbt).orElseThrow();
-        int[] crystalDeltas = LeaperItem.getCrystalDeltas(nbt).orElseThrow();
-        Leaption leaption = new Leaption(playerUUID, leapGhostEntity.getUuid(), player.getBlockPos(), crystal.getType(), fixture.getType(), crystalDeltas[0],crystalDeltas[1], core.getDischargeTime());
-        leaptionEntries.put(playerUUID, leaption);
-        updateLeapGhostEntity(leapGhostEntity, player);
-        world.spawnEntity(leapGhostEntity);
+            leaption.tick(playerManager.getPlayer(uuid));
+        });
     }
 
-    public Leaption getLeaption(UUID uuid) {
-        return leaptionEntries.get(uuid);
+    public boolean isPlayerLeaping(UUID uuid) {
+        return leaptionEntries.containsKey(uuid);
     }
 
-    public boolean isLeaping(UUID playerUUID) {
-        //Leapers.LOGGER.info(String.valueOf(leaptionEntries.containsKey(playerUUID)));
-        return leaptionEntries.containsKey(playerUUID);
+    public void createLeaption(MinecraftServer server, ServerPlayerEntity player, LeapGhostEntity leapGhostEntity, Leaption leaption) {
+        player.getServerWorld().spawnEntity(leapGhostEntity);
+        leaptionEntries.put(player.getUuid(), leaption);
+        tick(server);
     }
 
-    public void cancelLeap(World world, PlayerEntity player) {
-        Leapers.LOGGER.info("canceling!");
-        UUID playerUUID = player.getUuid();
-        if(isLeaping(playerUUID)) {
-            if(world.getEntityById(leapGhostEntries.get(playerUUID)) != null) world.getEntityById(leapGhostEntries.get(playerUUID)).remove(Entity.RemovalReason.DISCARDED);
-            leapGhostEntries.remove(playerUUID);
-            leaptionEntries.remove(playerUUID);
-        }
+    public void handleShutdown(MinecraftServer server) {
+        PlayerManager playerManager = server.getPlayerManager();
+        leaptionEntries.forEach((uuid, leaption) -> cancelLeaption(server, playerManager.getPlayer(uuid)));
     }
 
-    public void handleShutdown(ServerWorld world) {
-        Leapers.LOGGER.info("Stopping LeaptionManager");
-        leapGhostEntries.values().forEach(leapGhostId -> world.getEntityById(leapGhostId).remove((Entity.RemovalReason.DISCARDED)));
+    public void cancelLeaption(MinecraftServer server, ServerPlayerEntity serverPlayer) {
+        Entity entity = ((ServerWorld) serverPlayer.getWorld()).getEntity(leaptionEntries.get(serverPlayer.getUuid()).getLeapGhostUUID());
+        if(entity != null) entity.remove(Entity.RemovalReason.DISCARDED);
+        leaptionEntries.remove(serverPlayer.getUuid());
     }
-
-    private void updateLeapGhostEntity(LeapGhostEntity leapGhostEntity, PlayerEntity player) {
-        leapGhostEntity.setPosition(leaptionEntries.get(player.getUuid()).getBeamPos());
-        leapGhostEntity.equipStack(EquipmentSlot.HEAD, player.getEquippedStack(EquipmentSlot.HEAD));
-        leapGhostEntity.equipStack(EquipmentSlot.CHEST, player.getEquippedStack(EquipmentSlot.CHEST));
-        leapGhostEntity.equipStack(EquipmentSlot.LEGS, player.getEquippedStack(EquipmentSlot.LEGS));
-        leapGhostEntity.equipStack(EquipmentSlot.FEET, player.getEquippedStack(EquipmentSlot.FEET));
-        leapGhostEntity.equipStack(EquipmentSlot.MAINHAND, player.getEquippedStack(EquipmentSlot.MAINHAND));
-        leapGhostEntity.equipStack(EquipmentSlot.OFFHAND, player.getEquippedStack(EquipmentSlot.OFFHAND));
-        leapGhostEntity.setYaw(player.getYaw());
-        leapGhostEntity.setPitch(player.getPitch());
-    }
-
-
 }

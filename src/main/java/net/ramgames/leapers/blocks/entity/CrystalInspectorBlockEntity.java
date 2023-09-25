@@ -22,7 +22,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.ramgames.leapers.ModServerNetworking;
+import net.ramgames.leapers.ModNetworking;
 import net.ramgames.leapers.blocks.ImplementedInventory;
 import net.ramgames.leapers.screenhandlers.CrystalInspectorScreenHandler;
 import org.jetbrains.annotations.Nullable;
@@ -77,7 +77,7 @@ public class CrystalInspectorBlockEntity extends BlockEntity implements NamedScr
             data.writeBlockPos(getPos());
             data.writeItemStack(this.inventory.get(0));
             for(ServerPlayerEntity player : PlayerLookup.tracking((ServerWorld) getWorld(), getPos())) {
-                ServerPlayNetworking.send(player, ModServerNetworking.ITEM_SYNC, data);
+                ServerPlayNetworking.send(player, ModNetworking.ITEM_SYNC, data);
             }
         }
         super.markDirty();

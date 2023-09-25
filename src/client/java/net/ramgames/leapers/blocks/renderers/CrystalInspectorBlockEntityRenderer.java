@@ -1,4 +1,4 @@
-package net.ramgames.leapers.blocks.entity.client;
+package net.ramgames.leapers.blocks.renderers;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;

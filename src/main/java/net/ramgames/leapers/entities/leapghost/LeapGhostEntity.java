@@ -8,9 +8,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Arm;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
+import net.ramgames.leapers.Leapers;
 import net.ramgames.leapers.entities.ModServerEntities;
 import org.jetbrains.annotations.NotNull;
 
@@ -87,14 +89,43 @@ public class LeapGhostEntity extends LivingEntity {
 
     @Override
     public void equipStack(EquipmentSlot slot, ItemStack stack) {
-        if(slot == EquipmentSlot.MAINHAND) main.set(0, stack);
-        if(slot == EquipmentSlot.OFFHAND) offHand.set(0, stack);
-        armor.set(slot.getEntitySlotId(), stack);
+        if(slot == EquipmentSlot.MAINHAND) {
+            main.set(0, stack);
+            return;
+        }
+        if(slot == EquipmentSlot.OFFHAND) {
+            offHand.set(0, stack);
+            return;
+        }
+        armor.set(Math.abs(slot.getArmorStandSlotId() - 4), stack);
     }
 
     @Override
     public Arm getMainArm() {
         if(player == null) return Arm.RIGHT;
         return player.getMainArm();
+    }
+
+
+
+    @Override
+    public boolean isInvulnerable() {
+        return true;
+    }
+
+    @Override
+    public boolean hasNoGravity() {
+        return true;
+    }
+
+    public void updateGhostAppearance(ServerPlayerEntity player) {
+        this.equipStack(EquipmentSlot.HEAD, player.getEquippedStack(EquipmentSlot.HEAD));
+        this.equipStack(EquipmentSlot.CHEST, player.getEquippedStack(EquipmentSlot.CHEST));
+        this.equipStack(EquipmentSlot.LEGS, player.getEquippedStack(EquipmentSlot.LEGS));
+        this.equipStack(EquipmentSlot.FEET, player.getEquippedStack(EquipmentSlot.FEET));
+        this.equipStack(EquipmentSlot.MAINHAND, player.getEquippedStack(EquipmentSlot.MAINHAND));
+        this.equipStack(EquipmentSlot.OFFHAND, player.getEquippedStack(EquipmentSlot.OFFHAND));
+        //this.setYaw(player.getYaw());
+        //this.setPitch(player.getPitch());
     }
 }

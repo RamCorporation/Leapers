@@ -34,10 +34,6 @@ public abstract class ItemMixin {
 
     @Unique
     private void getLeaperTooltip(ItemStack stack, CallbackInfoReturnable<Optional<TooltipData>> cir) {
-        if(stack.getNbt() == null) {
-            cir.setReturnValue(Optional.of(new LeaperTooltipData()));
-            return;
-        }
         NbtCompound nbt = stack.getNbt();
         if(LeaperItem.containsImproperNbt(nbt)) {
             cir.setReturnValue(Optional.of(new LeaperTooltipData()));

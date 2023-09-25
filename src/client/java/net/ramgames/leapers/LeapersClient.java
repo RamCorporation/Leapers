@@ -1,17 +1,26 @@
 package net.ramgames.leapers;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.ramgames.leapers.blocks.ModBlockRenderLayers;
-import net.ramgames.leapers.events.HudRenderEvent;
+import net.ramgames.leapers.entities.leapghost.ModClientEntities;
+import net.ramgames.leapers.events.ClientTickEvent;
+import net.ramgames.leapers.packets.ChangeGhostPoseS2CPacket;
+import net.ramgames.leapers.packets.ItemStackSyncS2CPacket;
+import net.ramgames.leapers.packets.LeaptionAgreementS2CPacket;
 import net.ramgames.leapers.screens.ModScreens;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static net.ramgames.leapers.ModNetworking.*;
 import static net.ramgames.leapers.blocks.ModBlocks.*;
 
 public class LeapersClient implements ClientModInitializer {
 
+	@Environment(value = EnvType.CLIENT)
 	public static final Logger LOGGER = LoggerFactory.getLogger("Leapers Client");
 
 	@Override
@@ -19,9 +28,17 @@ public class LeapersClient implements ClientModInitializer {
 
 		ModLeaperComponents.register();
 		ModCrystalInspectorTooltips.onInitialize();
-		HudRenderCallback.EVENT.register(HudRenderEvent::start);
-		ModClientNetworking.registerS2CPackets();
+		ModClientEntities.register();
+
+		//HudRenderCallback.EVENT.register(HudRenderEvent::start);
+		ClientTickEvents.END_CLIENT_TICK.register(ClientTickEvent::start);
+
+		ClientPlayNetworking.registerGlobalReceiver(ITEM_SYNC, ItemStackSyncS2CPacket::receive);
+		ClientPlayNetworking.registerGlobalReceiver(LEAPTION_AGREEMENT, LeaptionAgreementS2CPacket::receive);
+		ClientPlayNetworking.registerGlobalReceiver(CHANGE_GHOST_POSE, ChangeGhostPoseS2CPacket::receive);
+
 		ModScreens.register();
+
 		ModBlockRenderLayers.registerNonFull(
 				SMALL_FERVIS_BUD,
 				SMALL_UMBER_BUD,

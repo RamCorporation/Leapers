@@ -5,13 +5,15 @@ import net.minecraft.client.model.Dilation;
 import net.minecraft.client.model.ModelData;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.model.TexturedModelData;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
+import net.ramgames.leapers.leaption.ClientLeaptionManager;
 
 public class LeapGhostModel extends BipedEntityModel<LeapGhostEntity> {
     public LeapGhostModel(ModelPart root) {
-        super(root);
+        super(root, RenderLayer::getEntityTranslucent);
     }
 
     @Override

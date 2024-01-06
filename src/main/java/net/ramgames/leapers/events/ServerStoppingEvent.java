@@ -6,6 +6,6 @@ import net.ramgames.leapers.leaption.LeaptionManager;
 
 public class ServerStoppingEvent {
     public static void start(MinecraftServer server) {
-        //LeaptionManager.INSTANCE.handleShutdown(server);
+        LeaptionManager.INSTANCE.handleShutdown(server);
     }
 }

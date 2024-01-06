@@ -68,6 +68,8 @@ public class ModBlocks {
     public static final Block REDSTONE_RAY = registerBlock("redstone_ray",new RedstoneRayBlock(FabricBlockSettings.copyOf(Blocks.REPEATER).nonOpaque()), ModItemGroups.LEAPER_GROUP);
     public static final Block MIRROR = registerBlock("mirror",new MirrorBlock(FabricBlockSettings.copyOf(Blocks.GLASS).nonOpaque()), ModItemGroups.LEAPER_GROUP);
 
+    public static final Block FUSION_TABLE = registerBlock("fusion_table", new FusionTableBlock(FabricBlockSettings.copyOf(Blocks.LIGHTNING_ROD)), ModItemGroups.LEAPER_GROUP);
+
     private static void registerBlockItem(String name, Block block, ItemGroup tab) {
         Item item = Registry.register(Registries.ITEM, new Identifier(Leapers.MOD_ID,name), new BlockItem(block, new FabricItemSettings()));
         if(tab != null) ModItemGroups.appendToTab(item,tab);

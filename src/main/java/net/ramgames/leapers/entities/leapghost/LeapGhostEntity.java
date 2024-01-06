@@ -3,6 +3,7 @@ package net.ramgames.leapers.entities.leapghost;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.listener.ClientPlayPacketListener;
@@ -12,7 +13,6 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Arm;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
-import net.ramgames.leapers.Leapers;
 import net.ramgames.leapers.entities.ModServerEntities;
 import org.jetbrains.annotations.NotNull;
 
@@ -43,6 +43,18 @@ public class LeapGhostEntity extends LivingEntity {
         armor = DefaultedList.ofSize(4);
         player.getArmorItems().forEach(armor::add);
     }
+
+    @Override
+    public boolean canBeHitByProjectile() {
+        return false;
+    }
+
+    @Override
+    public boolean isInvulnerableTo(DamageSource damageSource) {
+        return true;
+    }
+
+
 
     @Override
     public Packet<ClientPlayPacketListener> createSpawnPacket() {
@@ -107,7 +119,6 @@ public class LeapGhostEntity extends LivingEntity {
     }
 
 
-
     @Override
     public boolean isInvulnerable() {
         return true;
@@ -117,7 +128,7 @@ public class LeapGhostEntity extends LivingEntity {
     public boolean hasNoGravity() {
         return true;
     }
-
+    
     public void updateGhostAppearance(ServerPlayerEntity player) {
         this.equipStack(EquipmentSlot.HEAD, player.getEquippedStack(EquipmentSlot.HEAD));
         this.equipStack(EquipmentSlot.CHEST, player.getEquippedStack(EquipmentSlot.CHEST));

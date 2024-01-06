@@ -88,7 +88,7 @@ public class Leaption {
             leapGhostEntity.prevBodyYaw = tempBodyYaw;
             cachePlayerBodyYaw = tempBodyYaw;
         }
-
+        if(!readyToLeap()) progressTicks++;
     }
 
 

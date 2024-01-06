@@ -3,11 +3,10 @@ package net.ramgames.leapers;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.ramgames.leapers.blocks.ModBlockRenderLayers;
 import net.ramgames.leapers.entities.leapghost.ModClientEntities;
-import net.ramgames.leapers.events.ClientTickEvent;
+import net.ramgames.leapers.packets.CancelLeaptionS2CPacket;
 import net.ramgames.leapers.packets.ChangeGhostPoseS2CPacket;
 import net.ramgames.leapers.packets.ItemStackSyncS2CPacket;
 import net.ramgames.leapers.packets.LeaptionAgreementS2CPacket;
@@ -31,10 +30,10 @@ public class LeapersClient implements ClientModInitializer {
 		ModClientEntities.register();
 
 		//HudRenderCallback.EVENT.register(HudRenderEvent::start);
-		ClientTickEvents.END_CLIENT_TICK.register(ClientTickEvent::start);
 
 		ClientPlayNetworking.registerGlobalReceiver(ITEM_SYNC, ItemStackSyncS2CPacket::receive);
-		ClientPlayNetworking.registerGlobalReceiver(LEAPTION_AGREEMENT, LeaptionAgreementS2CPacket::receive);
+		ClientPlayNetworking.registerGlobalReceiver(START_LEAPTION, LeaptionAgreementS2CPacket::receive);
+		ClientPlayNetworking.registerGlobalReceiver(STOP_LEAPTION, CancelLeaptionS2CPacket::receive);
 		ClientPlayNetworking.registerGlobalReceiver(CHANGE_GHOST_POSE, ChangeGhostPoseS2CPacket::receive);
 
 		ModScreens.register();
@@ -69,7 +68,8 @@ public class LeapersClient implements ClientModInitializer {
 				GALVA_CLUSTER,
 				HORA_CLUSTER,
 				MEMORIA_CLUSTER,
-				UMBER_CLUSTER
+				UMBER_CLUSTER,
+				FUSION_TABLE
 		);
 		ModBlockRenderLayers.registerTranslucent(
 				DISLEAPER,

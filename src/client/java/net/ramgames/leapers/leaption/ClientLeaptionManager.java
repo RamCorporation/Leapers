@@ -18,37 +18,22 @@ public class ClientLeaptionManager {
     private ClientLeaptionManager() {}
 
     private boolean isLeaping = false;
-    private int leapTicks = 0;
     private int leapGhostId = 0;
-    private int dischargeTime = 1;
 
-    public void startLeap(int leapGhostId, int dischargeTime) {
-        LeapersClient.LOGGER.info("started leap!");
+    public void startLeap(int leapGhostId) {
         isLeaping = true;
         this.leapGhostId = leapGhostId;
-        this.dischargeTime = dischargeTime;
     }
 
     public void cancelLeap() {
         isLeaping = false;
-        this.leapTicks = 0;
-    }
-
-    public float getLeapProgress() {
-        return  (float) leapTicks / dischargeTime;
-    }
-
-    public void tick() {
-        if(leapTicks < dischargeTime) leapTicks++;
+        leapGhostId = 0;
     }
 
     public boolean isLeaping() {
         return isLeaping;
     }
 
-    public int getLeapGhostId() {
-        return leapGhostId;
-    }
 
     public LeapGhostEntity getLeapGhost() {
         return (LeapGhostEntity) MinecraftClient.getInstance().world.getEntityById(leapGhostId);

@@ -9,6 +9,6 @@ import static net.ramgames.leapers.leaption.LeaptionManager.INSTANCE;
 public class PlayerDisconnectEvent {
     public static void start(ServerPlayNetworkHandler serverPlayNetworkHandler, MinecraftServer minecraftServer) {
         ServerPlayerEntity player = serverPlayNetworkHandler.player;
-        if(INSTANCE.isPlayerLeaping(player.getUuid())) INSTANCE.cancelLeaption(minecraftServer, player);
+        if(INSTANCE.isPlayerLeaping(player.getUuid())) INSTANCE.cancelLeaption(player);
     }
 }

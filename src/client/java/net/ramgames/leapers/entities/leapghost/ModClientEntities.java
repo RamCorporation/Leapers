@@ -13,7 +13,7 @@ public class ModClientEntities {
     public static void register() {
         EntityModelLayer entityModelLayer = new EntityModelLayer(new Identifier(Leapers.MOD_ID, "leap_ghost"), "main");
         EntityModelLayerRegistry.registerModelLayer(entityModelLayer, LeapGhostModel::getTexturedModelData);
-        EntityRendererRegistry.register(LEAP_GHOST, (context) -> new LeapGhostRenderer(context, new LeapGhostModel(context.getPart(entityModelLayer)), 0.5f));
+        EntityRendererRegistry.register(LEAP_GHOST, (context) -> new LeapGhostRenderer(context, new LeapGhostModel(context.getPart(entityModelLayer)), true,0.5f));
 
     }
 

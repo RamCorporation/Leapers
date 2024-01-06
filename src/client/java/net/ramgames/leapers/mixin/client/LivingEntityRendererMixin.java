@@ -17,22 +17,22 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 public abstract class LivingEntityRendererMixin {
 
     @ModifyVariable(method = "render*", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/entity/LivingEntityRenderer;getRenderLayer(Lnet/minecraft/entity/LivingEntity;ZZZ)Lnet/minecraft/client/render/RenderLayer;"), name = "bl2")
-    private boolean modifyTranslucency(boolean original, LivingEntity livingEntity) {
-        boolean val = livingEntity instanceof LeapGhostEntity;
-        if(livingEntity instanceof PlayerEntity player) val = ClientLeaptionManager.INSTANCE.isLeaping();
-        if(livingEntity.getRandom().nextBoolean()) LeapersClient.LOGGER.info("{}", val);
-        return val;
+    private boolean shouldModifyTranslucency(boolean original, LivingEntity livingEntity) {
+        if(livingEntity instanceof PlayerEntity player) return LeaptionManager.INSTANCE.isPlayerLeaping(player.getUuid());
+        if(livingEntity instanceof LeapGhostEntity) {
+            return true;
+        }
+        return original;
 
     }
 
-    @ModifyConstant(method = "render*", constant = @Constant(floatValue = 0.15F, ordinal = 0))
+    @ModifyConstant(method = "render*", constant = @Constant(floatValue = 0.15F))
     private float modifyTranslucency(float original, LivingEntity livingEntity) {
-        if(livingEntity instanceof PlayerEntity player) {
-            return 1 - ClientLeaptionManager.INSTANCE.getLeapProgress();
-        }
+        if(livingEntity instanceof PlayerEntity player && LeaptionManager.INSTANCE.isPlayerLeaping(player.getUuid())) return 1 - LeaptionManager.INSTANCE.getPlayerLeapProgress(player.getUuid());
         if(livingEntity instanceof LeapGhostEntity leapGhost) {
-            LeapersClient.LOGGER.info("modifying ghost");
-            return ClientLeaptionManager.INSTANCE.getLeapProgress();
+            LeapersClient.LOGGER.info(LeaptionManager.INSTANCE.playersLeaping().toString());
+            LeapersClient.LOGGER.info("progress: "+LeaptionManager.INSTANCE.getPlayerLeapProgress(leapGhost.player.getUuid()));
+            return LeaptionManager.INSTANCE.getPlayerLeapProgress(leapGhost.player.getUuid());
         }
 
         return original;

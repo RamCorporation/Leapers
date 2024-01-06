@@ -87,4 +87,22 @@ public class LeaperItem extends Item implements Vanishable {
         super.appendTooltip(stack, world, tooltip, context);
     }
 
+    @Override
+    public UseAction getUseAction(ItemStack stack) {
+        return UseAction.SPEAR;
+    }
+
+    @Override
+    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+        user.setCurrentHand(hand);
+        return TypedActionResult.pass(user.getStackInHand(hand));
+    }
+
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return Integer.MAX_VALUE;
+    }
+
+
+
 }

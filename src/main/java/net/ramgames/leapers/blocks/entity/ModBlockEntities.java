@@ -12,6 +12,7 @@ public class ModBlockEntities {
     public static BlockEntityType<CrystalInspectorBlockEntity> CRYSTAL_INSPECTOR;
     public static BlockEntityType<RedstoneRayBlockEntity> REDSTONE_RAY;
     public static BlockEntityType<LeapStoneBlockEntity> LEAP_STONE;
+    public static BlockEntityType<FusionTableBlockEntity> FUSION_TABLE;
 
     public static void onInitialize() {
         CRYSTAL_INSPECTOR = Registry.register(Registries.BLOCK_ENTITY_TYPE,
@@ -23,6 +24,9 @@ public class ModBlockEntities {
         LEAP_STONE = Registry.register(Registries.BLOCK_ENTITY_TYPE,
                 new Identifier(Leapers.MOD_ID, "leap_pad"),
                 FabricBlockEntityTypeBuilder.create(LeapStoneBlockEntity::new,ModBlocks.LEAP_STONE).build());
+        FUSION_TABLE = Registry.register(Registries.BLOCK_ENTITY_TYPE,
+                new Identifier(Leapers.MOD_ID, "fusion_table"),
+                FabricBlockEntityTypeBuilder.create(FusionTableBlockEntity::new, ModBlocks.FUSION_TABLE).build());
 
     }
 }

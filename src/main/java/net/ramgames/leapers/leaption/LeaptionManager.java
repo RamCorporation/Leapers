@@ -38,7 +38,6 @@ public class LeaptionManager {
         PlayerManager playerManager = server.getPlayerManager();
         playerManager.getPlayerList().forEach(player -> {
             UUID uuid = player.getUuid();
-            if(player.isUsingItem()) Leapers.LOGGER.info("using!");
             if(!player.isUsingItem() && playersUsingLeaper.contains(uuid)) cancelLeaption(player);
             if(player.isUsingItem() && player.getMainHandStack().getItem() == ModItems.LEAPER && !player.getItemCooldownManager().isCoolingDown(player.getActiveItem().getItem())) {
                 if(!playersUsingLeaper.contains(uuid)) requestLeaption(player);

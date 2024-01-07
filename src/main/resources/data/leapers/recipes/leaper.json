@@ -1,0 +1,31 @@
+{
+  "type": "surge",
+  "items": [
+    {
+      "tag": "leapers:core",
+      "transferNBT": [
+        "charges"
+      ],
+      "saveItemId": ""
+    },
+    {
+      "tag": "leapers:handle",
+      "transferNBT": [
+        "durability"
+      ]
+    },
+    {
+      "tag": "leapers:fixture",
+      "transferNBT": [
+        "transmittance",
+        "specifications"
+      ]
+    },
+    {
+      "tag": "leapers:crystal",
+      "transferNBT": [
+        "stability"
+      ]
+    }
+  ]
+}

@@ -3,7 +3,8 @@
 	"package": "net.ramgames.leapers.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-
+		"LightningEntityMixin",
+		"PointOfInterestTypesMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

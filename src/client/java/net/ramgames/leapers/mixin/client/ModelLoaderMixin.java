@@ -11,6 +11,7 @@ import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.util.Identifier;
 import net.ramgames.leapers.Leapers;
 import net.ramgames.leapers.items.ModSeeds;
+import net.ramgames.leapers.leaption.LeaptionManager;
 import net.ramgames.leapers.leaption.api.data.LeaperRegistries;
 import net.ramgames.leapers.leaption.api.modules.Core;
 import net.ramgames.leapers.leaption.api.modules.Crystal;
@@ -43,6 +44,8 @@ public abstract class ModelLoaderMixin {
 
     @Unique
     private final HashMap<String, JsonUnbakedModel> leaperVariants = new HashMap<>();
+    @Unique
+    private boolean shouldRegisterModels = true;
 
 
     @Inject(method = "getOrLoadModel", at = @At("HEAD"), cancellable = true)
@@ -54,7 +57,15 @@ public abstract class ModelLoaderMixin {
     private void registerModels(ModelIdentifier modelId, CallbackInfo info) {
         if (!modelId.getNamespace().equals(Leapers.MOD_ID)) return;
         if (!modelId.getVariant().equals("inventory")) return;
-        if (modelId.getPath().equals("leaper")) registerLeaperModels();
+        if (modelId.getPath().equals("leaper")) {
+            if(!shouldRegisterModels) {
+                LeaperRegistries.LOGGER.warn("canceled model generation due to models already existing");
+                return;
+            }
+            registerLeaperModels();
+            shouldRegisterModels = false;
+        }
+
     }
 
     @Unique

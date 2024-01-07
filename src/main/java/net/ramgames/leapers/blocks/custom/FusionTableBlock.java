@@ -1,6 +1,7 @@
 package net.ramgames.leapers.blocks.custom;
 
 import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.util.ParticleUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -11,7 +12,10 @@ import net.minecraft.entity.projectile.TridentEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.ScreenHandlerFactory;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -21,6 +25,8 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.state.property.Property;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -32,8 +38,12 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
+import net.ramgames.leapers.Leapers;
+import net.ramgames.leapers.blocks.entity.FusionTableBlockEntity;
+import net.ramgames.leapers.screenhandlers.FusionTableScreenHandler;
+import org.jetbrains.annotations.Nullable;
 
-public class FusionTableBlock extends Block implements Waterloggable {
+public class FusionTableBlock  extends BlockWithEntity implements BlockEntityProvider, Waterloggable {
 
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final BooleanProperty POWERED = Properties.POWERED;
@@ -92,7 +102,7 @@ public class FusionTableBlock extends Block implements Waterloggable {
     }
 
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        world.setBlockState(pos, (BlockState)state.with(POWERED, false), 3);
+        world.setBlockState(pos, state.with(POWERED, false), 3);
         this.updateNeighbors(state, world, pos);
     }
 
@@ -104,14 +114,12 @@ public class FusionTableBlock extends Block implements Waterloggable {
 
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (!state.isOf(newState.getBlock())) {
-            if (state.get(POWERED)) {
-                this.updateNeighbors(state, world, pos);
-            }
+            if (state.get(POWERED)) this.updateNeighbors(state, world, pos);
 
             super.onStateReplaced(state, world, pos, newState, moved);
         }
     }
-
+    @Override
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
         if (!state.isOf(oldState.getBlock())) {
             if (state.get(POWERED) && !world.getBlockTickScheduler().isQueued(pos, this)) {
@@ -120,16 +128,16 @@ public class FusionTableBlock extends Block implements Waterloggable {
 
         }
     }
-
+    @Override
     public void onProjectileHit(World world, BlockState state, BlockHitResult hit, ProjectileEntity projectile) {
-        if (world.isThundering() && projectile instanceof TridentEntity && ((TridentEntity)projectile).hasChanneling()) {
+        if (world.isThundering() && projectile instanceof TridentEntity && ((TridentEntity) projectile).hasChanneling()) {
             BlockPos blockPos = hit.getBlockPos();
             if (world.isSkyVisible(blockPos)) {
                 LightningEntity lightningEntity = EntityType.LIGHTNING_BOLT.create(world);
                 if (lightningEntity != null) {
                     lightningEntity.refreshPositionAfterTeleport(Vec3d.ofBottomCenter(blockPos.up()));
                     Entity entity = projectile.getOwner();
-                    lightningEntity.setChanneler(entity instanceof ServerPlayerEntity ? (ServerPlayerEntity)entity : null);
+                    lightningEntity.setChanneler(entity instanceof ServerPlayerEntity ? (ServerPlayerEntity) entity : null);
                     world.spawnEntity(lightningEntity);
                 }
 
@@ -138,7 +146,39 @@ public class FusionTableBlock extends Block implements Waterloggable {
         }
     }
 
+    @Override
     public boolean emitsRedstonePower(BlockState state) {
         return true;
     }
+
+
+    public void setPowered(BlockState state, World world, BlockPos pos) {
+        world.setBlockState(pos, state.with(POWERED, true), 3);
+        FusionTableBlockEntity blockEntity = (FusionTableBlockEntity) world.getBlockEntity(pos);
+        blockEntity.setInventory(9, blockEntity.getStack(8));
+        blockEntity.setInventory(8, ItemStack.EMPTY);
+        this.updateNeighbors(state, world, pos);
+        world.scheduleBlockTick(pos, this, 8);
+    }
+
+    @Nullable
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new FusionTableBlockEntity(pos, state);
+    }
+
+    @Override
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
+    }
+
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if(world.isClient()) return ActionResult.SUCCESS;
+        NamedScreenHandlerFactory screenHandlerFactory = state.createScreenHandlerFactory(world, pos);
+        if(screenHandlerFactory == null) return ActionResult.SUCCESS;
+        player.openHandledScreen(screenHandlerFactory);
+        return ActionResult.SUCCESS;
+    }
+
 }

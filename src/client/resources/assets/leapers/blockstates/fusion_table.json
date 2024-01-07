@@ -1,10 +1,10 @@
 {
   "variants": {
     "powered=false": {
-      "model": "leapers:block/fusion_table"
+      "model": "leapers:block/fusion_table/fusion_table_off"
     },
     "powered=true": {
-      "model": "leapers:block/fusion_table"
+      "model": "leapers:block/fusion_table/fusion_table_on"
     }
   }
 }

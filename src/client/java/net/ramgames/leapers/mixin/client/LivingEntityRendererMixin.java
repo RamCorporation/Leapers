@@ -30,8 +30,6 @@ public abstract class LivingEntityRendererMixin {
     private float modifyTranslucency(float original, LivingEntity livingEntity) {
         if(livingEntity instanceof PlayerEntity player && LeaptionManager.INSTANCE.isPlayerLeaping(player.getUuid())) return 1 - LeaptionManager.INSTANCE.getPlayerLeapProgress(player.getUuid());
         if(livingEntity instanceof LeapGhostEntity leapGhost) {
-            LeapersClient.LOGGER.info(LeaptionManager.INSTANCE.playersLeaping().toString());
-            LeapersClient.LOGGER.info("progress: "+LeaptionManager.INSTANCE.getPlayerLeapProgress(leapGhost.player.getUuid()));
             return LeaptionManager.INSTANCE.getPlayerLeapProgress(leapGhost.player.getUuid());
         }
 
